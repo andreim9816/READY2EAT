@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "844040713061",
+    "firebase_url": "https://ready2eat-54e42.firebaseio.com",
+    "project_id": "ready2eat-54e42",
+    "storage_bucket": "ready2eat-54e42.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:844040713061:android:7bc88bcd2fbbb0ef20a78c",
+        "android_client_info": {
+          "package_name": "com.example.ready2eat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "844040713061-gca8mut5l10e41c1s46qfo6hpsq9tpdp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ready2eat",
+            "certificate_hash": "83fa79e8edfbf8c6ac98205108a7e3cfaf6cef59"
+          }
+        },
+        {
+          "client_id": "844040713061-0phsb9aa5j76phoklmho9417ednvli2f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzLcTkpE8GI6LNTBunJgYbqn3LX_lFQLY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "844040713061-0phsb9aa5j76phoklmho9417ednvli2f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
