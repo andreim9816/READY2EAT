@@ -40,31 +40,32 @@ public class SignUp extends AppCompatActivity {
             public void onClick(View v) {
 
                 final ProgressDialog mDialog = new ProgressDialog(SignUp.this);
-                mDialog.setMessage("Please waiting...");
+                mDialog.setMessage("Please wait...");
                 mDialog.show();
 
-                table_user.addValueEventListener(new ValueEventListener() {
+                table_user.addListenerForSingleValueEvent(new ValueEventListener()
+                {
                     @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+                    {
                         //Check if already user phone
-                        if(dataSnapshot.child(edtPhone.getText().toString()).exists()){
-
+                        if(dataSnapshot.child(edtPhone.getText().toString()).exists())
+                        {
                             mDialog.dismiss();
-                            Toast.makeText(SignUp.this, "Phone Number already register", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SignUp.this, "Phone number is already registered!", Toast.LENGTH_SHORT).show();
                         }
                         else
                         {
                             mDialog.dismiss();
                             User user = new User(edtName.getText().toString(), edtPassword.getText().toString());
                             table_user.child(edtPhone.getText().toString()).setValue(user);
-                            Toast.makeText(SignUp.this, "Sign up successufully!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SignUp.this, "Signed up successfully!", Toast.LENGTH_SHORT).show();
                             finish();
-
                         }
                     }
-
                     @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                    public void onCancelled(@NonNull DatabaseError databaseError)
+                    {
 
                     }
                 });
