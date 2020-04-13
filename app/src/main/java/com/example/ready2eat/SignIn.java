@@ -3,12 +3,14 @@ package com.example.ready2eat;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.ready2eat.Common.Common;
 import com.example.ready2eat.Model.User;
 
 import com.google.firebase.database.DataSnapshot;
@@ -44,24 +46,26 @@ public class SignIn extends AppCompatActivity {
             public void onClick(View v) {
 
                 final ProgressDialog mDialog = new ProgressDialog(SignIn.this);
-                mDialog.setMessage("Please waiting...");
+                mDialog.setMessage("Please wait...");
                 mDialog.show();
 
-                table_user.addValueEventListener(new ValueEventListener() {
-
-
+                table_user.addValueEventListener(new ValueEventListener()
+                {
                     @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-
-                        //Check if user not exit in database
-                        if(dataSnapshot.child(edtPhone.getText().toString()).exists()){
+                    public void onDataChange(DataSnapshot dataSnapshot)
+                    {
+                        //Check if user exists in database
+                        if(dataSnapshot.child(edtPhone.getText().toString()).exists())
+                        {
                             //Get User Information
                             mDialog.dismiss();
                             User user = dataSnapshot.child(edtPhone.getText().toString()).getValue(User.class);
                             if(user.getPassword().equals(edtPassword.getText().toString()))
                             {
-                                Toast.makeText(SignIn.this, "Sign In successfully!", Toast.LENGTH_SHORT).show();
-
+                                Intent homeIntent = new Intent(SignIn.this, Home.class);
+                                Common.currentUser = user;
+                                startActivity(homeIntent);
+                                finish();
                             }
                             else
                             {
@@ -72,14 +76,13 @@ public class SignIn extends AppCompatActivity {
                         else
                         {
                             mDialog.dismiss();
-                            Toast.makeText(SignIn.this, "User not exit in Database", Toast.LENGTH_SHORT).show();
-
+                            Toast.makeText(SignIn.this, "User does not exit in Database", Toast.LENGTH_SHORT).show();
                         }
-
                     }
 
                     @Override
-                    public void onCancelled(DatabaseError databaseError) {
+                    public void onCancelled(DatabaseError databaseError)
+                    {
 
                     }
                 });
