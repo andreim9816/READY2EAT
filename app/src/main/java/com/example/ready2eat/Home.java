@@ -1,5 +1,6 @@
 package com.example.ready2eat;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
@@ -34,6 +35,7 @@ public class Home extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     FirebaseDatabase database;
     DatabaseReference category;
+    FirebaseRecyclerAdapter<Category, MenuViewHolder> adapter;
 
     TextView txtFullName;
 
@@ -89,7 +91,7 @@ public class Home extends AppCompatActivity {
         loadMenu();
     }
         private void loadMenu() {
-            FirebaseRecyclerAdapter<Category, MenuViewHolder> adapter = new FirebaseRecyclerAdapter<Category, MenuViewHolder>(Category.class, R.layout.menu_item, MenuViewHolder.class, category) {
+             adapter = new FirebaseRecyclerAdapter<Category, MenuViewHolder>(Category.class, R.layout.menu_item, MenuViewHolder.class, category) {
                 @Override
                 protected void populateViewHolder(MenuViewHolder viewHolder, Category model, int position) {
                     viewHolder.txtMenuName.setText(model.getName());
@@ -99,7 +101,13 @@ public class Home extends AppCompatActivity {
                     viewHolder.setItemClickListener(new ItemClickListener() {
                         @Override
                         public void onClick(View view, int position, boolean isLongClick) {
-                            Toast.makeText(Home.this, "" + clickItem.getName(), Toast.LENGTH_SHORT).show();
+                            //Get CategoryId and send to new Activity
+                            Intent foodList = new Intent(Home.this, FoodList.class);
+                            //Because CategoryId is key, we just get key of this item
+                            foodList.putExtra("CategoryId", adapter.getRef(position).getKey());
+                            startActivity(foodList);
+
+                            //Toast.makeText(Home.this, "" + clickItem.getName(), Toast.LENGTH_SHORT).show();
                         }
                     });
                 }

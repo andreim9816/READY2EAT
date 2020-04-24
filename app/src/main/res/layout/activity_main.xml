@@ -52,17 +52,17 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="4dp"
         android:layout_marginEnd="-4dp"
-        android:layout_marginBottom="82dp"
+        android:layout_marginBottom="660dp"
         android:gravity="center"
         android:text="@string/slogan"
         android:textColor="@android:color/white"
-        android:textSize="32dp" />
+        android:textSize="36dp" />
 
     <ImageView
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="210dp"
+        android:layout_height="210dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="155dp"
+        android:layout_marginBottom="410dp"
         android:src="@drawable/logo"></ImageView>
 </RelativeLayout>
