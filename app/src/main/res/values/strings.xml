@@ -14,5 +14,10 @@
     <string name="menu_slideshow">Slideshow</string>
 
     <string name="home_second">Home Second</string>
+    <string name="_1_000">1,000</string>
+    <string name="food_name">Food Name</string>
+    <string name="todo">TODO</string>
+    <string name="description">Description</string>
+    <string name="lei">Lei</string>
 
 </resources>

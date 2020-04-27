@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -30,8 +31,7 @@ public class FoodList extends AppCompatActivity
     FirebaseRecyclerAdapter<Food, FoodViewHolder> adapter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_list);
 
@@ -47,11 +47,11 @@ public class FoodList extends AppCompatActivity
         //Get Intent here
         if(getIntent() != null)
             categoryId = getIntent().getStringExtra("CategoryId");
-
         if(!categoryId.isEmpty() && categoryId != null)
         {
             loadListFood(categoryId);
         }
+
     }
 
     private void loadListFood(String categoryId)
@@ -59,23 +59,26 @@ public class FoodList extends AppCompatActivity
         adapter = new FirebaseRecyclerAdapter<Food, FoodViewHolder>(Food.class,
                 R.layout.food_item,
                 FoodViewHolder.class,
-                foodList.orderByChild("MenuID").equalTo(categoryId) )
-        {
+                foodList.orderByChild("MenuID").equalTo(categoryId) ) {
             @Override
             protected void populateViewHolder(FoodViewHolder foodViewHolder, Food food, int i)
             {
                 foodViewHolder.food_name.setText(food.getName());
-                Picasso.with(getBaseContext()).load(food.getImage()).into(foodViewHolder.food_image);
+                Picasso.get().load(food.getImage()).into(foodViewHolder.food_image);
                 final Food local = food;
                 foodViewHolder.setItemClickListener(new ItemClickListener() {
                     @Override
                     public void onClick(View view, int position, boolean isLongClick) {
-                        Toast.makeText(FoodList.this, "" + local.getName(), Toast.LENGTH_SHORT).show();
+                        //Start new Activity
+                        Intent foodDetail = new Intent(FoodList.this, FoodDetail.class);
+                        foodDetail.putExtra("FoodId", adapter.getRef(position).getKey()); //Send food id to new activity
+                        startActivity(foodDetail);
                     }
                 });
             }
         };
 
         recyclerView.setAdapter(adapter);
+
     }
 }
