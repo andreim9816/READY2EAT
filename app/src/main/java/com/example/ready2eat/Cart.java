@@ -99,7 +99,7 @@ public class Cart extends AppCompatActivity {
                     cart);
 
                     //Submit to Firebase
-                    //We will using System.CurrentMilli to key
+                    //We use System.CurrentMillis
                     requests.child(String.valueOf(System.currentTimeMillis())).setValue(request);
 
                     //Delete cart
