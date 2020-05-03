@@ -20,7 +20,7 @@ public class Request {
         this.foods = foods;
         this.status = "0"; //"0" = Placed; "1" = Delivery; "2" = "Delivered"
     }
-    
+  
     public String getStatus() {
         return status;
     }
@@ -28,7 +28,7 @@ public class Request {
     public void setStatus(String status) {
         this.status = status;
     }
-    
+
     public String getPhone() {
         return phone;
     }
