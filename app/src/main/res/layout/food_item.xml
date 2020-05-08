@@ -4,16 +4,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
-    app:cardElevation="4dp"
-    android:layout_marginBottom="8dp"
-    android:layout_marginLeft="6dp"
-    android:layout_marginRight="6dp"
+    android:layout_height="280dp"
+    android:layout_marginBottom="6dp"
+    android:layout_marginTop="3dp"
+    android:layout_marginLeft="9dp"
+    android:layout_marginRight="9dp"
     >
+
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        >
 
         <ImageView
             android:id="@+id/food_image"
@@ -21,20 +23,84 @@
             android:src="@drawable/background"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="0dp"/>
+            />
 
 
-        <TextView
-            android:id="@+id/food_name"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentEnd="false"
+            android:layout_height="100dp"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="0dp"
-            android:background="@color/overlayBackground"
-            android:gravity="bottom|center"
-            android:text="Name of Food"
-            android:textColor="@android:color/white"
-            android:textSize="20sp" />
+            android:background="#ffffff"
+ >
+
+            <TextView
+                android:id="@+id/food_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="17dp"
+                android:layout_marginStart="14dp"
+                android:text="Name of Food"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/bahnschript_font"/>
+
+            <ImageView
+                android:layout_width="23dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="61dp"
+                android:background="@drawable/ic_timer_black"
+                />
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:layout_marginStart="40dp"
+                android:text="Timp"
+                android:textColor="#808080"
+                android:textSize="14sp"
+                android:fontFamily="@font/bahnschript_font"
+                />
+            <ImageView
+                android:layout_width="23dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="113dp"
+                android:layout_marginTop="61dp"
+                android:background="@drawable/ic_libra"
+                />
+            <TextView
+                android:id="@+id/quantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:layout_marginStart="142dp"
+                android:text="Cantitate"
+                android:textColor="#808080"
+                android:textSize="14sp"
+                android:fontFamily="@font/bahnschript_font"/>
+
+            <ImageView
+                android:layout_width="23dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="262dp"
+                android:layout_marginTop="61dp"
+                android:background="@drawable/ic_money"
+                />
+
+            <TextView
+                android:id="@+id/food_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:layout_marginStart="292dp"
+                android:text="Pret"
+                android:textColor="#808080"
+                android:textSize="14sp"
+                android:fontFamily="@font/bahnschript_font"/>
+
+        </RelativeLayout>
+
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

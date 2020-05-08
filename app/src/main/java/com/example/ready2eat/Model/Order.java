@@ -10,11 +10,11 @@ public class Order {
     public Order(){}
 
     public Order(String productId, String productName, String quantity, String price, String discount) {
-        ProductId = productId;
-        ProductName = productName;
-        Quantity = quantity;
-        Price = price;
-        Discount = discount;
+        this.ProductId = productId;
+        this.ProductName = productName;
+        this.Quantity = quantity;
+        this.Price = price;
+        this.Discount = discount;
     }
 
     public String getProductId() {
@@ -56,4 +56,5 @@ public class Order {
     public void setDiscount(String discount) {
         Discount = discount;
     }
+
 }

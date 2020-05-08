@@ -3,17 +3,21 @@ package com.example.ready2eat.Model;
 public class Food
 {
     private String Name, Image, Description, Price, Discount, MenuID;
+    private String Quantity;
+    private String Time;
 
     public Food() {
     }
 
-    public Food(String name, String image, String description, String price, String discount, String menuID) {
-        Name = name;
-        Image = image;
-        Description = description;
-        Price = price;
-        Discount = discount;
-        MenuID = menuID;
+    public Food(String name, String image, String description, String price, String discount, String menuID, String quantity, String cookingTime) {
+        this.Name = name;
+        this.Image = image;
+        this.Description = description;
+        this.Price = price;
+        this.Discount = discount;
+        this.MenuID = menuID;
+        this.Quantity = quantity;
+        this.Time = cookingTime;
     }
 
     public String getName() {
@@ -62,5 +66,21 @@ public class Food
 
     public void setMenuID(String menuID) {
         MenuID = menuID;
+    }
+
+    public String getQuantity() {
+        return Quantity;
+    }
+
+    public void setQuantity(String quantity) {
+        this.Quantity = quantity;
+    }
+
+    public String getTime() {
+        return Time;
+    }
+
+    public void setTime(String time) {
+        Time = time;
     }
 }

@@ -64,6 +64,11 @@ public class FoodList extends AppCompatActivity
             protected void populateViewHolder(FoodViewHolder foodViewHolder, Food food, int i)
             {
                 foodViewHolder.food_name.setText(food.getName());
+                foodViewHolder.food_price.setText(food.getPrice() + " Lei");
+                if(!food.getMenuID().equals("11"))
+                    foodViewHolder.quantity.setText(food.getQuantity() + " g");
+                else foodViewHolder.quantity.setText(food.getQuantity());
+                foodViewHolder.time.setText(food.getTime());
                 Picasso.get().load(food.getImage()).into(foodViewHolder.food_image);
                 final Food local = food;
                 foodViewHolder.setItemClickListener(new ItemClickListener() {

@@ -11,8 +11,8 @@
         android:layout_height="match_parent"
         android:id="@+id/recycler_food"
         android:scrollbars="vertical"
-        android:background="#000000"
+        android:background="#F2F4F4"
         />
-
+<!-- e1e1e1-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
