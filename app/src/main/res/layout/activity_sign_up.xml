@@ -4,22 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1f1919"
+    android:background="@drawable/background"
     tools:context="com.example.ready2eat.SignUp">
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-
-        android:background="@drawable/background_foto"
-         />
-
-    <ImageView
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="120dp"
-        android:background="@drawable/logo"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,25 +16,6 @@
         android:orientation="vertical">
 
         <com.rengwuxian.materialedittext.MaterialEditText
-            android:id="@+id/edtName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:gravity="center_horizontal"
-            android:hint="Nume utilizator"
-            android:inputType="text"
-            android:textColor="#faf5e4"
-            android:textColorHint="#faf5e4"
-            android:textSize="20sp"
-            app:met_baseColor="#faf5e4"
-            app:met_floatingLabel="highlight"
-            app:met_maxCharacters="30"
-            app:met_primaryColor="#faf5e4"
-            app:met_singleLineEllipsis="true"
-            android:drawableLeft="@drawable/ic_person"/>
-
-        <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/edtPhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -57,18 +24,34 @@
             android:layout_marginRight="50dp"
             android:baselineAligned="false"
             android:gravity="center_horizontal"
-            android:hint="Numar de telefon"
+            android:hint="Phone number"
             android:inputType="phone"
-            android:textColor="#faf5e4"
-            android:textColorHint="#faf5e4"
-            android:textSize="20sp"
-            app:met_baseColor="#faf5e4"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"
+            android:textSize="24sp"
+            app:met_baseColor="@android:color/white"
             app:met_floatingLabel="highlight"
             app:met_maxCharacters="11"
-            app:met_primaryColor="#faf5e4"
-            app:met_singleLineEllipsis="true"
-            android:drawableLeft="@drawable/ic_phone24"/>
+            app:met_primaryColor="@android:color/white"
+            app:met_singleLineEllipsis="true" />
 
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/edtName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:gravity="center_horizontal"
+            android:hint="Name"
+            android:inputType="text"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"
+            android:textSize="24sp"
+            app:met_baseColor="@android:color/white"
+            app:met_floatingLabel="highlight"
+            app:met_maxCharacters="30"
+            app:met_primaryColor="@android:color/white"
+            app:met_singleLineEllipsis="true" />
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/edtPassword"
@@ -77,32 +60,40 @@
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
             android:gravity="center_horizontal"
-            android:hint="Parola"
+            android:hint="Password"
             android:inputType="textPassword"
-            android:textColor="#faf5e4"
-            android:textColorHint="#faf5e4"
-            android:textSize="20sp"
-            app:met_baseColor="#faf5e4"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"
+            android:textSize="24sp"
+            app:met_baseColor="@android:color/white"
             app:met_floatingLabel="highlight"
             app:met_maxCharacters="20"
-            app:met_primaryColor="#faf5e4"
-            app:met_singleLineEllipsis="true"
-            android:drawableLeft="@drawable/ic_lock"/>
+            app:met_primaryColor="@android:color/white"
+            app:met_singleLineEllipsis="true" />
 
     </LinearLayout>
 
     <Button
         android:id="@+id/btnSignUp"
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="150dp"
-        android:background="@drawable/btn_rounded"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="#09770E"
         android:backgroundTintMode="src_in"
         android:text="Sign Up"
-        android:textColor="#faf5e4" />
+        android:textColor="@android:color/white"
+        />
 
+    <!--        app:buttonColor="@color/btnSignActive"-->
+    <!--        app:cornerRadius="4dp"-->
+    <!--        app:shadowColor="@android:color/black"-->
+    <!--        app:shadowEnabled="true"-->
+    <!--        app:shadowHeight="5dp" />-->
 
 </RelativeLayout>

@@ -91,7 +91,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         //Set name for user
         final View headerView = navigationView.getHeaderView(0);
         txtFullName = headerView.findViewById(R.id.txtFullName);
-        txtFullName.setText("Bine ai venit, " + Common.currentUser.getName() + "!");
+        txtFullName.setText(Common.currentUser.getName());
 
         //Load Menu
         recyclerMenu = findViewById(R.id.recycler_menu);

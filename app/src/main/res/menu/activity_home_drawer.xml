@@ -6,25 +6,25 @@
             android:id="@+id/nav_menu"
             android:icon="@drawable/ic_menu_camera"
             android:iconTint="@android:color/white"
-            android:title="MENIU" />
+            android:title="Menu" />
 
         <item
             android:id="@+id/nav_cart"
             android:icon="@drawable/ic_shopping_cart_black_24dp"
             android:iconTint="@android:color/white"
-            android:title="COSUL MEU" />
+            android:title="Cart" />
 
         <item
             android:id="@+id/nav_orders"
             android:icon="@drawable/ic_access_time_black_24dp"
             android:iconTint="@android:color/white"
-            android:title="COMENZILE MELE" />
+            android:title="Orders" />
 
         <item
             android:id="@+id/nav_log_out"
             android:icon="@drawable/ic_exit_to_app_black_24dp"
             android:iconTint="@android:color/white"
-            android:title="LOG OUT" />
+            android:title="Sign out" />
 
 
 
