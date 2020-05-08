@@ -22,5 +22,6 @@
     <string name="_10_00_lei">10.00 Lei</string>
     <string name="place_order">Place Order</string>
     <string name="total">Total:</string>
+    <string name="title_activity_admin_home">AdminHome</string>
 
 </resources>
