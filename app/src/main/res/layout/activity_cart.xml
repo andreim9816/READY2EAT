@@ -5,24 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    android:padding="16dp"
+    android:padding="0dp"
     tools:context=".Cart">
-
-
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listCart"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/transparent"/>
+        android:background="@android:color/transparent" />
 
     <androidx.cardview.widget.CardView
 
-        android:layout_width="3024dp"
-        android:layout_height="120dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="10dp"
-        app:cardBackgroundColor="@color/colorPrimary">
+        android:padding="20dp"
+
+        app:cardBackgroundColor="#1f1919">
 
 
         <RelativeLayout
@@ -32,42 +31,42 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="15dp"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/total"
-                    android:textColor="@android:color/white"
+                    android:textColor="#faf5e4"
                     android:textSize="24sp" />
 
                 <TextView
                     android:id="@+id/total"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="  10,00 Lei"
-                    android:textColor="@android:color/white"
+                    android:layout_marginLeft="0dp"
+                    android:text="@string/_0_00_lei"
+                    android:textColor="#faf5e4"
                     android:textSize="24sp" />
 
             </LinearLayout>
 
             <Button
                 android:id="@+id/btnPlaceOrder"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginBottom="9dp"
-                android:backgroundTint="#09770E"
+                android:layout_width="190dp"
+                android:layout_height="40dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/button"
                 android:backgroundTintMode="src_in"
-                android:text="@string/place_order"
-                android:textColor="@android:color/white" />
+                android:text="@string/comanda"
+                android:textColor="#faf5e4" />
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>

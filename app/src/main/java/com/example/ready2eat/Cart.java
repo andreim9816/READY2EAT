@@ -36,7 +36,7 @@ public class Cart extends AppCompatActivity {
     DatabaseReference requests;
 
     TextView txtTotalPrice;
-    //Fbutton??
+
     Button btnPlace;
 
     List<Order> cart = new ArrayList<>();
@@ -76,8 +76,8 @@ public class Cart extends AppCompatActivity {
         private void showAlertDialog()
         {
             AlertDialog.Builder alertDialog = new AlertDialog.Builder(Cart.this);
-            alertDialog.setTitle("One more step!");
-            alertDialog.setMessage("Enter your address: ");
+            alertDialog.setTitle("Ultimul pas!");
+            alertDialog.setMessage("Ora pentru preluarea comenzii: ");
 
             final EditText edtAddress = new EditText(Cart.this);
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
@@ -104,7 +104,7 @@ public class Cart extends AppCompatActivity {
 
                     //Delete cart
                     new Database(getBaseContext()).cleanCart();
-                    Toast.makeText(Cart.this, "Thank you, Order Place", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Cart.this, "Poftă bună!", Toast.LENGTH_SHORT).show();
                     finish();
 
                 }
