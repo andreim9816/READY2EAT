@@ -73,100 +73,52 @@ public class Cart extends AppCompatActivity
 
         loadListFood();
     }
-// <<<<<<< master
-        private void showAlertDialog()
-        {
-            AlertDialog.Builder alertDialog = new AlertDialog.Builder(Cart.this);
-            alertDialog.setTitle("Ultimul pas!");
-            alertDialog.setMessage("Ora pentru preluarea comenzii: ");
+    private void showAlertDialog()
+    {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(Cart.this);
+        alertDialog.setTitle("One more step!");
+        alertDialog.setMessage("Please fill in the pick-up time: ");
 
-            final EditText edtAddress = new EditText(Cart.this);
-            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT,
-                    LinearLayout.LayoutParams.MATCH_PARENT);
-            edtAddress.setLayoutParams(lp);
-            alertDialog.setView(edtAddress);
-            alertDialog.setIcon(R.drawable.ic_shopping_cart_black_24dp);
+        final EditText edtAddress = new EditText(Cart.this);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.MATCH_PARENT);
 
-            alertDialog.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    // Create new request
-                    Request request = new Request(
-                    Common.currentUser.getPhone(),
-                    Common.currentUser.getName(),
-                    edtAddress.getText().toString(),
-                    txtTotalPrice.getText().toString(),
-                    cart);
+        edtAddress.setLayoutParams(lp);
+        alertDialog.setView(edtAddress);
+        alertDialog.setIcon(R.drawable.ic_shopping_cart_black_24dp);
 
-                    //Submit to Firebase
-                    //We will use System.CurrentMillis 
-                    requests.child(String.valueOf(System.currentTimeMillis())).setValue(request);
+        alertDialog.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Create new request
+                Request request = new Request(
+                Common.currentUser.getPhone(),
+                Common.currentUser.getName(),
+                edtAddress.getText().toString(),
+                txtTotalPrice.getText().toString(),
+                cart);
 
-                    //Delete cart
-                    new Database(getBaseContext()).cleanCart();
-                    Toast.makeText(Cart.this, "Poftă bună!", Toast.LENGTH_SHORT).show();
-                    finish();
+                //Submit to Firebase
+                //We use System.CurrentMillis
+                requests.child(String.valueOf(System.currentTimeMillis())).setValue(request);
 
-                }
-            });
-            alertDialog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int which) {
-                    dialogInterface.dismiss();
+                //Delete cart
+                new Database(getBaseContext()).cleanCart();
+                Toast.makeText(Cart.this, "Thank you, order has been placed!", Toast.LENGTH_SHORT).show();
+                finish();
 
-                }
-            });
-            alertDialog.show();
-        }
-// =======
-//     private void showAlertDialog()
-//     {
-//         AlertDialog.Builder alertDialog = new AlertDialog.Builder(Cart.this);
-//         alertDialog.setTitle("One more step!");
-//         alertDialog.setMessage("Please fill in the pick-up time: ");
+            }
+        });
+        alertDialog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int which) {
+                dialogInterface.dismiss();
 
-//         final EditText edtAddress = new EditText(Cart.this);
-//         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
-//                 LinearLayout.LayoutParams.MATCH_PARENT,
-//                 LinearLayout.LayoutParams.MATCH_PARENT);
-
-//         edtAddress.setLayoutParams(lp);
-//         alertDialog.setView(edtAddress);
-//         alertDialog.setIcon(R.drawable.ic_shopping_cart_black_24dp);
-
-//         alertDialog.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-//             @Override
-//             public void onClick(DialogInterface dialog, int which) {
-//                 // Create new request
-//                 Request request = new Request(
-//                 Common.currentUser.getPhone(),
-//                 Common.currentUser.getName(),
-//                 edtAddress.getText().toString(),
-//                 txtTotalPrice.getText().toString(),
-//                 cart);
-
-//                 //Submit to Firebase
-//                 //We use System.CurrentMillis
-//                 requests.child(String.valueOf(System.currentTimeMillis())).setValue(request);
-
-//                 //Delete cart
-//                 new Database(getBaseContext()).cleanCart();
-//                 Toast.makeText(Cart.this, "Thank you, order has been placed!", Toast.LENGTH_SHORT).show();
-//                 finish();
-
-//             }
-//         });
-//         alertDialog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-//             @Override
-//             public void onClick(DialogInterface dialogInterface, int which) {
-//                 dialogInterface.dismiss();
-
-//             }
-//         });
-//         alertDialog.show();
-//     }
-// >>>>>>> master
+            }
+        });
+        alertDialog.show();
+    }
 
     private void loadListFood()
     {
