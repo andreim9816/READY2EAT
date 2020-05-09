@@ -6,15 +6,17 @@ public class Order {
     private String Quantity;
     private String Price;
     private String Discount;
+    private String Image;
 
     public Order(){}
 
-    public Order(String productId, String productName, String quantity, String price, String discount) {
+    public Order(String productId, String productName, String quantity, String price, String discount, String image) {
         this.ProductId = productId;
         this.ProductName = productName;
         this.Quantity = quantity;
         this.Price = price;
         this.Discount = discount;
+        this.Image = image;
     }
 
     public String getProductId() {
@@ -55,6 +57,14 @@ public class Order {
 
     public void setDiscount(String discount) {
         Discount = discount;
+    }
+
+    public String getImage() {
+        return Image;
+    }
+
+    public void setImage(String image) {
+        Image = image;
     }
 
 }

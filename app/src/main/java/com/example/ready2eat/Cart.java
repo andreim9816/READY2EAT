@@ -76,26 +76,26 @@ public class Cart extends AppCompatActivity
     private void showAlertDialog()
     {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(Cart.this);
-        alertDialog.setTitle("One more step!");
-        alertDialog.setMessage("Please fill in the pick-up time: ");
+        alertDialog.setTitle("Ultimul pas!");
+        alertDialog.setMessage("Ora de preluare comandă: ");
 
-        final EditText edtAddress = new EditText(Cart.this);
+        final EditText edtHour = new EditText(Cart.this);
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.MATCH_PARENT);
 
-        edtAddress.setLayoutParams(lp);
-        alertDialog.setView(edtAddress);
-        alertDialog.setIcon(R.drawable.ic_shopping_cart_black_24dp);
+        edtHour.setLayoutParams(lp);
+        alertDialog.setView(edtHour);
+        alertDialog.setIcon(R.drawable.ic_access_time_black_24dp);
 
-        alertDialog.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+        alertDialog.setPositiveButton("CONFIRMĂ ORA", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // Create new request
                 Request request = new Request(
                 Common.currentUser.getPhone(),
                 Common.currentUser.getName(),
-                edtAddress.getText().toString(),
+                edtHour.getText().toString(),
                 txtTotalPrice.getText().toString(),
                 cart);
 
@@ -105,12 +105,12 @@ public class Cart extends AppCompatActivity
 
                 //Delete cart
                 new Database(getBaseContext()).cleanCart();
-                Toast.makeText(Cart.this, "Thank you, order has been placed!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Cart.this, "Comanda ta urmează să fie procesată", Toast.LENGTH_SHORT).show();
                 finish();
 
             }
         });
-        alertDialog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+        alertDialog.setNegativeButton("ÎNAPOI LA COȘ", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int which) {
                 dialogInterface.dismiss();
