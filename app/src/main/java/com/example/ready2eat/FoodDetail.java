@@ -70,13 +70,26 @@ public class FoodDetail extends AppCompatActivity {
         btnCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+// <<<<<<< master
+//                 new Database(getBaseContext()).addToCart(new Order(
+//                         foodId,
+//                         currentFood.getName(),
+//                         numberButton.getNumber(),
+//                         currentFood.getPrice(),
+//                         currentFood.getDiscount(),
+//                         currentFood.getImage()
+//                 ));
+
+                Toast.makeText(FoodDetail.this, "Added to Cart", Toast.LENGTH_SHORT).show();
+// =======
                 if(Integer.parseInt(numberButton.getNumber()) != 0) {
                     new Database(getBaseContext()).addToCart(new Order(
                             foodId,
                             currentFood.getName(),
                             numberButton.getNumber(),
                             currentFood.getPrice(),
-                            currentFood.getDiscount()
+                            currentFood.getDiscount(),
+                            currentFood.getImage()
                     ));
 
                     Toast.makeText(FoodDetail.this, "Adaugat in cos", Toast.LENGTH_SHORT).show();
@@ -85,6 +98,7 @@ public class FoodDetail extends AppCompatActivity {
                     Toast.makeText(FoodDetail.this, "Selecteaza cantitatea mai intai", Toast.LENGTH_SHORT).show();
                 }
 
+// >>>>>>> master
             }
         });
 
