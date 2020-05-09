@@ -17,6 +17,7 @@ public class Order {
         Price = price;
         Discount = discount;
         Image = image;
+
     }
 
     public String getProductId() {

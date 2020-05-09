@@ -27,7 +27,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class Cart extends AppCompatActivity {
+public class Cart extends AppCompatActivity
+{
 
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
@@ -36,7 +37,6 @@ public class Cart extends AppCompatActivity {
     DatabaseReference requests;
 
     TextView txtTotalPrice;
-
     Button btnPlace;
 
     List<Order> cart = new ArrayList<>();
@@ -44,7 +44,8 @@ public class Cart extends AppCompatActivity {
     CartAdapter adapter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
 
@@ -61,18 +62,18 @@ public class Cart extends AppCompatActivity {
         txtTotalPrice = (TextView) findViewById(R.id.total);
         btnPlace = (Button) findViewById(R.id.btnPlaceOrder);
 
-        btnPlace.setOnClickListener(new View.OnClickListener() {
+        btnPlace.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View v) {
-
                 showAlertDialog();
                 // Create new Request
-
             }
         });
 
         loadListFood();
     }
+// <<<<<<< master
         private void showAlertDialog()
         {
             AlertDialog.Builder alertDialog = new AlertDialog.Builder(Cart.this);
@@ -99,7 +100,7 @@ public class Cart extends AppCompatActivity {
                     cart);
 
                     //Submit to Firebase
-                    //We will using System.CurrentMilli to key
+                    //We will use System.CurrentMillis 
                     requests.child(String.valueOf(System.currentTimeMillis())).setValue(request);
 
                     //Delete cart
@@ -118,18 +119,67 @@ public class Cart extends AppCompatActivity {
             });
             alertDialog.show();
         }
+// =======
+//     private void showAlertDialog()
+//     {
+//         AlertDialog.Builder alertDialog = new AlertDialog.Builder(Cart.this);
+//         alertDialog.setTitle("One more step!");
+//         alertDialog.setMessage("Please fill in the pick-up time: ");
 
-    private void loadListFood(){
+//         final EditText edtAddress = new EditText(Cart.this);
+//         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+//                 LinearLayout.LayoutParams.MATCH_PARENT,
+//                 LinearLayout.LayoutParams.MATCH_PARENT);
+
+//         edtAddress.setLayoutParams(lp);
+//         alertDialog.setView(edtAddress);
+//         alertDialog.setIcon(R.drawable.ic_shopping_cart_black_24dp);
+
+//         alertDialog.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+//             @Override
+//             public void onClick(DialogInterface dialog, int which) {
+//                 // Create new request
+//                 Request request = new Request(
+//                 Common.currentUser.getPhone(),
+//                 Common.currentUser.getName(),
+//                 edtAddress.getText().toString(),
+//                 txtTotalPrice.getText().toString(),
+//                 cart);
+
+//                 //Submit to Firebase
+//                 //We use System.CurrentMillis
+//                 requests.child(String.valueOf(System.currentTimeMillis())).setValue(request);
+
+//                 //Delete cart
+//                 new Database(getBaseContext()).cleanCart();
+//                 Toast.makeText(Cart.this, "Thank you, order has been placed!", Toast.LENGTH_SHORT).show();
+//                 finish();
+
+//             }
+//         });
+//         alertDialog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+//             @Override
+//             public void onClick(DialogInterface dialogInterface, int which) {
+//                 dialogInterface.dismiss();
+
+//             }
+//         });
+//         alertDialog.show();
+//     }
+// >>>>>>> master
+
+    private void loadListFood()
+    {
 
         cart = new Database(this).getCarts();
         adapter = new CartAdapter(cart, this);
         recyclerView.setAdapter(adapter);
 
         // Calculate total price
-        int total = 0;
+        float total = 0;
         for(Order order: cart)
         {
-            total += (Integer.parseInt(order.getPrice())) * (Integer.parseInt(order.getQuantity()));
+            total += (Float.parseFloat(order.getPrice())) * (Float.parseFloat(order.getQuantity()));
 
         }
         Locale locale = new Locale("ro", "RO");
