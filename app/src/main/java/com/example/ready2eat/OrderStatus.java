@@ -49,7 +49,7 @@ public class OrderStatus extends AppCompatActivity {
 
                 orderViewHolder.txtOrderId.setText(adapter.getRef(position).getKey());
                 orderViewHolder.txtOrderStatus.setText(convertCodeToStatus(request.getStatus()));
-                orderViewHolder.txtOrderAddress.setText(request.getAddress());
+                orderViewHolder.txtOrderHour.setText(request.getHour());
                 orderViewHolder.txtOrderPhone.setText(request.getPhone());
             }
         };
