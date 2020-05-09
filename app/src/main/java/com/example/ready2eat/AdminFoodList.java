@@ -224,7 +224,7 @@ public class AdminFoodList extends AppCompatActivity {
         adapter = new FirebaseRecyclerAdapter<Food, AdminFoodViewHolder>(Food.class,
                 R.layout.food_item,
                 AdminFoodViewHolder.class,
-                foodList.orderByChild("MenuID").equalTo(categoryId)
+                foodList.orderByChild("menuID").equalTo(categoryId)
                 ) {
             @Override
             protected void populateViewHolder(AdminFoodViewHolder adminFoodViewHolder, Food food, int i) {
