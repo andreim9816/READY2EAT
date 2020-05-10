@@ -42,6 +42,15 @@
                 android:text="Status"
                 android:textAllCaps="true"
                 android:textStyle="italic" />
+            <TextView
+                android:id="@+id/order_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:gravity="center_vertical|start"
+                android:text="Name"
+                android:textAllCaps="true"
+                android:textStyle="italic" />
 
             <TextView
                 android:id="@+id/order_phone"
@@ -59,9 +68,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:gravity="center_vertical|start"
-                android:text="Address"
+                android:text="Hour"
                 android:textAllCaps="true"
                 android:textStyle="italic" />
+
 
         </LinearLayout>
 
