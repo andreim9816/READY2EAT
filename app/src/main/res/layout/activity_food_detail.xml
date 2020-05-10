@@ -21,7 +21,8 @@
                 android:id="@+id/number_button"
                 android:layout_width="120dp"
                 android:layout_height="37dp"
-                android:layout_marginStart="275dp"
+                android:layout_marginEnd="7dp"
+                android:layout_alignParentEnd="true"
                 android:layout_marginTop="332dp"
                 android:layout_marginBottom="5dp"
                 app:backgroundDrawable="@drawable/btn_less_rounded"
@@ -69,16 +70,18 @@
                         android:textFontWeight="800"
                         android:textSize="26sp" />
 
-                    <GridLayout
+                    <LinearLayout
                         android:layout_width="match_parent"
+                        android:weightSum="1.0"
                         android:layout_height="100dp"
                         android:layout_marginTop="10dp"
                         android:alignmentMode="alignMargins"
                         android:paddingStart="5dp">
 
                         <FrameLayout
-                            android:layout_width="138dp"
-                            android:layout_height="match_parent"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.33"
                             android:textAlignment="center">
 
                             <ImageView
@@ -107,8 +110,9 @@
                             android:background="#C8C8C8" />
 
                         <FrameLayout
-                            android:layout_width="130dp"
-                            android:layout_height="match_parent"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".33"
                             android:textAlignment="center">
 
                             <ImageView
@@ -137,8 +141,9 @@
                             android:background="#C8C8C8" />
 
                         <FrameLayout
-                            android:layout_width="130dp"
-                            android:layout_height="match_parent"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".33"
                             android:textAlignment="center">
 
                             <ImageView
@@ -162,9 +167,7 @@
                                 android:textColor="#808080"
                                 android:textSize="20dp" />
                         </FrameLayout>
-                    </GridLayout>
-
-
+                    </LinearLayout>
 
                     <TextView
                         android:layout_width="match_parent"
