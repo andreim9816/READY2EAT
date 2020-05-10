@@ -4,7 +4,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
+    android:backgroundTint="#faf5e4"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginBottom="8dp"
     app:cardElevation="4dp"
     >
 
@@ -31,7 +34,9 @@
                 android:gravity="center_vertical|start"
                 android:text="#111111"
                 android:textAllCaps="true"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:fontFamily="@font/my_custom_font"
+                android:textColor="#000"/>
 
             <TextView
                 android:id="@+id/order_status"
@@ -40,8 +45,10 @@
                 android:layout_marginLeft="10dp"
                 android:gravity="center_vertical|start"
                 android:text="Status"
+                android:textColor="#000"
                 android:textAllCaps="true"
-                android:textStyle="italic" />
+                android:textStyle="italic"
+                />
             <TextView
                 android:id="@+id/order_name"
                 android:layout_width="wrap_content"
@@ -49,8 +56,10 @@
                 android:layout_marginLeft="10dp"
                 android:gravity="center_vertical|start"
                 android:text="Name"
+                android:textColor="#000"
                 android:textAllCaps="true"
-                android:textStyle="italic" />
+                android:textStyle="italic"
+                />
 
             <TextView
                 android:id="@+id/order_phone"
@@ -59,8 +68,10 @@
                 android:layout_marginLeft="10dp"
                 android:gravity="center_vertical|start"
                 android:text="123456789"
+                android:textColor="#000"
                 android:textAllCaps="true"
-                android:textStyle="italic" />
+                android:textStyle="italic"
+                />
 
             <TextView
                 android:id="@+id/order_hour"
@@ -69,8 +80,10 @@
                 android:layout_marginLeft="10dp"
                 android:gravity="center_vertical|start"
                 android:text="Hour"
+                android:textColor="#000"
                 android:textAllCaps="true"
-                android:textStyle="italic" />
+                android:textStyle="italic"
+                />
 
 
         </LinearLayout>
