@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:backgroundTint="#faf5e4"
     app:cardElevation="4dp">
 
     <LinearLayout
@@ -14,65 +13,163 @@
         android:layout_margin="20dp"
         android:orientation="vertical">
 
-        <com.rengwuxian.materialedittext.MaterialEditText
-            android:id="@+id/edtName"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Name"
-            android:inputType="text"
-            android:text=""
-            android:textColor="@color/colorPrimary"
-            android:textColorHint="@color/colorPrimary"
-            android:textSize="14sp"
-            app:met_baseColor="@color/colorPrimary"
-            app:met_floatingLabel="highlight"
-            app:met_primaryColor="@color/colorPrimary"
-            app:met_singleLineEllipsis="true" />
+            android:orientation="horizontal"
+            android:weightSum="2">
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/edtName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="9dp"
+                android:layout_weight="1"
+                android:hint="Name"
+                android:inputType="text"
+                android:text=""
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/colorPrimary"
+                android:textSize="14sp"
+                app:met_baseColor="@color/colorPrimary"
+                app:met_floatingLabel="highlight"
+                app:met_primaryColor="@color/colorPrimary"
+                app:met_singleLineEllipsis="true" />
 
-        <com.rengwuxian.materialedittext.MaterialEditText
-            android:id="@+id/edtDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Description"
-            android:inputType="textMultiLine"
-            android:text=""
-            android:textColor="@color/colorPrimary"
-            android:textColorHint="@color/colorPrimary"
-            android:textSize="14sp"
-            app:met_baseColor="@color/colorPrimary"
-            app:met_floatingLabel="highlight"
-            app:met_primaryColor="@color/colorPrimary"
-            app:met_singleLineEllipsis="true" />
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/edtDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="9dp"
+                android:layout_weight="1"
+                android:hint="Description"
+                android:inputType="textMultiLine"
+                android:text=""
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/colorPrimary"
+                android:textSize="14sp"
+                app:met_baseColor="@color/colorPrimary"
+                app:met_floatingLabel="highlight"
+                app:met_primaryColor="@color/colorPrimary"
+                app:met_singleLineEllipsis="true" />
+        </LinearLayout>
 
-        <com.rengwuxian.materialedittext.MaterialEditText
-            android:id="@+id/edtPrice"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Price"
-            android:inputType="number"
-            android:text=""
-            android:textColor="@color/colorPrimary"
-            android:textColorHint="@color/colorPrimary"
-            android:textSize="14sp"
-            app:met_baseColor="@color/colorPrimary"
-            app:met_floatingLabel="highlight"
-            app:met_primaryColor="@color/colorPrimary"
-            app:met_singleLineEllipsis="true" />
+            android:orientation="horizontal"
+            android:weightSum="2">
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/edtPrice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="9dp"
+                android:layout_weight="1"
+                android:hint="Price"
+                android:inputType="number"
+                android:text=""
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/colorPrimary"
+                android:textSize="14sp"
+                app:met_baseColor="@color/colorPrimary"
+                app:met_floatingLabel="highlight"
+                app:met_primaryColor="@color/colorPrimary"
+                app:met_singleLineEllipsis="true" />
 
-        <com.rengwuxian.materialedittext.MaterialEditText
-            android:id="@+id/edtDiscount"
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/edtDiscount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="9dp"
+                android:layout_weight="1"
+                android:hint="Discount"
+                android:inputType="text"
+                android:text=""
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/colorPrimary"
+                android:textSize="14sp"
+                app:met_baseColor="@color/colorPrimary"
+                app:met_floatingLabel="highlight"
+                app:met_primaryColor="@color/colorPrimary"
+                app:met_singleLineEllipsis="true" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Discount"
-            android:inputType="text"
-            android:text=""
-            android:textColor="@color/colorPrimary"
-            android:textColorHint="@color/colorPrimary"
-            android:textSize="14sp"
-            app:met_baseColor="@color/colorPrimary"
-            app:met_floatingLabel="highlight"
-            app:met_primaryColor="@color/colorPrimary"
-            app:met_singleLineEllipsis="true" />
+            android:orientation="horizontal"
+            android:weightSum="2">
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/edtQuantity"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="9dp"
+                android:layout_weight="1"
+                android:hint="Quantity"
+                android:inputType="text"
+                android:text=""
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/colorPrimary"
+                android:textSize="14sp"
+                app:met_baseColor="@color/colorPrimary"
+                app:met_floatingLabel="highlight"
+                app:met_primaryColor="@color/colorPrimary"
+                app:met_singleLineEllipsis="true" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/edtTime"
+                android:hint="Time"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="9dp"
+                android:layout_weight="1"
+                android:inputType="text"
+                android:text=""
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/colorPrimary"
+                android:textSize="14sp"
+                app:met_baseColor="@color/colorPrimary"
+                app:met_floatingLabel="highlight"
+                app:met_primaryColor="@color/colorPrimary"
+                app:met_singleLineEllipsis="true"
+                tools:ignore="Suspicious0dp"/>
+        </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -92,10 +189,10 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="9dp"
                 android:layout_weight="1"
+                android:backgroundTint="#09770E"
                 android:backgroundTintMode="src_in"
                 android:text="SELECT"
                 android:textColor="@android:color/white"
-                android:background="@drawable/btn_rounded"
                 tools:ignore="Suspicious0dp" />
 
             <Button
@@ -110,7 +207,7 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="9dp"
                 android:layout_weight="1"
-                android:background="@drawable/btn_rounded"
+                android:backgroundTint="#09770E"
                 android:backgroundTintMode="src_in"
                 android:text="UPLOAD"
                 android:textColor="@android:color/white"
