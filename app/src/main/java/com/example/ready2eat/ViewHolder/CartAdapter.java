@@ -25,8 +25,8 @@ import java.util.List;
 import java.util.Locale;
 
 @RequiresApi(api = Build.VERSION_CODES.M)
-class CartViewHolder extends RecyclerView.ViewHolder implements View.OnContextClickListener{
-
+class CartViewHolder extends RecyclerView.ViewHolder implements View.OnContextClickListener
+{
     public TextView txt_cart_name, txt_price;
     public ImageView img_cart_count;
     public ImageView cart_image;
@@ -44,7 +44,6 @@ class CartViewHolder extends RecyclerView.ViewHolder implements View.OnContextCl
         txt_price = (TextView)itemView.findViewById(R.id.cart_item_Price);
         img_cart_count = (ImageView)itemView.findViewById(R.id.cart_item_count);
         cart_image = (ImageView) itemView.findViewById(R.id.cart_image);
-
     }
 
     @Override
@@ -53,20 +52,22 @@ class CartViewHolder extends RecyclerView.ViewHolder implements View.OnContextCl
     }
 }
 
-public class CartAdapter extends RecyclerView.Adapter<CartViewHolder> {
-
+public class CartAdapter extends RecyclerView.Adapter<CartViewHolder>
+{
     private List<Order> listData = new ArrayList<>();
     private Context context;
     private Cart cart;
 
-    public CartAdapter(List<Order> listData, Cart cart) {
+    public CartAdapter(List<Order> listData, Cart cart)
+    {
         this.listData = listData;
         this.cart = cart;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
-    public CartViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public CartViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
+    {
         LayoutInflater inflater = LayoutInflater.from(cart);
         View itemView = inflater.inflate(R.layout.cart_layout, parent, false);
         return new CartViewHolder(itemView);
@@ -74,7 +75,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartViewHolder> {
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
-    public void onBindViewHolder(CartViewHolder holder, final int position) {
+    public void onBindViewHolder(CartViewHolder holder, final int position)
+    {
 
         Picasso.get()
                 .load(listData.get(position).getImage())
@@ -88,9 +90,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartViewHolder> {
 
         Locale locale = new Locale("ro", "RO");
         NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
-        int price = (Integer.parseInt(listData.get(position).getPrice())) * (Integer.parseInt(listData.get(position).getQuantity()));
+        float price = (Float.parseFloat(listData.get(position).getPrice())) * (Integer.parseInt(listData.get(position).getQuantity()));
         holder.txt_price.setText(fmt.format(price));
-
         holder.txt_cart_name.setText(listData.get(position).getProductName());
     }
 

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQueryBuilder;
+import android.util.Log;
 
 import com.example.ready2eat.Model.Order;
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
@@ -14,7 +15,7 @@ import java.util.List;
 public class Database extends SQLiteAssetHelper {
 
     private static final  String DB_NAME = "EatItDB.db";
-    private static final int DB_VER = 2;
+    private static final int DB_VER = 1;
 
     public Database(Context context) {
         super(context, DB_NAME, null, DB_VER);
@@ -25,7 +26,7 @@ public class Database extends SQLiteAssetHelper {
         SQLiteDatabase db = getReadableDatabase();
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
 
-        String[] sqlSelect = {"ProductName","ProductId","Quantity", "Price", "Discount", "Image"};
+        String[] sqlSelect = {"ProductName","ProductId","Quantity", "Price", "Discount","Image"};
         String sqlTable = "OrderDetail";
 
         qb.setTables(sqlTable);
@@ -35,14 +36,17 @@ public class Database extends SQLiteAssetHelper {
         if(c.moveToFirst()){
 
             do {
-                result.add(new Order(c.getString(c.getColumnIndex("ProductId")),
-                        c.getString(c.getColumnIndex("ProductName")),
-                        c.getString(c.getColumnIndex("Quantity")),
-                        c.getString(c.getColumnIndex("Price")),
-                        c.getString(c.getColumnIndex("Discount")),
-                        c.getString(c.getColumnIndex("Image")))
-                );
-            }while(c.moveToNext());
+                result.add(new Order
+                            (c.getString(c.getColumnIndex("ProductId")),
+                            c.getString(c.getColumnIndex("ProductName")),
+                            c.getString(c.getColumnIndex("Quantity")),
+                            c.getString(c.getColumnIndex("Price")),
+                            c.getString(c.getColumnIndex("Discount")),
+                            c.getString(c.getColumnIndex("Image")))
+                         );
+
+                Log.v("Database",c.getString(c.getColumnIndex("ProductName")) + c.getString(c.getColumnIndex("Image")));
+                }while(c.moveToNext());
         }
         return result;
 
@@ -51,8 +55,8 @@ public class Database extends SQLiteAssetHelper {
     public void addToCart(Order order){
 
         SQLiteDatabase db = getReadableDatabase();
-        String query = String.format("INSERT INTO OrderDetail(ProductId,ProductName,Quantity,Price,Discount, Image) " +
-                        "VALUES('%s', '%s', '%s', '%s', '%s', '%s')",
+        //Log.v("Database.java","AddToCartMethod");
+        String query = String.format("INSERT INTO OrderDetail(ProductId,ProductName,Quantity,Price,Discount, Image)VALUES('%s', '%s', '%s', '%s', '%s', '%s');",
                 order.getProductId(),
                 order.getProductName(),
                 order.getQuantity(),
@@ -60,13 +64,11 @@ public class Database extends SQLiteAssetHelper {
                 order.getDiscount(),
                 order.getImage()
         );
-
         db.execSQL(query);
-
     }
 
-    public void cleanCart(){
-
+    public void cleanCart()
+    {
         SQLiteDatabase db = getReadableDatabase();
         String query = String.format("DELETE FROM OrderDetail");
         db.execSQL(query);

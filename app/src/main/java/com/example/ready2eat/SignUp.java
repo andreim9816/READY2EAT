@@ -26,9 +26,9 @@ public class SignUp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-        edtName = (MaterialEditText)findViewById(R.id.edtName);
-        edtPassword= (MaterialEditText)findViewById(R.id.edtPassword);
-        edtPhone = (MaterialEditText)findViewById(R.id.edtPhone);
+        edtName = findViewById(R.id.edtName);
+        edtPassword= findViewById(R.id.edtPassword);
+        edtPhone = findViewById(R.id.edtPhone);
 
         btnSignUp = (Button)findViewById(R.id.btnSignUp);
 
@@ -40,7 +40,7 @@ public class SignUp extends AppCompatActivity {
             public void onClick(View v) {
 
                 final ProgressDialog mDialog = new ProgressDialog(SignUp.this);
-                mDialog.setMessage("Please wait...");
+                mDialog.setMessage("Aşteaptă...");
                 mDialog.show();
 
                 table_user.addListenerForSingleValueEvent(new ValueEventListener()

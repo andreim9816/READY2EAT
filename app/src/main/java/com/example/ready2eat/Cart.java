@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -131,6 +132,7 @@ public class Cart extends AppCompatActivity
         float total = 0;
         for(Order order: cart)
         {
+            Log.v("CART", "DE CE CRAPA AICI!");
             total += (Float.parseFloat(order.getPrice())) * (Float.parseFloat(order.getQuantity()));
 
         }
