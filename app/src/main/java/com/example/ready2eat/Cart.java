@@ -37,7 +37,7 @@ public class Cart extends AppCompatActivity
     FirebaseDatabase database;
     DatabaseReference requests;
 
-    TextView txtTotalPrice;
+    public TextView txtTotalPrice;
     Button btnPlace;
 
     List<Order> cart = new ArrayList<>();
@@ -49,6 +49,7 @@ public class Cart extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
+
 
         //Firebase
         database = FirebaseDatabase.getInstance();
@@ -94,11 +95,11 @@ public class Cart extends AppCompatActivity
             public void onClick(DialogInterface dialog, int which) {
                 // Create new request
                 Request request = new Request(
-                Common.currentUser.getPhone(),
-                Common.currentUser.getName(),
-                edtHour.getText().toString(),
-                txtTotalPrice.getText().toString(),
-                cart);
+                        Common.currentUser.getPhone(),
+                        Common.currentUser.getName(),
+                        edtHour.getText().toString(),
+                        txtTotalPrice.getText().toString(),
+                        cart);
 
                 //Submit to Firebase
                 //We use System.CurrentMillis
