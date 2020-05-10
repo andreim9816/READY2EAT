@@ -52,7 +52,7 @@ public class OrderStatus extends AppCompatActivity {
             protected void populateViewHolder(OrderViewHolder orderViewHolder, Request request, int position) {
 
                 orderViewHolder.txtOrderId.setText("Id comanda: " + adapter.getRef(position).getKey());
-                orderViewHolder.txtOrderStatus.setText("Status: " + convertCodeToStatus(request.getStatus()));
+                orderViewHolder.txtOrderStatus.setText("Status: " + Common.convertCodeToStatus(request.getStatus()));
                 orderViewHolder.txtOrderHour.setText("Ora comenzii: " + request.getHour());
                 orderViewHolder.txtOrderPhone.setText("Telefon: " + request.getPhone());
                 orderViewHolder.txtOrderName.setText("Nume: "+ request.getName());
@@ -69,13 +69,5 @@ public class OrderStatus extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
     }
 
-    private String convertCodeToStatus(String status) {
 
-        if(Objects.equals(status, new String("0")))
-            return "Plasata";
-        else if(Objects.equals(status, new String("1")))
-                return "In curs de preparare";
-        else
-            return "Se poate prelua!";
-    }
 }

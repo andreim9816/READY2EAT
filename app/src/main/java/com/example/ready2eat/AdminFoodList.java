@@ -240,7 +240,7 @@ public class AdminFoodList extends AppCompatActivity {
                     @Override
                     public void onClick(View view, int position, boolean isLongClick) {
                         //Start new Activity
-                        Intent foodDetail = new Intent(AdminFoodList.this, FoodDetail.class);
+                        Intent foodDetail = new Intent(AdminFoodList.this, AdminFoodDetail.class);
                         foodDetail.putExtra("FoodId", adapter.getRef(position).getKey()); //Send food id to new activity
                         startActivity(foodDetail);
                     }
