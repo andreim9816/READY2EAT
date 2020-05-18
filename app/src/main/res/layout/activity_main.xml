@@ -26,12 +26,12 @@
         android:id="@+id/imageView2"
         android:layout_width="311dp"
         android:layout_height="226dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="50dp"
         android:gravity="center"
         android:src="@drawable/logo"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtSlogan" />
+        app:layout_constraintTop_toTopOf= "parent"/>
 
     <Button
         android:id="@+id/btnSignIn"
