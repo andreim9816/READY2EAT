@@ -1,87 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#1f1919"
     tools:context="com.example.ready2eat.SignIn">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/background_foto"
-        android:tint="#f8b400"/>
-
-    <ImageView
-        android:layout_width="164dp"
-        android:layout_height="159dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="120dp"
-        android:background="@drawable/logo" />
-
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:orientation="vertical"
-        android:layout_marginTop="300dp">
+        android:background="@drawable/background_foto"
+        android:tint="#f8b400"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <!-- base color:cu ce culoare scrie in interior phone number-->
+    <!-- primary color:ce culoare apare cand apesi ca sa scrii -->
 
 
-        <com.rengwuxian.materialedittext.MaterialEditText
-            android:id="@+id/edtPhone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
-            android:layout_marginBottom="20dp"
-            android:drawableLeft="@drawable/ic_phone24"
-            android:gravity="center_horizontal"
-            android:hint="Numar de telefon"
-            android:inputType="phone"
-            android:textColor="#faf5e4"
-            android:textColorHint="#faf5e4"
-            android:textSize="20sp"
-            app:met_baseColor="#faf5e4"
-            app:met_floatingLabel="highlight"
-            app:met_maxCharacters="11"
-            app:met_primaryColor="#faf5e4"
-            app:met_singleLineEllipsis="true" />
-        <!-- base color:cu ce culoare scrie in interior phone number-->
-        <!-- primary color:ce culoare apare cand apesi ca sa scrii -->
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="190dp"
+        android:layout_height="179dp"
+        android:background="@drawable/logo"
+        android:layout_marginTop="90dp"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/imageView3" />
 
-        <com.rengwuxian.materialedittext.MaterialEditText
-            android:id="@+id/edtPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:drawableLeft="@drawable/ic_lock"
-            android:gravity="center_horizontal"
-            android:hint="Parola"
-            android:inputType="textPassword"
-            android:textColor="#faf5e4"
-            android:textColorHint="#faf5e4"
-            android:textSize="20sp"
-            app:met_baseColor="#faf5e4"
-            app:met_floatingLabel="highlight"
-            app:met_maxCharacters="20"
-            app:met_primaryColor="#faf5e4"
-            app:met_singleLineEllipsis="true" />
-    </LinearLayout>
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/edtPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="300dp"
+        android:drawableLeft="@drawable/ic_phone24"
+        android:gravity="center_horizontal"
+        android:hint="Numar de telefon"
+        android:inputType="phone"
+        android:textColor="#faf5e4"
+        android:textColorHint="#faf5e4"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"
+        app:met_baseColor="#faf5e4"
+        app:met_floatingLabel="highlight"
+        app:met_maxCharacters="11"
+        app:met_primaryColor="#faf5e4"
+        app:met_singleLineEllipsis="true"
+        app:layout_constraintTop_toBottomOf="@id/imageView4"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/edtPassword"
+        android:layout_width="300dp"
+        android:layout_height="75dp"
+        android:drawableLeft="@drawable/ic_lock"
+        android:gravity="center_horizontal"
+        android:hint="Parola"
+        android:inputType="textPassword"
+        android:textColor="#faf5e4"
+        android:textColorHint="#faf5e4"
+        android:textSize="20sp"
+        app:met_baseColor="#faf5e4"
+        app:met_floatingLabel="highlight"
+        app:met_maxCharacters="20"
+        app:met_primaryColor="#faf5e4"
+        app:met_singleLineEllipsis="true"
+        app:layout_constraintTop_toBottomOf="@id/edtPhone"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <com.rey.material.widget.CheckBox
+        android:id="@+id/ckbRemember"
+        style="@style/Material.Drawable.CheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:gravity="center"
+        android:text="Remember me"
+        android:textColor="@android:color/white"
+        app:cbd_strokeColor="@android:color/white"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edtPassword" />
 
     <Button
         android:id="@+id/btnSignIn"
-        android:layout_width="300dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="8dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="190dp"
+        android:layout_marginTop="10dp"
+        android:width="300dp"
         android:background="@drawable/btn_rounded"
         android:backgroundTintMode="src_in"
         android:text="Log In"
-        android:textColor="#faf5e4" />
-</RelativeLayout>
+        android:textColor="#faf5e4"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ckbRemember" />
+</androidx.constraintlayout.widget.ConstraintLayout>

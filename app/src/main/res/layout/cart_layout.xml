@@ -90,13 +90,18 @@
 
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/cart_item_count"
-            android:layout_width="20dp"
-            android:layout_height="27dp"
-            android:layout_gravity="center_vertical|end"
-            android:layout_marginEnd="16dp"
-            android:contentDescription="@string/todo" />
+        <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
+            android:id="@+id/btn_quantity"
+            android:layout_width="90dp"
+            android:layout_height="26dp"
+            android:layout_gravity="center_vertical"
+            app:backGroundColor="#f8b400"
+            app:backgroundDrawable="@drawable/btn_less_rounded"
+            app:elevation="3dp"
+            app:finalNumber="20"
+            app:initialNumber="0"
+            app:pressedTranslationZ="12dp"
+            app:textSize="7sp" />
 
     </LinearLayout>
 
