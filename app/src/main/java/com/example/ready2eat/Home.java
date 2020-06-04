@@ -6,12 +6,14 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+import android.widget.ListAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ready2eat.Common.Common;
 import com.example.ready2eat.Interface.ItemClickListener;
 import com.example.ready2eat.Model.Category;
+import com.example.ready2eat.Service.ListenOrder;
 import com.example.ready2eat.ViewHolder.MenuViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -100,6 +102,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         recyclerMenu.setLayoutManager(layoutManager);
 
         loadMenu();
+
     }
         private void loadMenu() {
              adapter = new FirebaseRecyclerAdapter<Category, MenuViewHolder>(Category.class, R.layout.menu_item, MenuViewHolder.class, category) {
