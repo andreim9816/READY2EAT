@@ -1,5 +1,5 @@
 package com.example.ready2eat;
-
+import android.text.TextUtils;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
@@ -60,48 +60,45 @@ public class SignIn extends AppCompatActivity {
                 }
 
                 final ProgressDialog mDialog = new ProgressDialog(SignIn.this);
-                mDialog.setMessage("Please wait...");
+                mDialog.setMessage("Va rugam sa asteptati...");
                 mDialog.show();
 
                 table_user.addValueEventListener(new ValueEventListener()
                 {
                     @Override
-                    public void onDataChange(DataSnapshot dataSnapshot)
-                    {
+                    public void onDataChange(DataSnapshot dataSnapshot) {
                         //Check if user exists in database
-                        if(dataSnapshot.child(edtPhone.getText().toString()).exists())
-                        {
-                            //Get User Information
-                            mDialog.dismiss();
-                            User user = dataSnapshot.child(edtPhone.getText().toString()).getValue(User.class);
-                            user.setPhone(edtPhone.getText().toString()); // set phone
-                            if(user.getPassword().equals(edtPassword.getText().toString()))
-                            {
-                                if(user.getPhone().equals("0784310009"))
-                                {
-                                    Intent homeAdminIntent = new Intent(SignIn.this, AdminHome.class);
-                                    Common.currentUser = user;
-                                    startActivity(homeAdminIntent);
-                                    finish();
-                                }
-                                else
-                                {
-                                    Intent homeIntent = new Intent(SignIn.this, Home.class);
-                                    Common.currentUser = user;
-                                    startActivity(homeIntent);
-                                    finish();
-                                }
-                            }
-                            else
-                            {
+                        if (!TextUtils.isEmpty(edtPhone.getText().toString()) && !TextUtils.isEmpty(edtPassword.getText().toString())) {
+
+                            if (dataSnapshot.child(edtPhone.getText().toString()).exists()) {
+                                //Get User Information
                                 mDialog.dismiss();
-                                Toast.makeText(SignIn.this, "Wrong password", Toast.LENGTH_SHORT).show();
+                                User user = dataSnapshot.child(edtPhone.getText().toString()).getValue(User.class);
+                                user.setPhone(edtPhone.getText().toString()); // set phone
+                                if (user.getPassword().equals(edtPassword.getText().toString())) {
+                                    if (user.getPhone().equals("0784310009")) {
+                                        Intent homeAdminIntent = new Intent(SignIn.this, AdminHome.class);
+                                        Common.currentUser = user;
+                                        startActivity(homeAdminIntent);
+                                        finish();
+                                    } else {
+                                        Intent homeIntent = new Intent(SignIn.this, Home.class);
+                                        Common.currentUser = user;
+                                        startActivity(homeIntent);
+                                        finish();
+                                    }
+                                } else {
+                                    mDialog.dismiss();
+                                    Toast.makeText(SignIn.this, "Parola gresita", Toast.LENGTH_SHORT).show();
+                                }
+                            } else {
+                                mDialog.dismiss();
+                                Toast.makeText(SignIn.this, "Numar de telefon sau parola incorecte", Toast.LENGTH_SHORT).show();
                             }
                         }
-                        else
-                        {
+                        else {
                             mDialog.dismiss();
-                            Toast.makeText(SignIn.this, "User does not exit in Database", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SignIn.this, "Introdu mai intai numar si parola", Toast.LENGTH_SHORT).show();
                         }
                     }
 

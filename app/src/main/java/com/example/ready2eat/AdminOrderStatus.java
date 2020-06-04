@@ -60,7 +60,8 @@ public class AdminOrderStatus extends AppCompatActivity {
                 Request.class, R.layout.admin_order_layout, AdminOrderViewHolder.class, requests
         ) {
             @Override
-            protected void populateViewHolder(AdminOrderViewHolder adminOrderViewHolder, final Request request, int position) {
+
+            protected void populateViewHolder(AdminOrderViewHolder adminOrderViewHolder, Request request, int position) {
 
                 adminOrderViewHolder.txtOrderId.setText("Id comanda: " + adapter.getRef(position).getKey());
                 adminOrderViewHolder.txtOrderStatus.setText("Status: " + Common.convertCodeToStatus(request.getStatus()));

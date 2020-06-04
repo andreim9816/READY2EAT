@@ -5,16 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:showIn="@layout/app_bar_home">
+    tools:showIn="@layout/app_bar_home"
+    tools:context=".Home">
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_menu"
         android:scrollbars="vertical"
         android:layout_width="match_parent"
-        android:background="#F2F4F4"
+        android:background="#f7efd2"
         android:layout_height="match_parent"/>
 
 
+
+<!-- f2f4f4-->
     <fragment
         android:id="@+id/nav_host_fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"

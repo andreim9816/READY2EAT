@@ -26,6 +26,12 @@
             android:iconTint="@android:color/white"
             android:title="LOG OUT" />
 
+        <item
+            android:id="@+id/nav_about_us"
+            android:icon="@drawable/ic_vpn_key_black_24dp"
+            android:iconTint="@android:color/white"
+            android:title="DESPRE NOI" />
+
 
 
     </group>

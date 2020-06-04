@@ -24,7 +24,6 @@ import io.paperdb.Paper;
 public class MainActivity extends AppCompatActivity {
 
     Button btnSignIn, btnSignUp;
-    TextView txtSlogan;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,9 +31,6 @@ public class MainActivity extends AppCompatActivity {
 
         btnSignIn = (Button)findViewById(R.id.btnSignIn);
         btnSignUp = (Button)findViewById(R.id.btnSignUp);
-        txtSlogan = (TextView)findViewById(R.id.txtSlogan);
-        Typeface Face = Typeface.createFromAsset(getAssets(), "fonts/NABILLA.ttf");
-        txtSlogan.setTypeface(Face);
 
         //Init Paper
         Paper.init(this);
