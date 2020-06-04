@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1f1919"
+    android:background="#faf5e4"
     tools:context="com.example.ready2eat.SignUp">
 
     <ImageView
@@ -15,10 +15,10 @@
          />
 
     <ImageView
-        android:layout_width="120dp"
-        android:layout_height="120dp"
+        android:layout_width="155dp"
+        android:layout_height="155dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="100dp"
         android:background="@drawable/logo"/>
 
     <LinearLayout
@@ -38,13 +38,13 @@
             android:gravity="center_horizontal"
             android:hint="Nume utilizator"
             android:inputType="text"
-            android:textColor="#faf5e4"
-            android:textColorHint="#faf5e4"
+            android:textColor="#000000"
+            android:textColorHint="#000000"
             android:textSize="20sp"
-            app:met_baseColor="#faf5e4"
+            app:met_baseColor="#000000"
             app:met_floatingLabel="highlight"
             app:met_maxCharacters="30"
-            app:met_primaryColor="#faf5e4"
+            app:met_primaryColor="#000000"
             app:met_singleLineEllipsis="true"
             android:drawableLeft="@drawable/ic_person"/>
 
@@ -59,13 +59,13 @@
             android:gravity="center_horizontal"
             android:hint="Numar de telefon"
             android:inputType="phone"
-            android:textColor="#faf5e4"
-            android:textColorHint="#faf5e4"
+            android:textColor="#000000"
+            android:textColorHint="#000000"
             android:textSize="20sp"
-            app:met_baseColor="#faf5e4"
+            app:met_baseColor="#000000"
             app:met_floatingLabel="highlight"
             app:met_maxCharacters="11"
-            app:met_primaryColor="#faf5e4"
+            app:met_primaryColor="#000000"
             app:met_singleLineEllipsis="true"
             android:drawableLeft="@drawable/ic_phone24"/>
 
@@ -78,6 +78,7 @@
             android:layout_marginRight="50dp"
             android:gravity="center_horizontal"
             android:hint="Parola"
+            android:text = ""
             android:inputType="textPassword"
             android:textColor="#faf5e4"
             android:textColorHint="#faf5e4"
@@ -101,7 +102,7 @@
         android:layout_marginBottom="150dp"
         android:background="@drawable/btn_rounded"
         android:backgroundTintMode="src_in"
-        android:text="Sign Up"
+        android:text="Inregistrare"
         android:textColor="#faf5e4" />
 
 

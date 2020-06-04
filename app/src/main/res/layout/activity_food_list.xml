@@ -20,11 +20,12 @@
         android:id="@+id/recycler_food"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/recycler_food"
         android:scrollbars="vertical"
-        android:background="#F2F4F4"
+        android:background="#f5ecd0"
         />
-<!-- e1e1e1-->
+<!--  #F2F4F4-->
+
+
 
 
 </RelativeLayout>

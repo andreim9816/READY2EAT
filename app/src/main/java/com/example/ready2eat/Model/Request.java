@@ -5,17 +5,17 @@ import java.util.List;
 public class Request {
     private String phone;
     private String name;
-    private String address;
+    private String hour;
     private String total;
     private List<Order> foods; // list of food order
     private String status;
 
     public Request(){}
 
-    public Request(String phone, String name, String address, String total, List<Order> foods) {
+    public Request(String phone, String name, String hour, String total, List<Order> foods) {
         this.phone = phone;
         this.name = name;
-        this.address = address;
+        this.hour = hour;
         this.total = total;
         this.foods = foods;
         this.status = "0"; //"0" = Placed; "1" = Delivery; "2" = "Delivered"
@@ -45,12 +45,12 @@ public class Request {
         this.name = name;
     }
 
-    public String getAddress() {
-        return address;
+    public String getHour() {
+        return hour;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setHour(String hour) {
+        this.hour = hour;
     }
 
     public String getTotal() {

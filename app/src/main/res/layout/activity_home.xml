@@ -23,7 +23,7 @@
         app:headerLayout="@layout/nav_header_home"
         app:itemTextColor="@android:color/black"
         app:itemIconTint="@android:color/black"
-        android:background="#ffffff"
+        android:background="#faf5e4"
         app:menu="@menu/activity_home_drawer" >
 
 

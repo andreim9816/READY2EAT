@@ -164,7 +164,7 @@ public class FoodList extends AppCompatActivity
 
     private void loadSuggest()
     {
-        foodList.orderByChild("MenuID").equalTo(categoryId)
+        foodList.orderByChild("menuID").equalTo(categoryId)
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -187,7 +187,7 @@ public class FoodList extends AppCompatActivity
         adapter = new FirebaseRecyclerAdapter<Food, FoodViewHolder>(Food.class,
                 R.layout.food_item,
                 FoodViewHolder.class,
-                foodList.orderByChild("MenuID").equalTo(categoryId) )
+                foodList.orderByChild("menuID").equalTo(categoryId) )
                 {
                     @Override
                     protected void populateViewHolder(FoodViewHolder foodViewHolder, Food food, int i)

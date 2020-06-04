@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.example.ready2eat.Common.Common;
 import com.example.ready2eat.Interface.ItemClickListener;
 import com.example.ready2eat.Model.Category;
+import com.example.ready2eat.ViewHolder.AdminMenuViewHolder;
 import com.example.ready2eat.ViewHolder.MenuViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -56,7 +57,7 @@ public class AdminHome extends AppCompatActivity implements NavigationView.OnNav
     FirebaseStorage storage;
     StorageReference storageReference;
     DatabaseReference category;
-    FirebaseRecyclerAdapter<Category, MenuViewHolder> adapter;
+    FirebaseRecyclerAdapter<Category, AdminMenuViewHolder> adapter;
 
     TextView txtFullName;
 
@@ -70,12 +71,12 @@ public class AdminHome extends AppCompatActivity implements NavigationView.OnNav
     DrawerLayout drawer;
     Category newCategory;
     Uri saveUri;
-    private final int PICK_IMAGE_REQUEST = 71;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_admin_home);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("Menu");
@@ -230,7 +231,7 @@ public class AdminHome extends AppCompatActivity implements NavigationView.OnNav
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
+        if(requestCode == Common.PICK_IMAGE_REQUEST && resultCode == RESULT_OK
                 && data != null && data.getData() != null)
         {
             saveUri = data.getData();
@@ -243,25 +244,34 @@ public class AdminHome extends AppCompatActivity implements NavigationView.OnNav
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Selecteaza imaginea"), PICK_IMAGE_REQUEST);
+        startActivityForResult(Intent.createChooser(intent, "Selecteaza imaginea"), Common.PICK_IMAGE_REQUEST);
     }
 
     private void loadMenu() {
-        adapter = new FirebaseRecyclerAdapter<Category, MenuViewHolder>(Category.class, R.layout.menu_item, MenuViewHolder.class, category) {
+        adapter = new FirebaseRecyclerAdapter<Category, AdminMenuViewHolder>(Category.class, R.layout.menu_item, AdminMenuViewHolder.class, category) {
             @Override
-            protected void populateViewHolder(MenuViewHolder viewHolder, Category model, int position) {
+            protected void populateViewHolder(AdminMenuViewHolder viewHolder, Category model, int position) {
                 viewHolder.txtMenuName.setText(model.getName());
                 Picasso.get().load(model.getImage()).into(viewHolder.imageView);
-                final Category clickItem = model;
-
                 viewHolder.setItemClickListener(new ItemClickListener() {
                     @Override
                     public void onClick(View view, int position, boolean isLongClick) {
+                        //send Category ID and start new activity
+                        Intent adminFoodList = new Intent(AdminHome.this, AdminFoodList.class);
+                        adminFoodList.putExtra("CategoryId", adapter.getRef(position).getKey());
+                        startActivity(adminFoodList);
+                    }
+                });
+                final Category clickItem = model;
+
+              viewHolder.setItemClickListener(new ItemClickListener() {
+                    @Override
+                    public void onClick(View view, int position, boolean isLongClick) {
                         //Get CategoryId and send to new Activity
-                        Intent foodList = new Intent(AdminHome.this, FoodList.class);
+                        Intent adminfoodList = new Intent(AdminHome.this, AdminFoodList.class);
                         //Because CategoryId is key, we just get key of this item
-                        foodList.putExtra("CategoryId", adapter.getRef(position).getKey());
-                        startActivity(foodList);
+                        adminfoodList.putExtra("CategoryId", adapter.getRef(position).getKey());
+                        startActivity(adminfoodList);
 
                         //Toast.makeText(Home.this, "" + clickItem.getName(), Toast.LENGTH_SHORT).show();
                     }
@@ -311,12 +321,8 @@ public class AdminHome extends AppCompatActivity implements NavigationView.OnNav
         if(id == R.id.nav_menu) {
             //handle the camera action
         }
-        else if(id == R.id.nav_cart) {
-            Intent cartIntent = new Intent(AdminHome.this, Cart.class);
-            startActivity(cartIntent);
-        }
         else if(id == R.id.nav_orders) {
-            Intent orderIntent = new Intent(AdminHome.this, OrderStatus.class);
+            Intent orderIntent = new Intent(AdminHome.this, AdminOrderStatus.class);
             startActivity(orderIntent);
         }
         else if(id == R.id.nav_log_out) {
@@ -327,5 +333,127 @@ public class AdminHome extends AppCompatActivity implements NavigationView.OnNav
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    // Update / Delete option
+
+
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+        if(item.getTitle().equals(Common.UPDATE))
+        {
+            showUpdateDialog(adapter.getRef(item.getOrder()).getKey(), adapter.getItem(item.getOrder()));
+        }
+        else
+        if(item.getTitle().equals(Common.DELETE))
+        {
+            deleteCategory(adapter.getRef(item.getOrder()).getKey());
+        }
+
+        return super.onContextItemSelected(item);
+    }
+
+    private void deleteCategory(String key)
+    {
+        category.child(key).removeValue();
+        Toast.makeText(this, "Categorie stearsa", Toast.LENGTH_SHORT).show();
+    }
+
+    private void showUpdateDialog(final String key, final Category item)
+    {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(AdminHome.this);
+        alertDialog.setTitle("Actualizeaza categoria aleasa");
+        alertDialog.setMessage("Va rog adaugati informatiile complete!");
+
+        LayoutInflater inflater = this.getLayoutInflater();
+        View add_menu_layout = inflater.inflate(R.layout.add_new_menu_layout, null);
+
+        edtName = add_menu_layout.findViewById(R.id.edtName);
+        btnSelect = add_menu_layout.findViewById(R.id.btnSelect);
+        btnUpload = add_menu_layout.findViewById(R.id.btnUpload);
+
+        // Set default name
+        edtName.setText(item.getName());
+
+        // Event for Buttons
+        btnSelect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chooseImage(); //Let user select images from Gallery and save URI
+            }
+        });
+
+        btnUpload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                changeImage(item);
+            }
+        });
+
+        alertDialog.setView(add_menu_layout);
+        alertDialog.setIcon(R.drawable.ic_shortcut_playlist_add_24dp);
+
+        //Set button
+        alertDialog.setPositiveButton("DA", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which)
+            {
+                dialog.dismiss();
+                item.setName(edtName.getText().toString());
+                category.child(key).setValue(item);
+            }
+        });
+        alertDialog.setNegativeButton("NU", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which)
+            {
+                dialog.dismiss();
+            }
+        });
+
+        alertDialog.show();
+
+    }
+    private void changeImage(final Category item)
+    {
+        if (saveUri != null)
+        {
+            final ProgressDialog mDialog = new ProgressDialog(this);
+            mDialog.setMessage("Se incarca...");
+            mDialog.show();
+
+            String imageName = UUID.randomUUID().toString();
+            final StorageReference imageFolder = storageReference.child("images/" + imageName );
+            imageFolder.putFile(saveUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    mDialog.dismiss();
+                    Toast.makeText(AdminHome.this, "Incarcare cu succes!", Toast.LENGTH_SHORT ).show();
+                    imageFolder.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri)
+                        {
+                            item.setImage(uri.toString());
+                        }
+                    });
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e)
+                {
+                    mDialog.dismiss();
+                    Toast.makeText(AdminHome.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onProgress(@NonNull UploadTask.TaskSnapshot taskSnapshot)
+                {
+                    double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
+                    mDialog.setMessage("Se incarca: " + progress + " %");
+                }
+            });
+
+        }
     }
 }

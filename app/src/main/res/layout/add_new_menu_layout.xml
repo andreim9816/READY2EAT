@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:backgroundTint="#faf5e4"
     app:cardElevation="4dp">
 
     <LinearLayout
@@ -46,7 +47,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="9dp"
-                android:backgroundTint="#09770E"
+                android:background="@drawable/btn_rounded"
                 android:backgroundTintMode="src_in"
                 android:text="SELECT"
                 android:textColor="@android:color/white"
@@ -63,7 +64,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="9dp"
-                android:backgroundTint="#09770E"
+                android:background="@drawable/btn_rounded"
                 android:backgroundTintMode="src_in"
                 android:text="UPLOAD"
                 android:textColor="@android:color/white"

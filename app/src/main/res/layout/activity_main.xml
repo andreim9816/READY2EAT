@@ -1,87 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
     tools:context=".MainActivity">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true">
-
-    </LinearLayout>
-
-    <RelativeLayout
-        android:orientation="horizontal"
-        android:layout_alignParentBottom="true"
-        android:weightSum="2"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginBottom="420dp">
 
 
-        <Button
-            android:id="@+id/btnSignUp"
-            android:text="Sign Up"
-            android:textColor="@android:color/black"
-            android:layout_weight="1"
-            android:background="@drawable/btn_rounded_white"
-            android:layout_height="50dp"
-            android:layout_width="250dp"
-            android:layout_margin="8dp"
-            android:layout_centerInParent="true" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:orientation="horizontal"
-        android:layout_alignParentBottom="true"
-        android:weightSum="2"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginBottom="320dp">
-
-
-        <Button
-            android:id="@+id/btnSignIn"
-            android:text="Log In"
-            android:layout_centerInParent="true"
-            android:textColor="#faf5e4"
-            android:background="@drawable/btn_rounded"
-            android:layout_weight="1"
-            android:layout_width="250dp"
-            android:layout_height="50dp"
-            android:layout_margin="8dp"
-            />
-    </RelativeLayout>
-
-
-
-
-    <TextView
-        android:id="@+id/txtSlogan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="-4dp"
-        android:layout_marginBottom="660dp"
-        android:layout_marginTop="600dp"
-        android:gravity="center"
-        android:text="@string/slogan"
-        android:textColor="#1f191a"
-        android:textSize="40dp" />
 
     <ImageView
-        android:layout_width="210dp"
-        android:layout_height="210dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="410dp"
-        android:src="@drawable/logo"/>
+        android:id="@+id/imageView2"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:src="@drawable/logo"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</RelativeLayout>
+    <Button
+        android:id="@+id/btnSignIn"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/btn_rounded"
+        android:gravity="center"
+        android:layout_marginTop="50dp"
+        android:text="Autentificare"
+        android:textColor="#faf5e4"
+        app:layout_constraintTop_toBottomOf="@id/imageView2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <Button
+        android:id="@+id/btnSignUp"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/btn_rounded_white"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:text="Inregistrare"
+        android:textColor="@android:color/black"
+        app:layout_constraintTop_toBottomOf="@id/btnSignIn"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

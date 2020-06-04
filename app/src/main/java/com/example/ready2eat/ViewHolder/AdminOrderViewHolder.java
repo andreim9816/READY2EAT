@@ -1,16 +1,17 @@
 package com.example.ready2eat.ViewHolder;
 
+import android.view.ContextMenu;
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.ready2eat.Common.Common;
 import com.example.ready2eat.Interface.ItemClickListener;
 import com.example.ready2eat.R;
 
-public class OrderViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-
+public class AdminOrderViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnCreateContextMenuListener {
     public TextView txtOrderId;
     public TextView txtOrderStatus;
     public TextView txtOrderPhone;
@@ -18,7 +19,7 @@ public class OrderViewHolder extends RecyclerView.ViewHolder implements View.OnC
     public TextView  txtOrderName;
     private ItemClickListener itemClickListener;
 
-    public OrderViewHolder(@NonNull View itemView) {
+    public AdminOrderViewHolder(@NonNull View itemView) {
         super(itemView);
 
         txtOrderHour = (TextView)itemView.findViewById(R.id.order_hour);
@@ -28,6 +29,7 @@ public class OrderViewHolder extends RecyclerView.ViewHolder implements View.OnC
         txtOrderName = (TextView)itemView.findViewById(R.id.order_name);
 
         itemView.setOnClickListener(this);
+        itemView.setOnCreateContextMenuListener(this);
     }
 
     public void setItemClickListener(ItemClickListener itemClickListener) {
@@ -38,5 +40,12 @@ public class OrderViewHolder extends RecyclerView.ViewHolder implements View.OnC
     public void onClick(View v) {
 
         itemClickListener.onClick(v, getAdapterPosition(), false);
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        menu.setHeaderTitle("Alege o optiune:");
+        menu.add(0,0, getAdapterPosition(), Common.UPDATE);
+        menu.add(0,1, getAdapterPosition(), Common.DELETE);
     }
 }

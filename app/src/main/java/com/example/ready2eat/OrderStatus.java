@@ -5,14 +5,18 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.example.ready2eat.Common.Common;
 import com.example.ready2eat.Database.Database;
+import com.example.ready2eat.Interface.ItemClickListener;
 import com.example.ready2eat.Model.Request;
 import com.example.ready2eat.ViewHolder.OrderViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.Objects;
 
 public class OrderStatus extends AppCompatActivity {
 
@@ -47,22 +51,23 @@ public class OrderStatus extends AppCompatActivity {
             @Override
             protected void populateViewHolder(OrderViewHolder orderViewHolder, Request request, int position) {
 
-                orderViewHolder.txtOrderId.setText(adapter.getRef(position).getKey());
-                orderViewHolder.txtOrderStatus.setText(convertCodeToStatus(request.getStatus()));
-                orderViewHolder.txtOrderAddress.setText(request.getAddress());
-                orderViewHolder.txtOrderPhone.setText(request.getPhone());
+                orderViewHolder.txtOrderId.setText("Id comanda: " + adapter.getRef(position).getKey());
+                orderViewHolder.txtOrderStatus.setText("Status: " + Common.convertCodeToStatus(request.getStatus()));
+                orderViewHolder.txtOrderHour.setText("Ora comenzii: " + request.getHour());
+                orderViewHolder.txtOrderPhone.setText("Telefon: " + request.getPhone());
+                orderViewHolder.txtOrderName.setText("Nume: "+ request.getName());
+
+                orderViewHolder.setItemClickListener(new ItemClickListener() {
+                    @Override
+                    public void onClick(View view, int position, boolean isLongClik) {
+
+                    }
+                });
             }
         };
 
         recyclerView.setAdapter(adapter);
     }
 
-    private String convertCodeToStatus(String status) {
-        if(status.equals("0"))
-            return "Placed";
-        else if(status.equals("1"))
-                return "On my way";
-        else
-            return "Delivered";
-    }
+
 }
