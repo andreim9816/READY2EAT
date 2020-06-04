@@ -24,6 +24,8 @@ android {
 }
 
 dependencies {
+    implementation 'io.paperdb:paperdb:2.1'
+    implementation 'com.github.rey5137:material:1.2.4'
     implementation 'com.github.mancj:MaterialSearchBar:0.7.1'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.google.firebase:firebase-analytics:17.3.0'
@@ -44,6 +46,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     //add Library
+    implementation 'com.jaredrummler:material-spinner:1.1.0'
     implementation 'com.google.firebase:firebase-storage:19.1.1'
     implementation 'com.google.firebase:firebase-auth:19.3.1'
     implementation 'com.google.firebase:firebase-core:17.3.0'

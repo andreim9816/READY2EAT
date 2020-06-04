@@ -10,20 +10,24 @@
     tools:openDrawer="start">
 
     <include
-        layout="@layout/app_bar_home"
+        layout="@layout/app_bar_admin_home"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
+        android:layout_width="320dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_header_home"
-        app:itemTextColor="@android:color/white"
-        app:itemIconTint="@android:color/white"
-        android:background="@color/overlayBackground"
-        app:menu="@menu/activity_home_drawer" />
+        app:headerLayout="@layout/nav_header_admin_home"
+        app:itemTextColor="@android:color/black"
+        app:itemIconTint="@android:color/black"
+        android:background="#ffffff"
+        app:menu="@menu/activity_admin_home_drawer" >
+
+
+
+    </com.google.android.material.navigation.NavigationView>
 
 </androidx.drawerlayout.widget.DrawerLayout>

@@ -17,22 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-            <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
-                android:id="@+id/number_button"
-                android:layout_width="120dp"
-                android:layout_height="37dp"
-                android:layout_marginEnd="7dp"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="332dp"
-                android:layout_marginBottom="5dp"
-                app:backgroundDrawable="@drawable/btn_less_rounded"
-                app:backGroundColor="#f8b400"
-                app:finalNumber="20"
-                app:initialNumber="0"
-                android:translationZ="12dp"
-                app:elevation="3dp"
-                app:textSize="7sp"
-                app:pressedTranslationZ="12dp"/>
+
             <ImageView
                 android:id="@+id/img_food"
                 android:layout_width="match_parent"
@@ -70,18 +55,16 @@
                         android:textFontWeight="800"
                         android:textSize="26sp" />
 
-                    <LinearLayout
+                    <GridLayout
                         android:layout_width="match_parent"
-                        android:weightSum="1.0"
                         android:layout_height="100dp"
                         android:layout_marginTop="10dp"
                         android:alignmentMode="alignMargins"
                         android:paddingStart="5dp">
 
                         <FrameLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.33"
+                            android:layout_width="138dp"
+                            android:layout_height="match_parent"
                             android:textAlignment="center">
 
                             <ImageView
@@ -110,9 +93,8 @@
                             android:background="#C8C8C8" />
 
                         <FrameLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight=".33"
+                            android:layout_width="130dp"
+                            android:layout_height="match_parent"
                             android:textAlignment="center">
 
                             <ImageView
@@ -141,9 +123,8 @@
                             android:background="#C8C8C8" />
 
                         <FrameLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight=".33"
+                            android:layout_width="130dp"
+                            android:layout_height="match_parent"
                             android:textAlignment="center">
 
                             <ImageView
@@ -167,7 +148,9 @@
                                 android:textColor="#808080"
                                 android:textSize="20dp" />
                         </FrameLayout>
-                    </LinearLayout>
+                    </GridLayout>
+
+
 
                     <TextView
                         android:layout_width="match_parent"
@@ -208,32 +191,13 @@
 
     </ScrollView>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_alignParentBottom="true"
-        android:background="#ffffff">
 
-        <Button
-            android:id="@+id/btnCart"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/btn_rounded"
-            android:text="Adauga in cos"
-            android:textColor="#faf5e4"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="10dp"
-            app:elevation="3dp"
-            app:pressedTranslationZ="12dp"/>
-    </RelativeLayout>
-
-   <!-- <Button
+    <!-- <Button
 
 
-        android:background="@drawable/btn_rounded"
-        "
-        />-->
+         android:background="@drawable/btn_rounded"
+         "
+         />-->
     <!--
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnCart"

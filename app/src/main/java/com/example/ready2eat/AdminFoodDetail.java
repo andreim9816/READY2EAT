@@ -9,13 +9,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,8 +20,6 @@ import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
 import com.example.ready2eat.Database.Database;
 import com.example.ready2eat.Model.Food;
 import com.example.ready2eat.Model.Order;
-import com.google.android.material.appbar.CollapsingToolbarLayout;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -35,9 +30,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import static android.R.layout.simple_list_item_1;
-
-public class FoodDetail extends AppCompatActivity {
+public class AdminFoodDetail extends AppCompatActivity {
 
     TextView food_name, food_price, quantity, time;
     ListView food_description;
@@ -57,37 +50,13 @@ public class FoodDetail extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_food_detail);
+        setContentView(R.layout.activity_admin_food_detail);
         //justifyListViewHeightBasedOnChildren(food_description);
         //Firebase
         database = FirebaseDatabase.getInstance();
         foods = database.getReference("Foods");
 
         //Init view
-        numberButton = (ElegantNumberButton) findViewById(R.id.number_button);
-        btnCart = (Button) findViewById(R.id.btnCart);
-
-        btnCart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(Integer.parseInt(numberButton.getNumber()) != 0) {
-                    new Database(getBaseContext()).addToCart(new Order(
-                            foodId,
-                            currentFood.getName(),
-                            numberButton.getNumber(),
-                            currentFood.getPrice(),
-                            currentFood.getDiscount(),
-                            currentFood.getImage()
-                    ));
-
-                    Toast.makeText(FoodDetail.this, "Adaugat in cos", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    Toast.makeText(FoodDetail.this, "Selecteaza cantitatea mai intai", Toast.LENGTH_SHORT).show();
-                }
-
-            }
-        });
 
         food_description = findViewById(R.id.food_description);
         food_name = findViewById(R.id.food_name);

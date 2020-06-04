@@ -76,7 +76,7 @@ public class AdminHome extends AppCompatActivity implements NavigationView.OnNav
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_admin_home);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("Menu");
@@ -321,12 +321,8 @@ public class AdminHome extends AppCompatActivity implements NavigationView.OnNav
         if(id == R.id.nav_menu) {
             //handle the camera action
         }
-        else if(id == R.id.nav_cart) {
-            Intent cartIntent = new Intent(AdminHome.this, Cart.class);
-            startActivity(cartIntent);
-        }
         else if(id == R.id.nav_orders) {
-            Intent orderIntent = new Intent(AdminHome.this, OrderStatus.class);
+            Intent orderIntent = new Intent(AdminHome.this, AdminOrderStatus.class);
             startActivity(orderIntent);
         }
         else if(id == R.id.nav_log_out) {

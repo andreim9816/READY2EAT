@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQueryBuilder;
+import android.util.Log;
 
 import com.example.ready2eat.Model.Order;
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
@@ -25,7 +26,7 @@ public class Database extends SQLiteAssetHelper {
         SQLiteDatabase db = getReadableDatabase();
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
 
-        String[] sqlSelect = {"ProductName","ProductId","Quantity", "Price", "Discount"};
+        String[] sqlSelect = {"ID", "ProductName","ProductId","Quantity", "Price", "Discount","Image"};
         String sqlTable = "OrderDetail";
 
         qb.setTables(sqlTable);
@@ -35,12 +36,17 @@ public class Database extends SQLiteAssetHelper {
         if(c.moveToFirst()){
 
             do {
-                result.add(new Order(c.getString(c.getColumnIndex("ProductId")),
+                result.add(new Order(
+                        c.getInt(c.getColumnIndex("ID")),
+                        c.getString(c.getColumnIndex("ProductId")),
                         c.getString(c.getColumnIndex("ProductName")),
                         c.getString(c.getColumnIndex("Quantity")),
                         c.getString(c.getColumnIndex("Price")),
-                        c.getString(c.getColumnIndex("Discount")))
-                        );
+                        c.getString(c.getColumnIndex("Discount")),
+                        c.getString(c.getColumnIndex("Image")))
+                );
+
+                Log.v("Database",c.getString(c.getColumnIndex("ProductName")) + c.getString(c.getColumnIndex("Image")));
             }while(c.moveToNext());
         }
         return result;
@@ -50,24 +56,29 @@ public class Database extends SQLiteAssetHelper {
     public void addToCart(Order order){
 
         SQLiteDatabase db = getReadableDatabase();
-        String query = String.format("INSERT INTO OrderDetail(ProductId,ProductName,Quantity,Price,Discount) " +
-                "VALUES('%s', '%s', '%s', '%s', '%s')",
+        //Log.v("Database.java","AddToCartMethod");
+        String query = String.format("INSERT INTO OrderDetail(ProductId,ProductName,Quantity,Price,Discount, Image)VALUES('%s', '%s', '%s', '%s', '%s', '%s');",
                 order.getProductId(),
                 order.getProductName(),
                 order.getQuantity(),
                 order.getPrice(),
-                order.getDiscount()
-                );
-
+                order.getDiscount(),
+                order.getImage()
+        );
         db.execSQL(query);
-
     }
 
-    public void cleanCart(){
-
+    public void cleanCart()
+    {
         SQLiteDatabase db = getReadableDatabase();
         String query = String.format("DELETE FROM OrderDetail");
         db.execSQL(query);
 
+    }
+
+    public void updateCart(Order order){
+        SQLiteDatabase db = getReadableDatabase();
+        String query = String.format("UPDATE OrderDetail SET Quantity= %s WHERE ID= %d", order.getQuantity(), order.getID());
+        db.execSQL(query);
     }
 }
