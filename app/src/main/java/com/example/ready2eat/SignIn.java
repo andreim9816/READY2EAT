@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -20,23 +21,29 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
+import io.paperdb.Paper;
+
 
 public class SignIn extends AppCompatActivity {
 
     EditText edtPhone, edtPassword;
     Button btnSignIn;
+    com.rey.material.widget.CheckBox ckbRemember; //! Not CheckBox type, but that one!
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
-        edtPassword = (MaterialEditText)findViewById(R.id.edtPassword);
-        edtPhone = (MaterialEditText)findViewById(R.id.edtPhone);
-        btnSignIn = (Button)findViewById(R.id.btnSignIn);
+        edtPassword = findViewById(R.id.edtPassword);
+        edtPhone = findViewById(R.id.edtPhone);
+        btnSignIn = findViewById(R.id.btnSignIn);
+        ckbRemember = findViewById(R.id.ckbRemember);
+
+        // Init Paper
+        Paper.init(this);
 
         //Init Firebase
-
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference table_user = database.getReference("User");
 
@@ -44,6 +51,13 @@ public class SignIn extends AppCompatActivity {
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                // functie de isConnectedToInternet
+                if(ckbRemember.isChecked())
+                {
+                    Paper.book().write(Common.USER_KEY, edtPhone.getText().toString());
+                    Paper.book().write(Common.PWD_KEY, edtPassword.getText().toString());
+                }
 
                 final ProgressDialog mDialog = new ProgressDialog(SignIn.this);
                 mDialog.setMessage("Va rugam sa asteptati...");

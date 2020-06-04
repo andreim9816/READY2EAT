@@ -16,6 +16,8 @@
         android:background="#f7efd2"
         android:layout_height="match_parent"/>
 
+
+
 <!-- f2f4f4-->
     <fragment
         android:id="@+id/nav_host_fragment"

@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
@@ -59,6 +60,7 @@ public class AdminOrderStatus extends AppCompatActivity {
                 Request.class, R.layout.admin_order_layout, AdminOrderViewHolder.class, requests
         ) {
             @Override
+
             protected void populateViewHolder(AdminOrderViewHolder adminOrderViewHolder, Request request, int position) {
 
                 adminOrderViewHolder.txtOrderId.setText("Id comanda: " + adapter.getRef(position).getKey());
@@ -70,6 +72,10 @@ public class AdminOrderStatus extends AppCompatActivity {
                 adminOrderViewHolder.setItemClickListener(new ItemClickListener() {
                     @Override
                     public void onClick(View view, int position, boolean isLongClik) {
+                            Intent orderDetail = new Intent(AdminOrderStatus.this, OrderDetail.class);
+                            Common.currentRequest = request;
+                            orderDetail.putExtra("OrderId", adapter.getRef(position).getKey());
+                            startActivity(orderDetail);
 
                     }
                 });

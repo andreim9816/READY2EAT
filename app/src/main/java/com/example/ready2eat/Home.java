@@ -5,11 +5,13 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+import android.widget.ListAdapter;
 import android.widget.TextView;
 
 import com.example.ready2eat.Common.Common;
 import com.example.ready2eat.Interface.ItemClickListener;
 import com.example.ready2eat.Model.Category;
+import com.example.ready2eat.Service.ListenOrder;
 import com.example.ready2eat.ViewHolder.MenuViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -29,6 +31,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import io.paperdb.Paper;
 
 public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
@@ -54,6 +58,9 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         //init Firebase
         database = FirebaseDatabase.getInstance();
         category = database.getReference("Category");
+
+        //init Paper
+        Paper.init(this);
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -96,6 +103,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         recyclerMenu.setLayoutManager(layoutManager);
 
         loadMenu();
+
     }
         private void loadMenu() {
              adapter = new FirebaseRecyclerAdapter<Category, MenuViewHolder>(Category.class, R.layout.menu_item, MenuViewHolder.class, category) {
@@ -171,6 +179,8 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             startActivity(orderIntent);
         }
         else if(id == R.id.nav_log_out) {
+
+            Paper.book().destroy(); // when client logs out, we delete its data
             Intent signIn = new Intent(Home.this, SignIn.class);
             signIn.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(signIn);

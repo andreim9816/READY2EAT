@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.example.ready2eat.Common.Common;
 import com.example.ready2eat.Interface.ItemClickListener;
 import com.example.ready2eat.Model.Category;
+import com.example.ready2eat.Service.ListenOrder;
 import com.example.ready2eat.ViewHolder.AdminMenuViewHolder;
 import com.example.ready2eat.ViewHolder.MenuViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -128,6 +129,9 @@ public class AdminHome extends AppCompatActivity implements NavigationView.OnNav
         recyclerMenu.setLayoutManager(layoutManager);
 
         loadMenu();
+
+        Intent service = new Intent(AdminHome.this, ListenOrder.class);
+        startService(service);
     }
 
     private void showDialog() {
