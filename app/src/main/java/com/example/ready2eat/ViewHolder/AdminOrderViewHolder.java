@@ -11,7 +11,8 @@ import com.example.ready2eat.Common.Common;
 import com.example.ready2eat.Interface.ItemClickListener;
 import com.example.ready2eat.R;
 
-public class AdminOrderViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnCreateContextMenuListener {
+public class AdminOrderViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,
+        View.OnCreateContextMenuListener {
     public TextView txtOrderId;
     public TextView txtOrderStatus;
     public TextView txtOrderPhone;
@@ -39,7 +40,7 @@ public class AdminOrderViewHolder extends RecyclerView.ViewHolder implements Vie
     @Override
     public void onClick(View v) {
 
-        itemClickListener.onClick(v, getAdapterPosition(), false);
+        itemClickListener.onClick(v, getAdapterPosition(), true);
     }
 
     @Override
@@ -48,4 +49,5 @@ public class AdminOrderViewHolder extends RecyclerView.ViewHolder implements Vie
         menu.add(0,0, getAdapterPosition(), Common.UPDATE);
         menu.add(0,1, getAdapterPosition(), Common.DELETE);
     }
+
 }
