@@ -25,18 +25,4 @@ public class Common
             return "Preluata";
     }
 
-    public static final String UPDATE = "Actualizeaza";
-    public static final String DELETE = "Sterge";
-    public static final int PICK_IMAGE_REQUEST = 71;
-
-    public static String convertCodeToStatus(String status)
-    {
-        if(Objects.equals(status, new String("0")))
-            return "Plasata";
-        else if(Objects.equals(status, new String("1")))
-            return "Se poate prelua";
-        else
-            return "Preluata";
-    }
-
 }
