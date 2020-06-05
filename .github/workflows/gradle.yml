@@ -23,6 +23,6 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build
     - name: Test
-      run: SignInTest.java
+      run: java SignInTest
     - name: Test2
-      run: SignUpTest.java
+      run: java SignUpTest
