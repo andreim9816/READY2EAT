@@ -170,7 +170,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#ffffff"
+                    android:background="#faf5e4"
+
 
                     >
                     <ListView
@@ -192,13 +193,7 @@
     </ScrollView>
 
 
-    <!-- <Button
 
-
-         android:background="@drawable/btn_rounded"
-         "
-         />-->
-    <!--
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnCart"
         android:layout_width="wrap_content"
@@ -208,5 +203,5 @@
         app:elevation="6dp"
         app:pressedTranslationZ="12dp"
         app:layout_anchorGravity="bottom|right|end"
-        app:useCompatPadding="true"/>-->
+        app:useCompatPadding="true"/> 
 </RelativeLayout>

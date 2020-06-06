@@ -2,22 +2,20 @@ package com.example.ready2eat;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+import android.widget.ListAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.ready2eat.Common.Common;
 import com.example.ready2eat.Interface.ItemClickListener;
 import com.example.ready2eat.Model.Category;
+import com.example.ready2eat.Service.ListenOrder;
 import com.example.ready2eat.ViewHolder.MenuViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
@@ -105,6 +103,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         recyclerMenu.setLayoutManager(layoutManager);
 
         loadMenu();
+
     }
         private void loadMenu() {
              adapter = new FirebaseRecyclerAdapter<Category, MenuViewHolder>(Category.class, R.layout.menu_item, MenuViewHolder.class, category) {
@@ -185,6 +184,11 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             Intent signIn = new Intent(Home.this, SignIn.class);
             signIn.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(signIn);
+        }
+        else if(id == R.id.nav_about_us) {
+            Intent aboutUsIntent = new Intent(Home.this, AboutUs.class);
+            //Intent passwordIntent = new Intent(Home.this, AboutUs.class);
+            startActivity(aboutUsIntent);
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

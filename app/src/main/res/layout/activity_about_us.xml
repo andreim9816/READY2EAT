@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_about_us"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:src="@drawable/background"
+    tools:context=".AboutUs">
+
+    <ScrollView
+        android:id="@+id/scrollView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <RelativeLayout
+            android:id="@+id/section2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#f7efd2">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/background">
+            </ImageView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/logo"></ImageView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:fontFamily="@font/champagne_font"
+                    android:textColor="#000000"
+                    android:textSize="16sp"
+                    android:textFontWeight="800"
+                    android:layout_marginBottom="10dp"
+                    android:justificationMode="inter_word"
+                    android:text="\t\t Suntem un restaurant cosmopolit și relaxat unde, de mai bine de 10 ani, ne răsfățăm clienții cu delicatese culinare și băuturi alese."
+                    ></TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/champagne_font"
+                    android:textColor="#000000"
+                    android:textSize="16sp"
+                    android:textFontWeight="800"
+                    android:justificationMode="inter_word"
+                    android:text="\t\t Acum ai ocazia prin intermediul acestei aplicații să realizezi precomenzi online și să vii direct la ora dorită să servești felurile de mâncare preferate!"></TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/champagne_font"
+                    android:textColor="#000000"
+                    android:textSize="16sp"
+                    android:textFontWeight="800"
+                    android:layout_marginBottom="10dp"
+                    android:text="\t Date de contact: \n\t Telefon: 07844559900 \n\t Email: ready2eat@gmail.com\n\t Program: Luni - Duminică, 12PM - 2AM
+                \n\n\t Ne găsiți aici:\n\t Strada Bibescu Vodă 1, București"
+                    ></TextView>
+
+
+                <ImageView
+                    android:layout_width="300dp"
+                    android:layout_height="300dp"
+                    android:scaleType="centerCrop"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="30dp"
+                    android:src="@drawable/harta"></ImageView>
+
+
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
