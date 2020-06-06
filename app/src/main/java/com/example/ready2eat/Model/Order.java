@@ -11,6 +11,13 @@ public class Order {
 
     public Order(){}
 
+    public Order(String quantity, String price, String discount) {
+        this.Quantity = quantity;
+        this.Price = price;
+        this.Discount = discount;
+    }
+
+
     public Order(String productId, String productName, String quantity, String price, String discount, String image) {
         this.ProductId = productId;
         this.ProductName = productName;

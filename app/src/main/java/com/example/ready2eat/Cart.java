@@ -42,7 +42,7 @@ public class Cart extends AppCompatActivity
     public TextView txtTotalPrice;
     Button btnPlace;
 
-    List<Order> cart = new ArrayList<>();
+    public List<Order> cart = new ArrayList<>();
 
     CartAdapter adapter;
 
@@ -75,6 +75,20 @@ public class Cart extends AppCompatActivity
 
         loadListFood();
     }
+
+    public float calculateTotal(List<Order> cart)
+    {
+        float total = 0;
+        for(Order order: cart)
+        {
+            total += (1 - (Float.parseFloat(order.getDiscount())/ 100)) *
+                    (Float.parseFloat(order.getPrice())) * (Float.parseFloat(order.getQuantity()));
+        }
+
+        return total;
+
+    }
+
     private void showAlertDialog()
     {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(Cart.this);
@@ -161,12 +175,11 @@ public class Cart extends AppCompatActivity
         adapter = new CartAdapter(cart,this);
         recyclerView.setAdapter(adapter);
 
+        cart = new Database(this).getCarts();
+
         // Calculate total price
-        float total = 0;
-        for(Order order: cart)
-        {
-            total += (Float.parseFloat(order.getPrice())) * (Float.parseFloat(order.getQuantity()));
-        }
+
+        float total = calculateTotal(cart);
         Locale locale = new Locale("ro", "RO");
         NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
 
