@@ -33,7 +33,6 @@ import java.util.Locale;
 
 public class Cart extends AppCompatActivity
 {
-
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
 

@@ -36,6 +36,7 @@ public class SignInTest {
     }
     @Rule
     public ActivityTestRule<MainActivity> rule = new ActivityTestRule(MainActivity.class);
+
     @Test
     public void successfulLogin1() {
         onView(withId(R.id.btnSignIn)).perform(click());
@@ -44,6 +45,7 @@ public class SignInTest {
         onView(withId(R.id.btnSignIn)).perform(click());
         intended(hasComponent(Home.class.getName()));
     }
+
     @Test
     public void loginAdmin() {
         onView(withId(R.id.btnSignIn)).perform(click());
@@ -80,6 +82,7 @@ public class SignInTest {
         //checks if Tost.makeText appears
         onView(withText("Parola gresita")).inRoot(withDecorView(not(rule.getActivity().getWindow().getDecorView()))) .check(matches(isDisplayed()));
     }
+
     @After
     public void end() throws Exception{
         Intents.release();

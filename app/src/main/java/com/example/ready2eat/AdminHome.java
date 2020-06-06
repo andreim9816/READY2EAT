@@ -18,7 +18,6 @@ import com.example.ready2eat.Interface.ItemClickListener;
 import com.example.ready2eat.Model.Category;
 import com.example.ready2eat.Service.ListenOrder;
 import com.example.ready2eat.ViewHolder.AdminMenuViewHolder;
-import com.example.ready2eat.ViewHolder.MenuViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -120,7 +119,7 @@ public class AdminHome extends AppCompatActivity implements NavigationView.OnNav
         //Set name for user
         final View headerView = navigationView.getHeaderView(0);
         txtFullName = headerView.findViewById(R.id.txtFullName);
-        txtFullName.setText(Common.currentAdmin.getName());
+        txtFullName.setText(Common.currentUser.getName());
 
         //Load Menu
         recyclerMenu = findViewById(R.id.recycler_menu);

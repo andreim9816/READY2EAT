@@ -92,18 +92,20 @@ public class AdminFoodDetail extends AppCompatActivity {
 
                 food_price.setText(currentFood.getPrice() + " Lei");        //am afisat in layout cantitate, pret, timp, nume
                 food_name.setText(currentFood.getName());
+
                 if(!currentFood.getMenuID().equals("11"))
                     quantity.setText(currentFood.getQuantity() + " g");    //bauturile au deja ml in cantitate
                 else quantity.setText(currentFood.getQuantity());
-                Log.d("DETALII", currentFood.getQuantity() + " " + currentFood.getName());
+
                 time.setText(currentFood.getTime() + " min");
                 String fd = currentFood.getDescription();                   //afisarea ingredientelor tip lista
+
                 ArrayList<String> food_desc_array = new ArrayList<>(Arrays.asList(fd.split("[,|\n]+")));
                 for(int i = 0 ; i < food_desc_array.size() ; i++)
                     food_desc_array.set(i, food_desc_array.get(i).trim());
+
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(getBaseContext(), R.layout.list_item, food_desc_array);
                 food_description.setAdapter(adapter);
-
             }
 
             @Override

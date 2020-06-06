@@ -100,13 +100,11 @@ public class MainActivity extends AppCompatActivity {
                             Common.currentUser = user;
                             startActivity(homeIntent);
                             finish();
-
                     }
                     else
                     {
                         mDialog.dismiss();
                         Toast.makeText(MainActivity.this, "Wrong password", Toast.LENGTH_SHORT).show();
-
                     }
                 }
                 else
@@ -126,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
                                 if(admin.getPassword().equals(pwd))
                                 {
                                     Intent homeAdminIntent = new Intent(MainActivity.this, AdminHome.class);
-                                    Common.currentAdmin = admin;
+                                    Common.currentUser = admin;
                                     startActivity(homeAdminIntent);
                                     finish();
                                 }

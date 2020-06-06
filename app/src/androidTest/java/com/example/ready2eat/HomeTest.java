@@ -51,6 +51,7 @@ public class HomeTest {
     }
     @Rule
     public ActivityTestRule<MainActivity> rule = new ActivityTestRule(MainActivity.class);
+
     @Test
     public void successfulLogin() {
         onView(withId(R.id.btnSignIn)).perform(click());

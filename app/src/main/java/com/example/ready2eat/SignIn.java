@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.ready2eat.Common.Common;
 import com.example.ready2eat.Model.Admin;
+import com.example.ready2eat.Model.Person;
 import com.example.ready2eat.Model.User;
 
 import com.google.firebase.database.DataSnapshot;
@@ -70,14 +71,16 @@ public class SignIn extends AppCompatActivity {
                 table_user.addValueEventListener(new ValueEventListener()
                 {
                     @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
+                    public void onDataChange(DataSnapshot dataSnapshot)
+                    {
                         //Check if user exists in database
                         if (!TextUtils.isEmpty(edtPhone.getText().toString()) && !TextUtils.isEmpty(edtPassword.getText().toString())) {
 
-                            if (dataSnapshot.child(edtPhone.getText().toString()).exists()) {
+                            if (dataSnapshot.child(edtPhone.getText().toString()).exists())
+                            {
                                 //Get User Information
                                 mDialog.dismiss();
-                                User user = dataSnapshot.child(edtPhone.getText().toString()).getValue(User.class);
+                                Person user = dataSnapshot.child(edtPhone.getText().toString()).getValue(User.class);
                                 user.setPhone(edtPhone.getText().toString()); // set phone
                                 if (user.getPassword().equals(edtPassword.getText().toString())) {
                                     Intent homeIntent = new Intent(SignIn.this, Home.class);
@@ -88,37 +91,47 @@ public class SignIn extends AppCompatActivity {
                                     mDialog.dismiss();
                                     Toast.makeText(SignIn.this, "Parola gresita", Toast.LENGTH_SHORT).show();
                                 }
-                            } else {
-                                table_admin.addValueEventListener(new ValueEventListener() {
+                            } else
+                                {
+                                table_admin.addValueEventListener(new ValueEventListener()
+                                {
                                     @Override
-                                    public void onDataChange(DataSnapshot dataSnapshot) {
+                                    public void onDataChange(DataSnapshot dataSnapshot)
+                                    {
                                         //Check if user exists in database
-                                        if (!TextUtils.isEmpty(edtPhone.getText().toString()) && !TextUtils.isEmpty(edtPassword.getText().toString())) {
+                                        if (!TextUtils.isEmpty(edtPhone.getText().toString()) && !TextUtils.isEmpty(edtPassword.getText().toString()))
+                                        {
 
-                                            if (dataSnapshot.child(edtPhone.getText().toString()).exists()) {
+                                            if (dataSnapshot.child(edtPhone.getText().toString()).exists())
+                                            {
                                                 //Get User Information
                                                 mDialog.dismiss();
-                                                Admin admin = dataSnapshot.child(edtPhone.getText().toString()).getValue(Admin.class);
+                                                Person admin = dataSnapshot.child(edtPhone.getText().toString()).getValue(Admin.class);
                                                 admin.setPhone(edtPhone.getText().toString()); // set phone
-                                                if (admin.getPassword().equals(edtPassword.getText().toString())) {
+                                                if (admin.getPassword().equals(edtPassword.getText().toString()))
+                                                {
                                                     Intent homeAdminIntent = new Intent(SignIn.this, AdminHome.class);
-                                                    Common.currentAdmin = admin;
+                                                    Common.currentUser = admin;
                                                     startActivity(homeAdminIntent);
                                                     finish();
-
-
-                                                } else {
-                                                    mDialog.dismiss();
-                                                    Toast.makeText(SignIn.this, "Parola gresita", Toast.LENGTH_SHORT).show();
                                                 }
-                                            } else {
-                                                mDialog.dismiss();
-                                                Toast.makeText(SignIn.this, "Numar de telefon sau parola incorecte", Toast.LENGTH_SHORT).show();
+                                                else
+                                                    {
+                                                        mDialog.dismiss();
+                                                        Toast.makeText(SignIn.this, "Parola gresita", Toast.LENGTH_SHORT).show();
+                                                    }
                                             }
-                                        } else {
-                                            mDialog.dismiss();
-                                            Toast.makeText(SignIn.this, "Introdu mai intai numar si parola", Toast.LENGTH_SHORT).show();
+                                            else
+                                                {
+                                                  mDialog.dismiss();
+                                                  Toast.makeText(SignIn.this, "Numar de telefon sau parola incorecte", Toast.LENGTH_SHORT).show();
+                                                }
                                         }
+                                        else
+                                            {
+                                                mDialog.dismiss();
+                                                Toast.makeText(SignIn.this, "Introdu mai intai numar si parola", Toast.LENGTH_SHORT).show();
+                                             }
                                     }
 
 
