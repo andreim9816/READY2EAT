@@ -1,8 +1,6 @@
 package com.example.ready2eat.ViewHolder;
 
-import android.content.Intent;
 import android.os.Build;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,12 +11,12 @@ import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
-import com.example.ready2eat.View.Cart;
+import com.example.ready2eat.Cart;
 import com.example.ready2eat.Database.Database;
 import com.example.ready2eat.Interface.ItemClickListener;
 import com.example.ready2eat.Model.Order;
 import com.example.ready2eat.R;
-import com.example.ready2eat.View.MainActivity;
+import com.example.ready2eat.Cart;
 import com.squareup.picasso.Picasso;
 
 import java.text.NumberFormat;

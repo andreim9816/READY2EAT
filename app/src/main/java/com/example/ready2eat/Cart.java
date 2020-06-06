@@ -1,4 +1,4 @@
-package com.example.ready2eat.View;
+package com.example.ready2eat;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -159,7 +159,7 @@ public class Cart extends AppCompatActivity
     public void loadListFood()
     {
         cart = new Database(this).getCarts();
-        adapter = new CartAdapter(cart, this);
+        adapter = new CartAdapter(cart,this);
         recyclerView.setAdapter(adapter);
 
         // Calculate total price
