@@ -193,16 +193,16 @@
     </ScrollView>
 
 
-<!-- 
-   <!--
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btnCart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/white"
-        android:src="@drawable/ic_shopping_cart_black_24dp"
-        app:elevation="6dp"
-        app:pressedTranslationZ="12dp"
-        app:layout_anchorGravity="bottom|right|end"
-        app:useCompatPadding="true"/> -->
+<!--&lt;!&ndash; -->
+<!--   &lt;!&ndash;-->
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--        android:id="@+id/btnCart"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:backgroundTint="@android:color/white"-->
+<!--        android:src="@drawable/ic_shopping_cart_black_24dp"-->
+<!--        app:elevation="6dp"-->
+<!--        app:pressedTranslationZ="12dp"-->
+<!--        app:layout_anchorGravity="bottom|right|end"-->
+<!--        app:useCompatPadding="true"/> &ndash;&gt;-->
 </RelativeLayout>
