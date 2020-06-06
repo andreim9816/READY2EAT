@@ -1,4 +1,4 @@
-package com.example.ready2eat;
+package com.example.ready2eat.View;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +19,7 @@ import com.example.ready2eat.Common.Common;
 import com.example.ready2eat.Database.Database;
 import com.example.ready2eat.Model.Order;
 import com.example.ready2eat.Model.Request;
+import com.example.ready2eat.R;
 import com.example.ready2eat.ViewHolder.CartAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -122,7 +123,7 @@ public class Cart extends AppCompatActivity
         alertDialog.show();
     }
 
-    private void loadListFood()
+    public void loadListFood()
     {
 
         cart = new Database(this).getCarts();
@@ -135,7 +136,6 @@ public class Cart extends AppCompatActivity
         {
             Log.v("CART", "DE CE CRAPA AICI!");
             total += (Float.parseFloat(order.getPrice())) * (Float.parseFloat(order.getQuantity()));
-
         }
         Locale locale = new Locale("ro", "RO");
         NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
