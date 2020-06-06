@@ -9,6 +9,19 @@ import com.example.ready2eat.View.Admin.AdminHome;
 import com.example.ready2eat.View.Home;
 import com.example.ready2eat.View.MainActivity;
 
+import android.content.Context;
+import android.content.Intent;
+import android.provider.ContactsContract;
+
+import androidx.annotation.ContentView;
+import androidx.test.espresso.action.TypeTextAction;
+import androidx.test.espresso.intent.Intents;
+import androidx.test.platform.app.InstrumentationRegistry;
+import androidx.test.ext.junit.runners.AndroidJUnit4;
+import androidx.test.rule.ActivityTestRule;
+import androidx.test.uiautomator.UiDevice;
+
+import org.hamcrest.Matcher;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -24,6 +37,7 @@ import static androidx.test.espresso.matcher.RootMatchers.withDecorView;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
+
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
@@ -58,7 +72,6 @@ public class SignInTest {
         onView(withId(R.id.btnSignIn)).perform(click());
         intended(hasComponent(AdminHome.class.getName()));
     }
-
 
     @Test
     public void unsuccessfulLogin1() {

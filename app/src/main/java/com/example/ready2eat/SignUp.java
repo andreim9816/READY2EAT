@@ -49,7 +49,8 @@ public class SignUp extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot)
                     {
-                        if (!TextUtils.isEmpty(edtPhone.getText().toString()) && !TextUtils.isEmpty(edtName.getText().toString()) && TextUtils.isEmpty(edtPassword.getText().toString())) {
+                        if (!TextUtils.isEmpty(edtPhone.getText().toString()) && !TextUtils.isEmpty(edtName.getText().toString()) && !TextUtils.isEmpty(edtPassword.getText().toString()))
+                        {
                             //Verifica daca numarul deja exista
                             if (dataSnapshot.child(edtPhone.getText().toString()).exists()) {
                                 mDialog.dismiss();
