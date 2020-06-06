@@ -133,9 +133,7 @@ public class Cart extends AppCompatActivity
         float total = 0;
         for(Order order: cart)
         {
-            Log.v("CART", "DE CE CRAPA AICI!");
             total += (Float.parseFloat(order.getPrice())) * (Float.parseFloat(order.getQuantity()));
-
         }
         Locale locale = new Locale("ro", "RO");
         NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);

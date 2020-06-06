@@ -15,7 +15,6 @@ public class Common
     public static final String PWD_KEY = "Password";
     public static final int PICK_IMAGE_REQUEST = 71;
 
-
     public static String convertCodeToStatus(String status)
     {
         if(Objects.equals(status, new String("0")))
