@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.ready2eat.Common.Common;
+import com.example.ready2eat.Model.Admin;
 import com.example.ready2eat.Model.User;
 
 import com.google.firebase.database.DataSnapshot;
@@ -46,13 +47,14 @@ public class SignIn extends AppCompatActivity {
         //Init Firebase
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference table_user = database.getReference("User");
+        final DatabaseReference table_admin = database.getReference("Admin");
 
 
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                // functie de isConnectedToInternet
+                 //functie de isConnectedToInternet
                 if(ckbRemember.isChecked())
                 {
                     Paper.book().write(Common.USER_KEY, edtPhone.getText().toString());
@@ -62,6 +64,8 @@ public class SignIn extends AppCompatActivity {
                 final ProgressDialog mDialog = new ProgressDialog(SignIn.this);
                 mDialog.setMessage("Va rugam sa asteptati...");
                 mDialog.show();
+
+
 
                 table_user.addValueEventListener(new ValueEventListener()
                 {
@@ -76,31 +80,63 @@ public class SignIn extends AppCompatActivity {
                                 User user = dataSnapshot.child(edtPhone.getText().toString()).getValue(User.class);
                                 user.setPhone(edtPhone.getText().toString()); // set phone
                                 if (user.getPassword().equals(edtPassword.getText().toString())) {
-                                    if (user.getPhone().equals("0784310009")) {
-                                        Intent homeAdminIntent = new Intent(SignIn.this, AdminHome.class);
-                                        Common.currentUser = user;
-                                        startActivity(homeAdminIntent);
-                                        finish();
-                                    } else {
-                                        Intent homeIntent = new Intent(SignIn.this, Home.class);
-                                        Common.currentUser = user;
-                                        startActivity(homeIntent);
-                                        finish();
-                                    }
+                                    Intent homeIntent = new Intent(SignIn.this, Home.class);
+                                    Common.currentUser = user;
+                                    startActivity(homeIntent);
+                                    finish();
                                 } else {
                                     mDialog.dismiss();
                                     Toast.makeText(SignIn.this, "Parola gresita", Toast.LENGTH_SHORT).show();
                                 }
                             } else {
-                                mDialog.dismiss();
-                                Toast.makeText(SignIn.this, "Numar de telefon sau parola incorecte", Toast.LENGTH_SHORT).show();
+                                table_admin.addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(DataSnapshot dataSnapshot) {
+                                        //Check if user exists in database
+                                        if (!TextUtils.isEmpty(edtPhone.getText().toString()) && !TextUtils.isEmpty(edtPassword.getText().toString())) {
+
+                                            if (dataSnapshot.child(edtPhone.getText().toString()).exists()) {
+                                                //Get User Information
+                                                mDialog.dismiss();
+                                                Admin admin = dataSnapshot.child(edtPhone.getText().toString()).getValue(Admin.class);
+                                                admin.setPhone(edtPhone.getText().toString()); // set phone
+                                                if (admin.getPassword().equals(edtPassword.getText().toString())) {
+                                                    Intent homeAdminIntent = new Intent(SignIn.this, AdminHome.class);
+                                                    Common.currentAdmin = admin;
+                                                    startActivity(homeAdminIntent);
+                                                    finish();
+
+
+                                                } else {
+                                                    mDialog.dismiss();
+                                                    Toast.makeText(SignIn.this, "Parola gresita", Toast.LENGTH_SHORT).show();
+                                                }
+                                            } else {
+                                                mDialog.dismiss();
+                                                Toast.makeText(SignIn.this, "Numar de telefon sau parola incorecte", Toast.LENGTH_SHORT).show();
+                                            }
+                                        } else {
+                                            mDialog.dismiss();
+                                            Toast.makeText(SignIn.this, "Introdu mai intai numar si parola", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+
+
+                                    @Override
+                                    public void onCancelled(DatabaseError databaseError) {
+
+                                    }
+                                });
+
                             }
                         }
                         else {
                             mDialog.dismiss();
                             Toast.makeText(SignIn.this, "Introdu mai intai numar si parola", Toast.LENGTH_SHORT).show();
                         }
+
                     }
+
 
                     @Override
                     public void onCancelled(DatabaseError databaseError)
@@ -108,6 +144,8 @@ public class SignIn extends AppCompatActivity {
 
                     }
                 });
+
+
             }
         });
     }
