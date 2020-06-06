@@ -52,7 +52,7 @@ public class AdminOrderStatus extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        loadOrders(Common.currentUser.getPhone());
+        loadOrders(Common.currentAdmin.getPhone());
     }
 
     private void loadOrders(String phone) {

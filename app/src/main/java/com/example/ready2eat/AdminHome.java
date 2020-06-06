@@ -120,7 +120,7 @@ public class AdminHome extends AppCompatActivity implements NavigationView.OnNav
         //Set name for user
         final View headerView = navigationView.getHeaderView(0);
         txtFullName = headerView.findViewById(R.id.txtFullName);
-        txtFullName.setText(Common.currentUser.getName());
+        txtFullName.setText(Common.currentAdmin.getName());
 
         //Load Menu
         recyclerMenu = findViewById(R.id.recycler_menu);
