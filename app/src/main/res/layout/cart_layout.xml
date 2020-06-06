@@ -101,7 +101,7 @@
             app:finalNumber="20"
             app:initialNumber="0"
             app:pressedTranslationZ="12dp"
-            app:textSize="7sp" />
+            app:textSize="6sp" />
 
     </LinearLayout>
 

@@ -1,5 +1,6 @@
 package com.example.ready2eat.ViewHolder;
 
+import android.content.Intent;
 import android.os.Build;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,11 +13,12 @@ import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
-import com.example.ready2eat.Cart;
+import com.example.ready2eat.View.Cart;
 import com.example.ready2eat.Database.Database;
 import com.example.ready2eat.Interface.ItemClickListener;
 import com.example.ready2eat.Model.Order;
 import com.example.ready2eat.R;
+import com.example.ready2eat.View.MainActivity;
 import com.squareup.picasso.Picasso;
 
 import java.text.NumberFormat;
@@ -62,6 +64,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartViewHolder>
         this.cart = cart;
     }
 
+
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public CartViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
@@ -73,7 +76,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartViewHolder>
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
-    public void onBindViewHolder(CartViewHolder holder, final int position)
+    public void onBindViewHolder(final CartViewHolder holder, final int position)
     {
 
         Picasso.get()
@@ -92,20 +95,30 @@ public class CartAdapter extends RecyclerView.Adapter<CartViewHolder>
             public void onValueChange(ElegantNumberButton view, int oldValue, int newValue) {
                 Order order = listData.get(position);
                 order.setQuantity(String.valueOf(newValue));
-                new Database(cart).updateCart(order);
+                if(newValue == 0)
+                {
+                    int id = order.getID();
+                    new Database(cart).removeFromCart(id);
+                    cart.loadListFood();
+
+                }
+                else
+                {
+                    new Database(cart).updateCart(order);
+                }
 
                 // Calculate total price
                 float total = 0;
                 List<Order> orders = new Database(cart).getCarts();
+
                 for(Order item: orders)
                 {
-                    Log.v("CART", "DE CE CRAPA AICI!");
                     total += (Float.parseFloat(item.getPrice())) * (Integer.parseInt(item.getQuantity()));
 
                 }
                 Locale locale = new Locale("ro", "RO");
                 NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
-
+                holder.txt_price.setText(fmt.format(Float.parseFloat(order.getPrice()) * Integer.parseInt(order.getQuantity())));
                 cart.txtTotalPrice.setText(fmt.format(total));
 
 

@@ -1,5 +1,14 @@
 package com.example.ready2eat;
 
+import androidx.test.espresso.action.TypeTextAction;
+import androidx.test.espresso.intent.Intents;
+import androidx.test.ext.junit.runners.AndroidJUnit4;
+import androidx.test.rule.ActivityTestRule;
+
+import com.example.ready2eat.View.Admin.AdminHome;
+import com.example.ready2eat.View.Home;
+import com.example.ready2eat.View.MainActivity;
+
 import android.content.Context;
 import android.content.Intent;
 import android.provider.ContactsContract;
@@ -28,10 +37,7 @@ import static androidx.test.espresso.matcher.RootMatchers.withDecorView;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
-import static org.junit.Assert.*;
-import static androidx.test.espresso.assertion.ViewAssertions.matches;
-import static androidx.test.espresso.matcher.RootMatchers.withDecorView;
-import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
