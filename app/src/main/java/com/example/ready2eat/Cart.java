@@ -18,7 +18,6 @@ import com.example.ready2eat.Common.Common;
 import com.example.ready2eat.Database.Database;
 import com.example.ready2eat.Model.Order;
 import com.example.ready2eat.Model.Request;
-import com.example.ready2eat.R;
 import com.example.ready2eat.ViewHolder.CartAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -43,7 +42,7 @@ public class Cart extends AppCompatActivity
     public TextView txtTotalPrice;
     Button btnPlace;
 
-    List<Order> cart = new ArrayList<>();
+    public List<Order> cart = new ArrayList<>();
 
     CartAdapter adapter;
 
@@ -156,18 +155,28 @@ public class Cart extends AppCompatActivity
         alertDialog.show();
     }
 
+    public float calculateTotal(List<Order> cart)
+    {
+        float total = 0;
+        for(Order order: cart)
+        {
+            total += (1 - (Float.parseFloat(order.getDiscount())/ 100)) *
+                    (Float.parseFloat(order.getPrice())) * (Float.parseFloat(order.getQuantity()));
+        }
+
+        return total;
+
+    }
     public void loadListFood()
     {
         cart = new Database(this).getCarts();
         adapter = new CartAdapter(cart,this);
         recyclerView.setAdapter(adapter);
 
+        cart = new Database(this).getCarts();
         // Calculate total price
-        float total = 0;
-        for(Order order: cart)
-        {
-            total += (Float.parseFloat(order.getPrice())) * (Float.parseFloat(order.getQuantity()));
-        }
+        float total = calculateTotal(cart);
+
         Locale locale = new Locale("ro", "RO");
         NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
 
