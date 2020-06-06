@@ -30,6 +30,12 @@ public class Order {
         Image = image;
     }
 
+    public Order(String quantity, String price, String discount) {
+        this.Quantity = quantity;
+        this.Price = price;
+        this.Discount = discount;
+    }
+
     public int getID() {
         return ID;
     }
