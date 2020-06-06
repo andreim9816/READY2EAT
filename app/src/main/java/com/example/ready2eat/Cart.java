@@ -32,7 +32,6 @@ import java.util.Locale;
 
 public class Cart extends AppCompatActivity
 {
-
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
 
@@ -75,6 +74,20 @@ public class Cart extends AppCompatActivity
 
         loadListFood();
     }
+
+    public float calculateTotal(List<Order> cart)
+    {
+        float total = 0;
+        for(Order order: cart)
+        {
+            total += (1 - (Float.parseFloat(order.getDiscount())/ 100)) *
+                    (Float.parseFloat(order.getPrice())) * (Float.parseFloat(order.getQuantity()));
+        }
+
+        return total;
+
+    }
+
     private void showAlertDialog()
     {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(Cart.this);
@@ -174,7 +187,7 @@ public class Cart extends AppCompatActivity
         recyclerView.setAdapter(adapter);
 
         cart = new Database(this).getCarts();
-        // Calculate total price
+
         float total = calculateTotal(cart);
 
         Locale locale = new Locale("ro", "RO");
