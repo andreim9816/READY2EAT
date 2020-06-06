@@ -21,3 +21,10 @@ jobs:
         java-version: 1.8
     - name: Unit tests
       run: bash ./gradlew test --stacktrace
+    - name: Unit tests results
+      uses: actions/upload-artifact@v1
+      with:
+        name: tests-results
+        path: /dir/results
+        
+      
