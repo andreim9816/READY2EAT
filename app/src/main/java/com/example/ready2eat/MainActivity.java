@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.ready2eat.Model.Admin;
 import com.rey.material.widget.CheckBox;
 import com.example.ready2eat.Common.Common;
 import com.example.ready2eat.Model.User;
@@ -59,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Check remember button
+         //Check remember button
         String user = Paper.book().read(Common.USER_KEY);
         String pwd = Paper.book().read(Common.PWD_KEY);
 
@@ -74,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference table_user = database.getReference("User");
+        final DatabaseReference table_admin = database.getReference("Admin");
 
         final ProgressDialog mDialog = new ProgressDialog(MainActivity.this);
         mDialog.setMessage("Please wait...");
@@ -93,20 +96,10 @@ public class MainActivity extends AppCompatActivity {
                     user.setPhone(phone); // set phone
                     if(user.getPassword().equals(pwd))
                     {
-                        if(user.getPhone().equals("0784310009"))
-                        {
-                            Intent homeAdminIntent = new Intent(MainActivity.this, AdminHome.class);
-                            Common.currentUser = user;
-                            startActivity(homeAdminIntent);
-                            finish();
-                        }
-                        else
-                        {
                             Intent homeIntent = new Intent(MainActivity.this, Home.class);
                             Common.currentUser = user;
                             startActivity(homeIntent);
                             finish();
-                        }
                     }
                     else
                     {
@@ -116,8 +109,44 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else
                 {
-                    mDialog.dismiss();
-                    Toast.makeText(MainActivity.this, "User does not exit in Database", Toast.LENGTH_SHORT).show();
+                    table_admin.addValueEventListener(new ValueEventListener()
+                    {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot)
+                        {
+                            //Check if user exists in database
+                            if(dataSnapshot.child(phone).exists())
+                            {
+                                //Get User Information
+                                mDialog.dismiss();
+                                Admin admin = dataSnapshot.child(phone).getValue(Admin.class);
+                                admin.setPhone(phone); // set phone
+                                if(admin.getPassword().equals(pwd))
+                                {
+                                    Intent homeAdminIntent = new Intent(MainActivity.this, AdminHome.class);
+                                    Common.currentUser = admin;
+                                    startActivity(homeAdminIntent);
+                                    finish();
+                                }
+                                else
+                                {
+                                    mDialog.dismiss();
+                                    Toast.makeText(MainActivity.this, "Wrong password", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                            else
+                            {
+                                mDialog.dismiss();
+                                Toast.makeText(MainActivity.this, "User does not exit in Database", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError)
+                        {
+
+                        }
+                    });
                 }
             }
 

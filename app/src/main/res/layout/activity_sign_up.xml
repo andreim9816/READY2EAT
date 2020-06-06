@@ -64,7 +64,7 @@
             android:textSize="20sp"
             app:met_baseColor="#000000"
             app:met_floatingLabel="highlight"
-            app:met_maxCharacters="11"
+            app:met_maxCharacters="10"
             app:met_primaryColor="#000000"
             app:met_singleLineEllipsis="true"
             android:drawableLeft="@drawable/ic_phone24"/>

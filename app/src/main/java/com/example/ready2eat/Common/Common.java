@@ -1,13 +1,16 @@
 package com.example.ready2eat.Common;
 
+import com.example.ready2eat.Model.Person;
 import com.example.ready2eat.Model.Request;
-import com.example.ready2eat.Model.User;
+
 
 import java.util.Objects;
 
 public class Common
 {
-    public static User currentUser; // variables that saves the current user
+//NU UITA CA NU MAI AM USER SAU ADMIN AICI
+
+    public static Person currentUser; // The curret user. Could be a simple user or the admin
     public static Request currentRequest;
     public static final String UPDATE = "Actualizeaza";
     public static final String DELETE = "Sterge";
