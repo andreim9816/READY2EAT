@@ -75,18 +75,6 @@ public class Cart extends AppCompatActivity
         loadListFood();
     }
 
-    public float calculateTotal(List<Order> cart)
-    {
-        float total = 0;
-        for(Order order: cart)
-        {
-            total += (1 - (Float.parseFloat(order.getDiscount())/ 100)) *
-                    (Float.parseFloat(order.getPrice())) * (Float.parseFloat(order.getQuantity()));
-        }
-
-        return total;
-
-    }
 
     private void showAlertDialog()
     {

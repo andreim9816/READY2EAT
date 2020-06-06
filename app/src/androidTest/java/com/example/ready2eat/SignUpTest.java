@@ -166,6 +166,7 @@ public class SignUpTest {
         cleanUp();
     }
 
+
     public void typeFields(String userName, String password, String number)
     {
         onView(withId(R.id.btnSignUp)).perform(click());
@@ -181,6 +182,7 @@ public class SignUpTest {
 
         onView(withId(R.id.btnSignUp)).perform(click());
     }
+
 
     public void cleanUp()
     {
