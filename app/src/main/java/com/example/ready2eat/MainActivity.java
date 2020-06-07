@@ -114,10 +114,10 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot)
                         {
-                            //Check if user exists in database
+                            //Check if admin exists in database
                             if(dataSnapshot.child(phone).exists())
                             {
-                                //Get User Information
+                                //Get Admin Information
                                 mDialog.dismiss();
                                 Admin admin = dataSnapshot.child(phone).getValue(Admin.class);
                                 admin.setPhone(phone); // set phone

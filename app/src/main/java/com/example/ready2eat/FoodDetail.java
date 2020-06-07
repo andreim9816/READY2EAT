@@ -96,7 +96,7 @@ public class FoodDetail extends AppCompatActivity {
         food_description.setScrollContainer(false);
 
         if (getIntent() != null) {
-            foodId = getIntent().getStringExtra("FoodId");
+            foodId = getIntent().getStringExtra("foodId");
 
         }
         if (!foodId.isEmpty()) {
@@ -130,7 +130,7 @@ public class FoodDetail extends AppCompatActivity {
 
                 for(int i = 0 ; i < food_desc_array.size() ; i++)
                     food_desc_array.set(i, food_desc_array.get(i).trim());
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getBaseContext(), R.layout.list_item, food_desc_array);
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(getBaseContext(), R.layout.list_item, food_desc_array);
                 food_description.setAdapter(adapter);
 
             }

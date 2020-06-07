@@ -80,4 +80,13 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.3.0-rc01'
 
 }
+
+tasks.withType(Test) {
+    testLogging {
+        exceptionFormat "full"
+        events "started", "skipped", "passed", "failed"
+        showStandardStreams true
+    }
+}
+
 apply plugin: 'com.google.gms.google-services'

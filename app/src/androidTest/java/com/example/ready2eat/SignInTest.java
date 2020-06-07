@@ -1,5 +1,6 @@
 package com.example.ready2eat;
 
+import androidx.test.espresso.Espresso;
 import androidx.test.espresso.action.TypeTextAction;
 import androidx.test.espresso.intent.Intents;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
@@ -35,7 +36,14 @@ public class SignInTest {
     public void successfulLogin1() {
         onView(withId(R.id.btnSignIn)).perform(click());
         onView(withId(R.id.edtPhone)).perform(new TypeTextAction("0"));
+
+//        Espresso.closeSoftKeyboard();
+        Espresso.pressBack();
+
         onView(withId(R.id.edtPassword)).perform(new TypeTextAction("test"));
+//        Espresso.closeSoftKeyboard();
+        Espresso.pressBack();
+
         onView(withId(R.id.btnSignIn)).perform(click());
         intended(hasComponent(Home.class.getName()));
     }
@@ -44,7 +52,12 @@ public class SignInTest {
     public void loginAdmin() {
         onView(withId(R.id.btnSignIn)).perform(click());
         onView(withId(R.id.edtPhone)).perform(new TypeTextAction("0784310009"));
+        Espresso.closeSoftKeyboard();
+
         onView(withId(R.id.edtPassword)).perform(new TypeTextAction("aplicatie"));
+        Espresso.closeSoftKeyboard();
+
+
         onView(withId(R.id.btnSignIn)).perform(click());
         intended(hasComponent(AdminHome.class.getName()));
     }
@@ -53,7 +66,12 @@ public class SignInTest {
     public void unsuccessfulLogin1() {
         onView(withId(R.id.btnSignIn)).perform(click());
         onView(withId(R.id.edtPhone)).perform(new TypeTextAction(""));
+        Espresso.closeSoftKeyboard();
+
+
         onView(withId(R.id.edtPassword)).perform(new TypeTextAction(""));
+        Espresso.closeSoftKeyboard();
+
         onView(withId(R.id.btnSignIn)).perform(click());
         //checks if Toast.makeText appears
         onView(withText("Introdu mai intai numar si parola")).inRoot(withDecorView(not(rule.getActivity().getWindow().getDecorView()))) .check(matches(isDisplayed()));
@@ -71,7 +89,15 @@ public class SignInTest {
     public void unsuccessfulLogin3() {
         onView(withId(R.id.btnSignIn)).perform(click());
         onView(withId(R.id.edtPhone)).perform(new TypeTextAction("0727874060"));
+
+
+        Espresso.pressBack();
+        Espresso.closeSoftKeyboard();
+
         onView(withId(R.id.edtPassword)).perform(new TypeTextAction("laura"));
+        Espresso.pressBack();
+        Espresso.closeSoftKeyboard();
+
         onView(withId(R.id.btnSignIn)).perform(click());
         //checks if Toast.makeText appears
         onView(withText("Parola gresita")).inRoot(withDecorView(not(rule.getActivity().getWindow().getDecorView()))) .check(matches(isDisplayed()));

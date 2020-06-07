@@ -38,10 +38,20 @@ public class AddToCartTest {
         //log in, add a product in cart and checks if the message is displayed
         onView(withId(R.id.btnSignIn)).perform(click());
         onView(withId(R.id.edtPhone)).perform(new TypeTextAction("0"));
-        Espresso.closeSoftKeyboard();
+
+
+//        Espresso.closeSoftKeyboard();
+        Espresso.pressBack();
+
         onView(withId(R.id.edtPassword)).perform(new TypeTextAction("test"));
+
+//        Espresso.closeSoftKeyboard();
+        Espresso.pressBack();
+
         onView(withId(R.id.btnSignIn)).perform(click());
+
         intended(hasComponent(Home.class.getName()));
+
         onView(withId(R.id.recycler_menu)).perform(click());
         intended(hasComponent(FoodList.class.getName()));
         onView(withId(R.id.recycler_food)).perform(click());
