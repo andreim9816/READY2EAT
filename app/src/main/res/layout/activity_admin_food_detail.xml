@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FoodDetail">
+    tools:context=".FoodDetail"
+    >
+
 
     <ScrollView
         android:id = "@+id/collapsing"
@@ -16,7 +18,6 @@
             android:orientation = "horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-
 
             <ImageView
                 android:id="@+id/img_food"
@@ -33,12 +34,12 @@
                 android:layout_height="match_parent">
 
 
-
+                <!-- f6f6f6    f5ecd0-->
                 <LinearLayout
                     android:id="@+id/illustrations"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#f6f6f6"
+                    android:background="#f7efd2"
                     android:orientation="vertical">
 
                     <TextView
@@ -55,16 +56,18 @@
                         android:textFontWeight="800"
                         android:textSize="26sp" />
 
-                    <GridLayout
+                    <LinearLayout
                         android:layout_width="match_parent"
+                        android:weightSum="1.0"
                         android:layout_height="100dp"
                         android:layout_marginTop="10dp"
                         android:alignmentMode="alignMargins"
                         android:paddingStart="5dp">
 
                         <FrameLayout
-                            android:layout_width="138dp"
-                            android:layout_height="match_parent"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.33"
                             android:textAlignment="center">
 
                             <ImageView
@@ -93,8 +96,9 @@
                             android:background="#C8C8C8" />
 
                         <FrameLayout
-                            android:layout_width="130dp"
-                            android:layout_height="match_parent"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".33"
                             android:textAlignment="center">
 
                             <ImageView
@@ -123,8 +127,9 @@
                             android:background="#C8C8C8" />
 
                         <FrameLayout
-                            android:layout_width="130dp"
-                            android:layout_height="match_parent"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".33"
                             android:textAlignment="center">
 
                             <ImageView
@@ -148,9 +153,7 @@
                                 android:textColor="#808080"
                                 android:textSize="20dp" />
                         </FrameLayout>
-                    </GridLayout>
-
-
+                    </LinearLayout>
 
                     <TextView
                         android:layout_width="match_parent"
@@ -164,21 +167,18 @@
                         android:textStyle="bold"
                         android:textSize="20sp"/>
 
-
-
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="#faf5e4"
 
-
                     >
                     <ListView
                         android:id="@+id/food_description"
                         android:layout_width="match_parent"
                         android:layout_height="320dp"
-                        android:layout_marginTop="7dp"
+                        android:layout_marginTop="3dp"
                         android:lineSpacingMultiplier="1.5"
                         android:padding="15dp"
                         android:divider = "@null"
@@ -192,16 +192,23 @@
 
     </ScrollView>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:background="#faf5e4">
 
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btnCart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/white"
-        android:src="@drawable/ic_shopping_cart_black_24dp"
-        app:elevation="6dp"
-        app:pressedTranslationZ="12dp"
-        app:layout_anchorGravity="bottom|right|end"
-        app:useCompatPadding="true"/> 
+        <Button
+            android:id="@+id/btnCart"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_rounded"
+            android:text="Adauga in cos"
+            android:textColor="#faf5e4"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            app:elevation="3dp"
+            app:pressedTranslationZ="12dp"/>
+    </RelativeLayout>
 </RelativeLayout>

@@ -45,9 +45,4 @@ public class Category
         Image = image;
         CategoryId = categoryId;
     }
-
-    public Category(String name, String image) {
-        Name = name;
-        Image = image;
-    }
 }

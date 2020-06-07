@@ -61,6 +61,24 @@ public class AddToCartTest {
         onView(withText("Adaugat in cos")).inRoot(withDecorView(not(rule.getActivity().getWindow().getDecorView()))).check(matches(isDisplayed()));
     }
 
+    @Test
+    public void unsuccessfulAddToCart() {
+        //log in, add a product in cart and checks if the message is displayed
+        onView(withId(R.id.btnSignIn)).perform(click());
+        onView(withId(R.id.edtPhone)).perform(new TypeTextAction("0"));
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.edtPassword)).perform(new TypeTextAction("test"));
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.btnSignIn)).perform(click());
+        intended(hasComponent(Home.class.getName()));
+        onView(withId(R.id.recycler_menu)).perform(click());
+        intended(hasComponent(FoodList.class.getName()));
+        onView(withId(R.id.recycler_food)).perform(click());
+        intended(hasComponent(FoodDetail.class.getName()));
+        onView(withId(R.id.btnCart)).perform(click());
+        onView(withText("Selecteaza cantitatea mai intai")).inRoot(withDecorView(not(rule.getActivity().getWindow().getDecorView()))).check(matches(isDisplayed()));
+    }
+
     @After
     public void end() throws Exception {
         Intents.release();

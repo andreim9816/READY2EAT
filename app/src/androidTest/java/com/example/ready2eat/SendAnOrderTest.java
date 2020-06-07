@@ -46,13 +46,12 @@ import static org.hamcrest.Matchers.not;
 public class SendAnOrderTest{
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         Intents.init();
-
     }
 
     @Rule
-    public ActivityTestRule<MainActivity> rule = new ActivityTestRule(MainActivity.class);
+    public ActivityTestRule<MainActivity> rule = new ActivityTestRule<>(MainActivity.class);
 
     @Test
     public void sendAnOrderSuccessfully() {
@@ -221,7 +220,7 @@ public class SendAnOrderTest{
     }
 
     @After
-    public void end() throws Exception {
+    public void end() {
         Intents.release();
     }
 
