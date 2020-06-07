@@ -15,9 +15,8 @@ Team project I worked on during the MDS course at the Uni
  
 For bug reporting click [here](https://github.com/andreim9816/READY2EAT/issues?q=is%3Aissue+is%3Aclosed).
 
- - folosirea unui build tool 
+ - folosirea unui build tool click [here](https://github.com/andreim9816/READY2EAT/blob/master/app/build.gradle).
  
-
  - refactoring, code standards
  
  - design patterns
