@@ -3,7 +3,7 @@ Team project I worked on during the MDS course at the Uni
 
 
 ## Requirements
- ### - user stories, backlog creation 
+ #### - user stories, backlog creation 
  ### - design/arhitectura/UML
  ### - source control (branch creation, merge/rebase) 
  ### - teste automate (unit sau integration)
