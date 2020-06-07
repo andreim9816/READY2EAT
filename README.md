@@ -7,9 +7,9 @@ Team project I worked on during the MDS course at the Uni
  
  - design/arhitectura/UML click [here](https://github.com/andreim9816/READY2EAT/tree/master/Design%20%2B%20UML).
  
- - source control (branch creation, merge/rebase) 
+ - source control (branch creation, merge/rebase) check our [branches](https://github.com/andreim9816/READY2EAT/branches) and [pull requests](https://trello.com/ready2eat/homehttps://github.com/andreim9816/READY2EAT/pulls?q=is%3Apr+is%3Aclosed)
  
- - teste automate (unit sau integration)
+ - teste automate (unit sau integration) check [here](https://github.com/andreim9816/READY2EAT/tree/master/Tests%20results)
  
  - bug reporting
  
