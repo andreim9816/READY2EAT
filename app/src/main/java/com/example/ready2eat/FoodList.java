@@ -64,7 +64,7 @@ public class FoodList extends AppCompatActivity
         if(getIntent() != null)
             categoryId = getIntent().getStringExtra("CategoryId");
 
-        if(!categoryId.isEmpty() && categoryId != null)
+        if(categoryId != null && !categoryId.isEmpty())
         {
             loadListFood(categoryId);
         }
@@ -132,7 +132,7 @@ public class FoodList extends AppCompatActivity
                 Food.class,
                 R.layout.food_item,
                 FoodViewHolder.class,
-                foodList.orderByChild("Name").equalTo(text.toString()))
+                foodList.orderByChild("name").equalTo(text.toString()))
         {
 
             @Override
@@ -140,11 +140,14 @@ public class FoodList extends AppCompatActivity
             {
                 foodViewHolder.food_name.setText(food.getName());
                 foodViewHolder.food_price.setText(food.getPrice() + " Lei");
+
                 if(!food.getMenuID().equals("11"))
                     foodViewHolder.quantity.setText(food.getQuantity() + " g");
                 else foodViewHolder.quantity.setText(food.getQuantity());
+
                 foodViewHolder.time.setText(food.getTime());
                 Picasso.get().load(food.getImage()).into(foodViewHolder.food_image);
+
                 final Food local = food;
                 foodViewHolder.setItemClickListener(new ItemClickListener()
                 {
@@ -187,7 +190,7 @@ public class FoodList extends AppCompatActivity
         adapter = new FirebaseRecyclerAdapter<Food, FoodViewHolder>(Food.class,
                 R.layout.food_item,
                 FoodViewHolder.class,
-                foodList.orderByChild("menuID").equalTo(categoryId) )
+                foodList.orderByChild("menuID").equalTo(categoryId))
                 {
                     @Override
                     protected void populateViewHolder(FoodViewHolder foodViewHolder, Food food, int i)
@@ -200,7 +203,7 @@ public class FoodList extends AppCompatActivity
                             public void onClick(View view, int position, boolean isLongClick) {
                                 //Start new Activity
                                 Intent foodDetail = new Intent(FoodList.this, FoodDetail.class);
-                                foodDetail.putExtra("FoodId", adapter.getRef(position).getKey()); //Send food id to new activity
+                                foodDetail.putExtra("foodId", adapter.getRef(position).getKey()); //Send food id to new activity
                                 startActivity(foodDetail);
                             }
                         });
