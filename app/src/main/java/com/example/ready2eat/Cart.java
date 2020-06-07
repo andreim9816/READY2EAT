@@ -75,27 +75,29 @@ public class Cart extends AppCompatActivity
         loadListFood();
     }
 
-
-    private void showAlertDialog()
+    public void showAlertDialog()
     {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(Cart.this);
 
-        Calendar calendar = Calendar.getInstance();
+        final EditText edtHour;
+        alertDialog = new AlertDialog.Builder(Cart.this);
 
+        Calendar calendar = Calendar.getInstance();
         SimpleDateFormat simpleformat = new SimpleDateFormat("HH:mm");
         calendar.add(Calendar.HOUR_OF_DAY, + 1);
 
         Date finishTime = calendar.getTime();
         String currentTime = simpleformat.format(finishTime);
+
         final int minutes = finishTime.getMinutes();
         final int hours = finishTime.getHours();
 
-        alertDialog.setTitle("Ultimul pas!");
+        alertDialog.setTitle(R.string.last_step);
 
-        alertDialog.setTitle("Puteti prelua comanda incepand cu ora " + currentTime);
-        alertDialog.setMessage("Daca doriti sa preluati comanda mai tarziu, introduceti ora(hh:mm):");
+        alertDialog.setMessage(getString(R.string.current_time) + " " + currentTime + "\n" +
+                "Daca doriti sa preluati comanda mai tarziu, introduceti ora(hh:mm):");
 
-        final EditText edtHour = new EditText(Cart.this);
+        edtHour = new EditText(Cart.this);
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.MATCH_PARENT);
@@ -104,7 +106,7 @@ public class Cart extends AppCompatActivity
         alertDialog.setView(edtHour);
         alertDialog.setIcon(R.drawable.ic_access_time_black_24dp);
 
-        alertDialog.setPositiveButton("CONFIRMĂ ORA", new DialogInterface.OnClickListener() {
+        alertDialog.setPositiveButton(R.string.confirm_hour, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
@@ -142,7 +144,6 @@ public class Cart extends AppCompatActivity
                     } else {
                         Toast.makeText(Cart.this, "Ora introdusă este incorectă! ", Toast.LENGTH_SHORT).show();
                     }
-
                 }
             }
         });

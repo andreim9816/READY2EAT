@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.provider.ContactsContract;
 
 import androidx.annotation.ContentView;
+import androidx.test.espresso.Espresso;
 import androidx.test.espresso.action.TypeTextAction;
 import androidx.test.espresso.intent.Intents;
 import androidx.test.platform.app.InstrumentationRegistry;
@@ -56,7 +57,9 @@ public class HomeTest {
     public void successfulLogin() {
         onView(withId(R.id.btnSignIn)).perform(click());
         onView(withId(R.id.edtPhone)).perform(new TypeTextAction("0"));
+        Espresso.closeSoftKeyboard();
         onView(withId(R.id.edtPassword)).perform(new TypeTextAction("test"));
+        Espresso.closeSoftKeyboard();
         onView(withId(R.id.btnSignIn)).perform(click());
         intended(hasComponent(Home.class.getName()));
 

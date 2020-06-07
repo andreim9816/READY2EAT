@@ -42,6 +42,7 @@ public class SignInTest {
     public void successfulLogin1() {
         onView(withId(R.id.btnSignIn)).perform(click());
         onView(withId(R.id.edtPhone)).perform(new TypeTextAction("0"));
+
 //        Espresso.closeSoftKeyboard();
         Espresso.pressBack();
 
@@ -62,6 +63,7 @@ public class SignInTest {
         onView(withId(R.id.edtPassword)).perform(new TypeTextAction("aplicatie"));
         Espresso.closeSoftKeyboard();
 
+
         onView(withId(R.id.btnSignIn)).perform(click());
         intended(hasComponent(AdminHome.class.getName()));
     }
@@ -71,6 +73,7 @@ public class SignInTest {
         onView(withId(R.id.btnSignIn)).perform(click());
         onView(withId(R.id.edtPhone)).perform(new TypeTextAction(""));
         Espresso.closeSoftKeyboard();
+
 
         onView(withId(R.id.edtPassword)).perform(new TypeTextAction(""));
         Espresso.closeSoftKeyboard();
@@ -92,6 +95,7 @@ public class SignInTest {
     public void unsuccessfulLogin3() {
         onView(withId(R.id.btnSignIn)).perform(click());
         onView(withId(R.id.edtPhone)).perform(new TypeTextAction("0727874060"));
+
 
         Espresso.pressBack();
         Espresso.closeSoftKeyboard();

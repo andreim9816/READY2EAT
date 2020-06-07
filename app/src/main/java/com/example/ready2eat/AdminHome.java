@@ -50,6 +50,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.UUID;
 
+import io.paperdb.Paper;
+
 public class AdminHome extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private AppBarConfiguration mAppBarConfiguration;
@@ -58,6 +60,7 @@ public class AdminHome extends AppCompatActivity implements NavigationView.OnNav
     StorageReference storageReference;
     DatabaseReference category;
     FirebaseRecyclerAdapter<Category, AdminMenuViewHolder> adapter;
+
 
     TextView txtFullName;
 
@@ -87,6 +90,7 @@ public class AdminHome extends AppCompatActivity implements NavigationView.OnNav
         category = database.getReference("Category");
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
+        Paper.init(this);
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -329,6 +333,7 @@ public class AdminHome extends AppCompatActivity implements NavigationView.OnNav
             startActivity(orderIntent);
         }
         else if(id == R.id.nav_log_out) {
+            Paper.book().destroy();
             Intent signIn = new Intent(AdminHome.this, SignIn.class);
             signIn.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(signIn);
