@@ -1,8 +1,6 @@
 package com.example.ready2eat.ViewHolder;
 
-import android.content.Intent;
 import android.os.Build;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,11 +12,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
 import com.example.ready2eat.View.Cart;
-import com.example.ready2eat.Database.Database;
+import com.example.ready2eat.ViewHolder.Database.Database;
 import com.example.ready2eat.Interface.ItemClickListener;
 import com.example.ready2eat.Model.Order;
 import com.example.ready2eat.R;
-import com.example.ready2eat.View.MainActivity;
 import com.squareup.picasso.Picasso;
 
 import java.text.NumberFormat;
@@ -64,7 +61,6 @@ public class CartAdapter extends RecyclerView.Adapter<CartViewHolder>
         this.cart = cart;
     }
 
-
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public CartViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
@@ -78,16 +74,11 @@ public class CartAdapter extends RecyclerView.Adapter<CartViewHolder>
     @Override
     public void onBindViewHolder(final CartViewHolder holder, final int position)
     {
-
         Picasso.get()
                 .load(listData.get(position).getImage())
                 .resize(70,70)
                 .centerCrop()
                 .into(holder.cart_image);
-
-//        TextDrawable drawable = TextDrawable.builder()
-//                .buildRect(""+listData.get(position).getQuantity(),  Color.rgb(248, 180, 0));
-//        holder.img_cart_count.setImageDrawable(drawable);
 
         holder.btn_quantity.setNumber(listData.get(position).getQuantity());
         holder.btn_quantity.setOnValueChangeListener(new ElegantNumberButton.OnValueChangeListener() {
@@ -120,7 +111,6 @@ public class CartAdapter extends RecyclerView.Adapter<CartViewHolder>
                 NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
                 holder.txt_price.setText(fmt.format(Float.parseFloat(order.getPrice()) * Integer.parseInt(order.getQuantity())));
                 cart.txtTotalPrice.setText(fmt.format(total));
-
 
             }
         });

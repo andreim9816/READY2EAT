@@ -2,14 +2,19 @@ package com.example.ready2eat.Model;
 
 public class Food
 {
-    private String Name, Image, Description, Price, Discount, MenuID;
+    private String Name;
+    private String Image;
+    private String Description;
+    private String  Price;
+    private String  Discount;
+    private String MenuID;
     private String Quantity;
     private String Time;
 
-    public Food() {
-    }
+    public Food() { }
 
-    public Food(String name, String image, String description, String price, String discount, String menuID, String quantity, String cookingTime) {
+    public Food(String name, String image, String description, String price, String discount,
+                String menuID, String quantity, String cookingTime) {
         this.Name = name;
         this.Image = image;
         this.Description = description;
