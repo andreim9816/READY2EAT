@@ -9,9 +9,6 @@
     tools:context="com.example.ready2eat.SignIn">
 
 
-<!--     <LinearLayout  TREBUIE LASAT?
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/> -->
 
     <ImageView
         android:id="@+id/imageView3"
@@ -40,17 +37,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:width="300dp"
-        android:drawableLeft="@drawable/ic_phone24"
+        android:drawableLeft="@drawable/ic_phone_black"
         android:gravity="center_horizontal"
         android:hint="Numar de telefon"
         android:inputType="phone"
         android:textColor="#000000"
-        android:textColorHint="#faf5e4"
+        android:textColorHint="#000000"
         android:textSize="20sp"
         android:layout_marginTop="30dp"
         app:met_baseColor="#000000"
         app:met_floatingLabel="highlight"
-        app:met_maxCharacters="11"
+        app:met_maxCharacters="10"
         app:met_primaryColor="#000000"
         app:met_singleLineEllipsis="true"
         app:layout_constraintTop_toBottomOf="@id/imageView4"
@@ -61,17 +58,17 @@
         android:id="@+id/edtPassword"
         android:layout_width="300dp"
         android:layout_height="75dp"
-        android:drawableLeft="@drawable/ic_lock"
+        android:drawableLeft="@drawable/ic_baseline_lock_24_black"
         android:gravity="center_horizontal"
         android:hint="Parola"
         android:inputType="textPassword"
         android:textColor="#000000"
-        android:textColorHint="#faf5e4"
+        android:textColorHint="#000000"
         android:textSize="20sp"
-        app:met_baseColor="#faf5e4"
+        app:met_baseColor="#000000"
         app:met_floatingLabel="highlight"
         app:met_maxCharacters="20"
-        app:met_primaryColor="#faf5e4"
+        app:met_primaryColor="#000000"
         app:met_singleLineEllipsis="true"
         app:layout_constraintTop_toBottomOf="@id/edtPhone"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -90,7 +87,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/edtPassword" />
-  
+
     <Button
         android:id="@+id/btnSignIn"
         android:layout_width="wrap_content"
