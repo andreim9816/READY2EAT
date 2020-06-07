@@ -20,5 +20,14 @@ jobs:
         with:
           java-version: 1.8
       - name: Unit tests
-        run: bash ./gradlew test --stacktrace
+        run: bash ./gradlew test --stacktraceț
+      - name: Run Instrumentation Tests (reactivecircus)
+        uses: reactivecircus/android-emulator-runner@v2.6.1
+        with:
+            api-level: 23
+            target: default
+            arch: x86
+            profile: Nexus 6
+            script: ./gradlew connectedCheck --stacktrace 
+        
 
