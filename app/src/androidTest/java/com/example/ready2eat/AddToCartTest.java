@@ -1,5 +1,6 @@
 package com.example.ready2eat;
 
+import androidx.test.espresso.Espresso;
 import androidx.test.espresso.action.TypeTextAction;
 import androidx.test.espresso.intent.Intents;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
@@ -22,13 +23,6 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.not;
 
-
-/**
- * Instrumented test, which will execute on an Android device.
- *
- * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
- */
-
 @RunWith(AndroidJUnit4.class)
 public class AddToCartTest {
     @Before
@@ -44,6 +38,7 @@ public class AddToCartTest {
         //log in, add a product in cart and checks if the message is displayed
         onView(withId(R.id.btnSignIn)).perform(click());
         onView(withId(R.id.edtPhone)).perform(new TypeTextAction("0"));
+        Espresso.closeSoftKeyboard();
         onView(withId(R.id.edtPassword)).perform(new TypeTextAction("test"));
         onView(withId(R.id.btnSignIn)).perform(click());
         intended(hasComponent(Home.class.getName()));

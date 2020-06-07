@@ -7,19 +7,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
-import com.example.ready2eat.Database.Database;
 import com.example.ready2eat.Model.Food;
-import com.example.ready2eat.Model.Order;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,18 +27,18 @@ import java.util.Arrays;
 
 public class AdminFoodDetail extends AppCompatActivity {
 
-    TextView food_name, food_price, quantity, time;
-    ListView food_description;
-    ImageView food_image;
-    Button btnCart;
-    ElegantNumberButton numberButton;
+    private TextView food_name, food_price, quantity, time;
+    private ListView food_description;
+    private ImageView food_image;
+    private Button btnCart;
+    private ElegantNumberButton numberButton;
 
-    String foodId = "";
+    private String foodId = "";
 
-    FirebaseDatabase database;
-    DatabaseReference foods;
+    private FirebaseDatabase database;
+    private DatabaseReference foods;
 
-    Food currentFood;
+    private Food currentFood;
 
 
     @SuppressLint("WrongViewCast")
@@ -51,12 +46,11 @@ public class AdminFoodDetail extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_food_detail);
-        //justifyListViewHeightBasedOnChildren(food_description);
+
         //Firebase
         database = FirebaseDatabase.getInstance();
         foods = database.getReference("Foods");
 
-        //Init view
 
         food_description = findViewById(R.id.food_description);
         food_name = findViewById(R.id.food_name);
@@ -66,8 +60,7 @@ public class AdminFoodDetail extends AppCompatActivity {
         time = findViewById(R.id.time);
         food_description.setScrollContainer(false);
 
-
-        //Get FooD Id from Intent
+        //Get food Id from Intent
         if (getIntent() != null) {
             foodId = getIntent().getStringExtra("FoodId");
 
@@ -90,15 +83,15 @@ public class AdminFoodDetail extends AppCompatActivity {
                         .into(food_image);
 
 
-                food_price.setText(currentFood.getPrice() + " Lei");        //am afisat in layout cantitate, pret, timp, nume
+                food_price.setText(currentFood.getPrice() + " Lei");
                 food_name.setText(currentFood.getName());
 
                 if(!currentFood.getMenuID().equals("11"))
-                    quantity.setText(currentFood.getQuantity() + " g");    //bauturile au deja ml in cantitate
+                    quantity.setText(currentFood.getQuantity() + " g");
                 else quantity.setText(currentFood.getQuantity());
 
                 time.setText(currentFood.getTime() + " min");
-                String fd = currentFood.getDescription();                   //afisarea ingredientelor tip lista
+                String fd = currentFood.getDescription();
 
                 ArrayList<String> food_desc_array = new ArrayList<>(Arrays.asList(fd.split("[,|\n]+")));
                 for(int i = 0 ; i < food_desc_array.size() ; i++)

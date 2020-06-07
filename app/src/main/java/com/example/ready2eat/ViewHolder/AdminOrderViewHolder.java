@@ -40,12 +40,7 @@ public class AdminOrderViewHolder extends RecyclerView.ViewHolder implements Vie
 
     @Override
     public void onClick(View v) {
-
-// <<<<<<< master
-//         itemClickListener.onClick(v, getAdapterPosition(), false);
-// =======
         itemClickListener.onClick(v, getAdapterPosition(), true);
-// >>>>>>> Features
     }
 
     @Override

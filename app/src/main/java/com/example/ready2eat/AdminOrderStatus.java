@@ -76,7 +76,6 @@ public class AdminOrderStatus extends AppCompatActivity {
                             Common.currentRequest = request;
                             orderDetail.putExtra("OrderId", adapter.getRef(position).getKey());
                             startActivity(orderDetail);
-
                     }
                 });
             }

@@ -22,12 +22,6 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.not;
 
-
-/**
- * Instrumented test, which will execute on an Android device.
- *
- * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
- */
 @RunWith(AndroidJUnit4.class)
 public class SignInTest {
     @Before
@@ -61,7 +55,7 @@ public class SignInTest {
         onView(withId(R.id.edtPhone)).perform(new TypeTextAction(""));
         onView(withId(R.id.edtPassword)).perform(new TypeTextAction(""));
         onView(withId(R.id.btnSignIn)).perform(click());
-        //checks if Tost.makeText appears
+        //checks if Toast.makeText appears
         onView(withText("Introdu mai intai numar si parola")).inRoot(withDecorView(not(rule.getActivity().getWindow().getDecorView()))) .check(matches(isDisplayed()));
     }
 
@@ -69,7 +63,7 @@ public class SignInTest {
     public void unsuccessfulLogin2() {
         onView(withId(R.id.btnSignIn)).perform(click());
         onView(withId(R.id.btnSignIn)).perform(click());
-        //checks if Tost.makeText appears
+        //checks if Toast.makeText appears
         onView(withText("Introdu mai intai numar si parola")).inRoot(withDecorView(not(rule.getActivity().getWindow().getDecorView()))) .check(matches(isDisplayed()));
     }
 
@@ -79,7 +73,7 @@ public class SignInTest {
         onView(withId(R.id.edtPhone)).perform(new TypeTextAction("0727874060"));
         onView(withId(R.id.edtPassword)).perform(new TypeTextAction("laura"));
         onView(withId(R.id.btnSignIn)).perform(click());
-        //checks if Tost.makeText appears
+        //checks if Toast.makeText appears
         onView(withText("Parola gresita")).inRoot(withDecorView(not(rule.getActivity().getWindow().getDecorView()))) .check(matches(isDisplayed()));
     }
 

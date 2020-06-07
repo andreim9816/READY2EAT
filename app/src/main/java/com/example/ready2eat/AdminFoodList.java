@@ -91,7 +91,6 @@ public class AdminFoodList extends AppCompatActivity {
             }
         });
 
-
         //Get Intent here
         if(getIntent() != null)
             categoryId = getIntent().getStringExtra("CategoryId");
@@ -220,7 +219,6 @@ public class AdminFoodList extends AppCompatActivity {
                     mDialog.setMessage("Se incarca: " + progress + " %");
                 }
             });
-
         }
     }
 
@@ -245,8 +243,6 @@ public class AdminFoodList extends AppCompatActivity {
                         startActivity(foodDetail);
                     }
                 });
-
-
             }
         };
 
@@ -339,14 +335,12 @@ public class AdminFoodList extends AppCompatActivity {
             {
                 dialog.dismiss();
 
-
                 item.setName(edtName.getText().toString());
                 item.setDescription(edtDescription.getText().toString());
                 item.setPrice(edtPrice.getText().toString());
                 item.setDiscount(edtDiscount.getText().toString());
                 item.setQuantity(edtQuantity.getText().toString());
                 item.setTime(edtTime.getText().toString());
-
 
                 foodList.child(key).setValue(item);
                 Snackbar.make(rootLayout1,"Item-ul " + item.getName() + " a fost actualizat!" , Snackbar.LENGTH_SHORT ).show();
@@ -404,7 +398,4 @@ public class AdminFoodList extends AppCompatActivity {
 
         }
     }
-
-
-
 }

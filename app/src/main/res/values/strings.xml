@@ -23,5 +23,8 @@
     <string name="place_order">Place Order</string>
     <string name="total">Total:</string>
     <string name="title_activity_admin_home">AdminHome</string>
+    <string name="last_step">Ultimul pas!</string>
+    <string name="current_time">Puteti prelua comanda incepand cu ora</string>
+    <string name="confirm_hour">CONFIRMĂ ORA</string>
 
 </resources>
