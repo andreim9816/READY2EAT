@@ -12,7 +12,6 @@ import com.example.ready2eat.R;
 
 public class FoodViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
 {
-
     public TextView food_name;
     public ImageView food_image;
     public TextView quantity;

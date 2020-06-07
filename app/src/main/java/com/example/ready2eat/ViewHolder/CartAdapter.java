@@ -1,7 +1,6 @@
 package com.example.ready2eat.ViewHolder;
 
 import android.os.Build;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +11,8 @@ import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
-import com.example.ready2eat.Cart;
-import com.example.ready2eat.Database.Database;
+import com.example.ready2eat.View.Cart;
+import com.example.ready2eat.ViewHolder.Database.Database;
 import com.example.ready2eat.Interface.ItemClickListener;
 import com.example.ready2eat.Model.Order;
 import com.example.ready2eat.R;
@@ -73,18 +72,13 @@ public class CartAdapter extends RecyclerView.Adapter<CartViewHolder>
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
-    public void onBindViewHolder(CartViewHolder holder, final int position)
+    public void onBindViewHolder(final CartViewHolder holder, final int position)
     {
-
         Picasso.get()
                 .load(listData.get(position).getImage())
                 .resize(70,70)
                 .centerCrop()
                 .into(holder.cart_image);
-
-//        TextDrawable drawable = TextDrawable.builder()
-//                .buildRect(""+listData.get(position).getQuantity(),  Color.rgb(248, 180, 0));
-//        holder.img_cart_count.setImageDrawable(drawable);
 
         holder.btn_quantity.setNumber(listData.get(position).getQuantity());
         holder.btn_quantity.setOnValueChangeListener(new ElegantNumberButton.OnValueChangeListener() {
@@ -92,22 +86,31 @@ public class CartAdapter extends RecyclerView.Adapter<CartViewHolder>
             public void onValueChange(ElegantNumberButton view, int oldValue, int newValue) {
                 Order order = listData.get(position);
                 order.setQuantity(String.valueOf(newValue));
-                new Database(cart).updateCart(order);
+                if(newValue == 0)
+                {
+                    int id = order.getID();
+                    new Database(cart).removeFromCart(id);
+                    cart.loadListFood();
+
+                }
+                else
+                {
+                    new Database(cart).updateCart(order);
+                }
 
                 // Calculate total price
                 float total = 0;
                 List<Order> orders = new Database(cart).getCarts();
+
                 for(Order item: orders)
                 {
-                    Log.v("CART", "DE CE CRAPA AICI!");
                     total += (Float.parseFloat(item.getPrice())) * (Integer.parseInt(item.getQuantity()));
 
                 }
                 Locale locale = new Locale("ro", "RO");
                 NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
-
+                holder.txt_price.setText(fmt.format(Float.parseFloat(order.getPrice()) * Integer.parseInt(order.getQuantity())));
                 cart.txtTotalPrice.setText(fmt.format(total));
-
 
             }
         });

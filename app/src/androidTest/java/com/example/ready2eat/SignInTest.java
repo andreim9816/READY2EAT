@@ -1,18 +1,15 @@
 package com.example.ready2eat;
 
-import android.content.Context;
-import android.content.Intent;
-import android.provider.ContactsContract;
-
-import androidx.annotation.ContentView;
+import androidx.test.espresso.Espresso;
 import androidx.test.espresso.action.TypeTextAction;
 import androidx.test.espresso.intent.Intents;
-import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
-import androidx.test.uiautomator.UiDevice;
 
-import org.hamcrest.Matcher;
+import com.example.ready2eat.View.Admin.AdminHome;
+import com.example.ready2eat.View.Home;
+import com.example.ready2eat.View.MainActivity;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -28,20 +25,8 @@ import static androidx.test.espresso.matcher.RootMatchers.withDecorView;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
-import static org.junit.Assert.*;
-import static androidx.test.espresso.assertion.ViewAssertions.matches;
-import static androidx.test.espresso.matcher.RootMatchers.withDecorView;
-import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static androidx.test.espresso.matcher.ViewMatchers.withText;
-import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
 
-
-/**
- * Instrumented test, which will execute on an Android device.
- *
- * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
- */
 @RunWith(AndroidJUnit4.class)
 public class SignInTest {
     @Before
@@ -50,19 +35,33 @@ public class SignInTest {
     }
     @Rule
     public ActivityTestRule<MainActivity> rule = new ActivityTestRule(MainActivity.class);
+
     @Test
     public void successfulLogin1() {
         onView(withId(R.id.btnSignIn)).perform(click());
         onView(withId(R.id.edtPhone)).perform(new TypeTextAction("0"));
+
+//        Espresso.closeSoftKeyboard();
+        Espresso.pressBack();
+
         onView(withId(R.id.edtPassword)).perform(new TypeTextAction("test"));
+//        Espresso.closeSoftKeyboard();
+        Espresso.pressBack();
+
         onView(withId(R.id.btnSignIn)).perform(click());
         intended(hasComponent(Home.class.getName()));
     }
+
     @Test
     public void loginAdmin() {
         onView(withId(R.id.btnSignIn)).perform(click());
         onView(withId(R.id.edtPhone)).perform(new TypeTextAction("0784310009"));
+        Espresso.closeSoftKeyboard();
+
         onView(withId(R.id.edtPassword)).perform(new TypeTextAction("aplicatie"));
+        Espresso.closeSoftKeyboard();
+
+
         onView(withId(R.id.btnSignIn)).perform(click());
         intended(hasComponent(AdminHome.class.getName()));
     }
@@ -71,9 +70,14 @@ public class SignInTest {
     public void unsuccessfulLogin1() {
         onView(withId(R.id.btnSignIn)).perform(click());
         onView(withId(R.id.edtPhone)).perform(new TypeTextAction(""));
+        Espresso.closeSoftKeyboard();
+
+
         onView(withId(R.id.edtPassword)).perform(new TypeTextAction(""));
+        Espresso.closeSoftKeyboard();
+
         onView(withId(R.id.btnSignIn)).perform(click());
-        //checks if Tost.makeText appears
+        //checks if Toast.makeText appears
         onView(withText("Introdu mai intai numar si parola")).inRoot(withDecorView(not(rule.getActivity().getWindow().getDecorView()))) .check(matches(isDisplayed()));
     }
 
@@ -81,7 +85,7 @@ public class SignInTest {
     public void unsuccessfulLogin2() {
         onView(withId(R.id.btnSignIn)).perform(click());
         onView(withId(R.id.btnSignIn)).perform(click());
-        //checks if Tost.makeText appears
+        //checks if Toast.makeText appears
         onView(withText("Introdu mai intai numar si parola")).inRoot(withDecorView(not(rule.getActivity().getWindow().getDecorView()))) .check(matches(isDisplayed()));
     }
 
@@ -89,11 +93,20 @@ public class SignInTest {
     public void unsuccessfulLogin3() {
         onView(withId(R.id.btnSignIn)).perform(click());
         onView(withId(R.id.edtPhone)).perform(new TypeTextAction("0727874060"));
+
+
+        Espresso.pressBack();
+        Espresso.closeSoftKeyboard();
+
         onView(withId(R.id.edtPassword)).perform(new TypeTextAction("laura"));
+        Espresso.pressBack();
+        Espresso.closeSoftKeyboard();
+
         onView(withId(R.id.btnSignIn)).perform(click());
-        //checks if Tost.makeText appears
+        //checks if Toast.makeText appears
         onView(withText("Parola gresita")).inRoot(withDecorView(not(rule.getActivity().getWindow().getDecorView()))) .check(matches(isDisplayed()));
     }
+
     @After
     public void end() throws Exception{
         Intents.release();

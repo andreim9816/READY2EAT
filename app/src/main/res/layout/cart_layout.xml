@@ -48,13 +48,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
+                    android:fontFamily="@font/my_custom_font"
                     android:gravity="center_vertical|start"
                     android:text="Food 01"
                     android:textAllCaps="true"
+                    android:textColor="#000"
                     android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:fontFamily="@font/my_custom_font"
-                    android:textColor="#000"/>
+                    android:textStyle="bold" />
 
                 <LinearLayout
                     android:layout_width="165dp"
@@ -101,7 +101,7 @@
             app:finalNumber="20"
             app:initialNumber="0"
             app:pressedTranslationZ="12dp"
-            app:textSize="7sp" />
+            app:textSize="6sp" />
 
     </LinearLayout>
 

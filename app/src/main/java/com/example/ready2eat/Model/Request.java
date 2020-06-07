@@ -3,6 +3,7 @@ package com.example.ready2eat.Model;
 import java.util.List;
 
 public class Request {
+    private String id;
     private String phone;
     private String name;
     private String hour;
@@ -12,7 +13,8 @@ public class Request {
 
     public Request(){}
 
-    public Request(String phone, String name, String hour, String total, List<Order> foods) {
+    public Request(String id, String phone, String name, String hour, String total, List<Order> foods) {
+        this.id = id;
         this.phone = phone;
         this.name = name;
         this.hour = hour;
@@ -20,7 +22,24 @@ public class Request {
         this.foods = foods;
         this.status = "0"; //"0" = Placed; "1" = Delivery; "2" = "Delivered"
     }
-  
+
+    public Request(String phone, String name, String hour, String total, List<Order> foods) {
+        this.phone = phone;
+        this.name = name;
+        this.hour = hour;
+        this.total = total;
+        this.foods = foods;
+        this.status = status;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getStatus() {
         return status;
     }

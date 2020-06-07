@@ -11,7 +11,8 @@ public class Order {
 
     public Order(){}
 
-    public Order(String productId, String productName, String quantity, String price, String discount, String image) {
+    public Order(String productId, String productName, String quantity, String price,
+                 String discount, String image) {
         this.ProductId = productId;
         this.ProductName = productName;
         this.Quantity = quantity;
@@ -20,7 +21,8 @@ public class Order {
         this.Image = image;
     }
 
-    public Order(int ID, String productId, String productName, String quantity, String price, String discount, String image) {
+    public Order(int ID, String productId, String productName, String quantity,
+                 String price, String discount, String image) {
         this.ID = ID;
         ProductId = productId;
         ProductName = productName;
@@ -28,6 +30,12 @@ public class Order {
         Price = price;
         Discount = discount;
         Image = image;
+    }
+
+    public Order(String quantity, String price, String discount) {
+        this.Quantity = quantity;
+        this.Price = price;
+        this.Discount = discount;
     }
 
     public int getID() {

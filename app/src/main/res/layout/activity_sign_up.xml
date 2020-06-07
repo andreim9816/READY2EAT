@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#faf5e4"
-    tools:context="com.example.ready2eat.SignUp">
+    tools:context="com.example.ready2eat.View.SignUp">
 
     <ImageView
         android:layout_width="match_parent"
@@ -46,7 +46,7 @@
             app:met_maxCharacters="30"
             app:met_primaryColor="#000000"
             app:met_singleLineEllipsis="true"
-            android:drawableLeft="@drawable/ic_person"/>
+            android:drawableLeft="@drawable/ic_person_black"/>
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/edtPhone"
@@ -64,10 +64,10 @@
             android:textSize="20sp"
             app:met_baseColor="#000000"
             app:met_floatingLabel="highlight"
-            app:met_maxCharacters="11"
+            app:met_maxCharacters="10"
             app:met_primaryColor="#000000"
             app:met_singleLineEllipsis="true"
-            android:drawableLeft="@drawable/ic_phone24"/>
+            android:drawableLeft="@drawable/ic_phone_black"/>
 
 
         <com.rengwuxian.materialedittext.MaterialEditText
@@ -80,15 +80,15 @@
             android:hint="Parola"
             android:text = ""
             android:inputType="textPassword"
-            android:textColor="#faf5e4"
-            android:textColorHint="#faf5e4"
+            android:textColor="#000000"
+            android:textColorHint="#000000"
             android:textSize="20sp"
-            app:met_baseColor="#faf5e4"
+            app:met_baseColor="#000000"
             app:met_floatingLabel="highlight"
             app:met_maxCharacters="20"
-            app:met_primaryColor="#faf5e4"
+            app:met_primaryColor="#000000"
             app:met_singleLineEllipsis="true"
-            android:drawableLeft="@drawable/ic_lock"/>
+            android:drawableLeft="@drawable/ic_lock_black"/>
 
     </LinearLayout>
 
