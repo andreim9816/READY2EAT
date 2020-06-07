@@ -11,8 +11,8 @@ import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
-import com.example.ready2eat.Cart;
-import com.example.ready2eat.Database.Database;
+import com.example.ready2eat.View.Cart;
+import com.example.ready2eat.ViewHolder.Database.Database;
 import com.example.ready2eat.Interface.ItemClickListener;
 import com.example.ready2eat.Model.Order;
 import com.example.ready2eat.R;

@@ -6,6 +6,11 @@ import androidx.test.espresso.intent.Intents;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
 
+import com.example.ready2eat.View.FoodDetail;
+import com.example.ready2eat.View.FoodList;
+import com.example.ready2eat.View.Home;
+import com.example.ready2eat.View.MainActivity;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;

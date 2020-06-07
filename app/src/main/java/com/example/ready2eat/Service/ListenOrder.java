@@ -14,7 +14,7 @@ import androidx.core.app.NotificationCompat;
 
 import com.example.ready2eat.Common.Common;
 import com.example.ready2eat.Model.Request;
-import com.example.ready2eat.OrderStatus;
+import com.example.ready2eat.View.OrderStatus;
 import com.example.ready2eat.R;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;

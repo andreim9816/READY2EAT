@@ -1,17 +1,15 @@
 package com.example.ready2eat;
 
 
-import android.content.Context;
-import android.content.Intent;
-import android.provider.ContactsContract;
-
-import androidx.annotation.ContentView;
 import androidx.test.espresso.Espresso;
 
 import androidx.test.espresso.action.TypeTextAction;
 import androidx.test.espresso.intent.Intents;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
+
+import com.example.ready2eat.View.Home;
+import com.example.ready2eat.View.MainActivity;
 
 import org.junit.After;
 import org.junit.Before;

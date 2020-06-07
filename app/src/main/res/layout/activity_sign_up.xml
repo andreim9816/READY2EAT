@@ -5,11 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#faf5e4"
-    tools:context="com.example.ready2eat.SignUp">
+    tools:context="com.example.ready2eat.View.SignUp">
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+
         android:background="@drawable/background_foto"
         />
 
@@ -45,7 +46,7 @@
             app:met_maxCharacters="30"
             app:met_primaryColor="#000000"
             app:met_singleLineEllipsis="true"
-            android:drawableLeft="@drawable/ic_baseline_person_24_black"/>
+            android:drawableLeft="@drawable/ic_person_black"/>
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/edtPhone"
@@ -87,7 +88,7 @@
             app:met_maxCharacters="20"
             app:met_primaryColor="#000000"
             app:met_singleLineEllipsis="true"
-            android:drawableLeft="@drawable/ic_baseline_lock_24_black"/>
+            android:drawableLeft="@drawable/ic_lock_black"/>
 
     </LinearLayout>
 

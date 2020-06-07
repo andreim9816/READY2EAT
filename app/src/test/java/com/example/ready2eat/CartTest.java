@@ -1,6 +1,7 @@
 package com.example.ready2eat;
 
 import com.example.ready2eat.Model.Order;
+import com.example.ready2eat.View.Cart;
 
 import org.junit.Test;
 

@@ -11,6 +11,12 @@ import androidx.test.espresso.intent.Intents;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
 
+import com.example.ready2eat.View.Cart;
+import com.example.ready2eat.View.FoodDetail;
+import com.example.ready2eat.View.FoodList;
+import com.example.ready2eat.View.Home;
+import com.example.ready2eat.View.MainActivity;
+
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;

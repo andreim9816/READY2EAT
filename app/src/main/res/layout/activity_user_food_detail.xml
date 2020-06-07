@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".View.FoodDetail"
+
+    >
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <include layout="@layout/layout_food_details"/>
+            <RelativeLayout
+                android:orientation = "horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:translationZ="30dp"
+                >
+
+                <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
+                    android:id="@+id/number_button"
+                    android:layout_width="120dp"
+                    android:layout_height="37dp"
+                    android:layout_marginEnd="7dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="332dp"
+                    android:layout_marginBottom="5dp"
+                    app:backgroundDrawable="@drawable/btn_less_rounded"
+                    app:backGroundColor="#f8b400"
+                    app:finalNumber="20"
+                    app:initialNumber="0"
+                    android:translationZ="12dp"
+                    app:elevation="3dp"
+                    app:textSize="7sp"
+                    app:pressedTranslationZ="12dp"/>
+            </RelativeLayout>
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:background="#faf5e4">
+
+        <Button
+            android:id="@+id/btnCart"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_rounded"
+            android:text="Adauga in cos"
+            android:textColor="#faf5e4"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            app:elevation="3dp"
+            app:pressedTranslationZ="12dp"/>
+    </RelativeLayout>
+
+</RelativeLayout>

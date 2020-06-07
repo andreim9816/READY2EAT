@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FoodList">
+    tools:context=".View.FoodList">
 
     <com.mancj.materialsearchbar.MaterialSearchBar
         android:layout_width="match_parent"
@@ -13,6 +13,7 @@
         android:id="@+id/searchBar"
         android:layout_alignParentTop="true"
         app:mt_speechMode="false"
+        android:background="#f7efd2"
         app:mt_hint="Cauta mancarea"/>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -21,7 +22,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical"
-        android:background="#f5ecd0"
+        android:background="#f7efd2"
         />
-<!--  #F2F4F4-->
 </RelativeLayout>
