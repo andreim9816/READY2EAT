@@ -3,7 +3,7 @@ Team project I worked on during the MDS course at the Uni
 
 
 ## Requirements
- - user stories, backlog creation 
+ - user stories, backlog creation check [powerpoint](https://github.com/andreim9816/READY2EAT/blob/master/READY2EAT.pptx) and [Trello](https://trello.com/ready2eat/home).
  
  - design/arhitectura/UML click [here](https://github.com/andreim9816/READY2EAT/tree/master/Design%20%2B%20UML).
  
