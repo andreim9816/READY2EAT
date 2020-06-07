@@ -5,7 +5,7 @@ Team project I worked on during the MDS course at the Uni
 ## Requirements
  - user stories, backlog creation 
  
- - design/arhitectura/UML
+ - design/arhitectura/UML click [here](https://github.com/andreim9816/READY2EAT/issues?q=is%3Aissue+is%3Aclosed).
  
  - source control (branch creation, merge/rebase) 
  
@@ -13,7 +13,7 @@ Team project I worked on during the MDS course at the Uni
  
  - bug reporting
  
-For bug reporting click [here](https://github.com/andreim9816/READY2EAT/issues?q=is%3Aissue+is%3Aclosed).
+For bug reporting click [here](https://github.com/andreim9816/READY2EAT/tree/master/Design%20%2B%20UML).
 
  - folosirea unui build tool 
  
