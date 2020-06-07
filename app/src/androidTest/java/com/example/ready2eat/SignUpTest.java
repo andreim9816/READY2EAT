@@ -27,36 +27,27 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import java.util.Map;
-
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
-import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.intent.Intents.intended;
 import static androidx.test.espresso.intent.matcher.IntentMatchers.hasComponent;
-import static androidx.test.espresso.matcher.RootMatchers.withDecorView;
-import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.not;
 
-/**
- * Instrumented test, which will execute on an Android device.
- *
- * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
- */
+
 
 @RunWith(AndroidJUnit4.class)
 public class SignUpTest {
 
-    String number = "0734567899";
+//    String number = "0734567899";
 
     @Before
-    public void setUp() throws Exception{
+    public void setUp() {
         Intents.init();
     }
     @Rule
-    public ActivityTestRule<MainActivity> rule = new ActivityTestRule(MainActivity.class);
+    public ActivityTestRule<MainActivity> rule = new ActivityTestRule<>(MainActivity.class);
 
     @Test
     public void successfulSigup() {
@@ -64,11 +55,11 @@ public class SignUpTest {
         String userName = "George Bonea";
         String password = "George";
 
-        typeFields(userName, password, number); // types in the fields for the Sign Up part
+        typeFields(userName, password, "0734567899"); // types in the fields for the Sign Up part
+
         onView(ViewMatchers.withId(R.id.btnSignIn)).perform(ViewActions.click());
 
-
-        onView(ViewMatchers.withId(R.id.edtPhone)).perform(new TypeTextAction(number));
+        onView(ViewMatchers.withId(R.id.edtPhone)).perform(new TypeTextAction("0734567899"));
         Espresso.closeSoftKeyboard();
 
         onView(ViewMatchers.withId(R.id.edtPassword)).perform(new TypeTextAction(password));
@@ -179,7 +170,6 @@ public class SignUpTest {
     {
         onView(ViewMatchers.withId(R.id.btnSignUp)).perform(ViewActions.click());
         onView(ViewMatchers.withId(R.id.edtName)).perform(new TypeTextAction(userName));
-
         Espresso.closeSoftKeyboard();
 
         onView(ViewMatchers.withId(R.id.edtPhone)).perform(new TypeTextAction(number));
@@ -203,7 +193,7 @@ public class SignUpTest {
             {
 
                 for(DataSnapshot d : dataSnapshot.getChildren())
-                    if(d.getKey().equals(number))
+                    if(d.getKey().equals("0734567899"))
                         d.getRef().removeValue();
             }
 
