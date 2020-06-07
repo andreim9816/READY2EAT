@@ -56,7 +56,6 @@ public class Database extends SQLiteAssetHelper {
     public void addToCart(Order order){
 
         SQLiteDatabase db = getReadableDatabase();
-        //Log.v("Database.java","AddToCartMethod");
         String query = String.format("INSERT INTO OrderDetail(ProductId,ProductName,Quantity,Price,Discount, Image)VALUES('%s', '%s', '%s', '%s', '%s', '%s');",
                 order.getProductId(),
                 order.getProductName(),
@@ -73,7 +72,6 @@ public class Database extends SQLiteAssetHelper {
         SQLiteDatabase db = getReadableDatabase();
         String query = String.format("DELETE FROM OrderDetail");
         db.execSQL(query);
-
     }
 
     public void removeFromCart(int id)

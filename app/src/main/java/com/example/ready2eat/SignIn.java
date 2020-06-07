@@ -67,7 +67,6 @@ public class SignIn extends AppCompatActivity {
                 mDialog.show();
 
 
-
                 table_user.addValueEventListener(new ValueEventListener()
                 {
                     @Override
@@ -134,13 +133,11 @@ public class SignIn extends AppCompatActivity {
                                              }
                                     }
 
-
                                     @Override
                                     public void onCancelled(DatabaseError databaseError) {
 
                                     }
                                 });
-
                             }
                         }
                         else {
@@ -150,14 +147,12 @@ public class SignIn extends AppCompatActivity {
 
                     }
 
-
                     @Override
                     public void onCancelled(DatabaseError databaseError)
                     {
 
                     }
                 });
-
 
             }
         });

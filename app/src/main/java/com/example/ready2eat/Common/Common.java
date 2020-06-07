@@ -8,7 +8,6 @@ import java.util.Objects;
 
 public class Common
 {
-//NU UITA CA NU MAI AM USER SAU ADMIN AICI
 
     public static Person currentUser; // The curret user. Could be a simple user or the admin
     public static Request currentRequest;

@@ -35,8 +35,6 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.not;
 
-
-
 @RunWith(AndroidJUnit4.class)
 public class SignUpTest {
 
@@ -79,6 +77,7 @@ public class SignUpTest {
 
         typeFields(userName, password, number);
         onView(ViewMatchers.withText("Numarul trebuie sa aiba 10 cifre!")).inRoot(RootMatchers.withDecorView(Matchers.not(rule.getActivity().getWindow().getDecorView()))) .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
+
     }
 
     @Test
@@ -90,6 +89,7 @@ public class SignUpTest {
 
         typeFields(userName, password, number);
         onView(ViewMatchers.withText("Numarul trebuie sa inceapa cu 07...")).inRoot(RootMatchers.withDecorView(Matchers.not(rule.getActivity().getWindow().getDecorView()))) .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
+
     }
 
     @Test
@@ -100,7 +100,9 @@ public class SignUpTest {
         String number = "07--13./93";
 
         typeFields(userName, password, number);
+
         onView(ViewMatchers.withText("Numarul trebuie sa contina doar cifre!")).inRoot(RootMatchers.withDecorView(Matchers.not(rule.getActivity().getWindow().getDecorView()))) .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
+
     }
 
     @Test
@@ -112,6 +114,7 @@ public class SignUpTest {
 
        typeFields(userName, password, number);
         onView(ViewMatchers.withText("Introdu un numar de telefon!")).inRoot(RootMatchers.withDecorView(Matchers.not(rule.getActivity().getWindow().getDecorView()))) .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
+
     }
 
     @Test
@@ -122,7 +125,9 @@ public class SignUpTest {
         String number = "0741130202";
 
         typeFields(userName, password, number);
+
         onView(ViewMatchers.withText("Introdu un nume!")).inRoot(RootMatchers.withDecorView(Matchers.not(rule.getActivity().getWindow().getDecorView()))) .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
+
     }
 
     @Test
@@ -134,6 +139,7 @@ public class SignUpTest {
 
         typeFields(userName, password, number);
         onView(ViewMatchers.withText("Introdu o parola!")).inRoot(RootMatchers.withDecorView(Matchers.not(rule.getActivity().getWindow().getDecorView()))) .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
+
     }
 
     @Test
@@ -144,7 +150,9 @@ public class SignUpTest {
         String number = "0741130202";
 
         typeFields(userName, password, number);
+
         onView(ViewMatchers.withText("Introdu o parola de cel putin 6 caractere!")).inRoot(RootMatchers.withDecorView(Matchers.not(rule.getActivity().getWindow().getDecorView()))) .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
+
     }
 
     @Test
@@ -155,7 +163,9 @@ public class SignUpTest {
         String number = "0741130202";
 
         typeFields(userName, password, number);
+
         onView(ViewMatchers.withText("Introdu un nume de cel putin 6 litere!")).inRoot(RootMatchers.withDecorView(Matchers.not(rule.getActivity().getWindow().getDecorView()))) .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
+
     }
 
 

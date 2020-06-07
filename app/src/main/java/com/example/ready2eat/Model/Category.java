@@ -11,6 +11,11 @@ public class Category
         Name = Image = "";
     }
 
+    public Category(String name, String image) {
+        Name = name;
+        Image = image;
+    }
+
     public String getName() {
         return Name;
     }
@@ -26,7 +31,7 @@ public class Category
     public void setImage(String image) {
         Image = image;
     }
-
+  
     public String getCategoryId() {
         return CategoryId;
     }

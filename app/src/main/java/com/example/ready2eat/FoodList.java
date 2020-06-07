@@ -30,7 +30,6 @@ import java.util.List;
 
 public class FoodList extends AppCompatActivity
 {
-
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
 
@@ -78,9 +77,7 @@ public class FoodList extends AppCompatActivity
         materialSearchBar.addTextChangeListener(new TextWatcher()
         {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after)
-            {
-
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
 
             @Override
@@ -95,9 +92,7 @@ public class FoodList extends AppCompatActivity
             }
 
             @Override
-            public void afterTextChanged(Editable s)
-            {
-
+            public void afterTextChanged(Editable s) {
             }
         });
 
@@ -119,9 +114,7 @@ public class FoodList extends AppCompatActivity
             }
 
             @Override
-            public void onButtonClicked(int buttonCode)
-            {
-
+            public void onButtonClicked(int buttonCode) {
             }
         });
     }
@@ -156,7 +149,8 @@ public class FoodList extends AppCompatActivity
                     {
                         //Start new Activity
                         Intent foodDetail = new Intent(FoodList.this, FoodDetail.class);
-                        foodDetail.putExtra("FoodId", searchAdapter.getRef(position).getKey()); //Send food id to new activity
+                        //Send food id to new activity
+                        foodDetail.putExtra("FoodId", searchAdapter.getRef(position).getKey());
                         startActivity(foodDetail);
                     }
                 });

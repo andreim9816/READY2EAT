@@ -23,12 +23,6 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.not;
 
-
-/**
- * Instrumented test, which will execute on an Android device.
- *
- * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
- */
 @RunWith(AndroidJUnit4.class)
 public class SignInTest {
     @Before
@@ -79,7 +73,7 @@ public class SignInTest {
         Espresso.closeSoftKeyboard();
 
         onView(withId(R.id.btnSignIn)).perform(click());
-        //checks if Tost.makeText appears
+        //checks if Toast.makeText appears
         onView(withText("Introdu mai intai numar si parola")).inRoot(withDecorView(not(rule.getActivity().getWindow().getDecorView()))) .check(matches(isDisplayed()));
     }
 
@@ -105,7 +99,7 @@ public class SignInTest {
         Espresso.closeSoftKeyboard();
 
         onView(withId(R.id.btnSignIn)).perform(click());
-        //checks if Tost.makeText appears
+        //checks if Toast.makeText appears
         onView(withText("Parola gresita")).inRoot(withDecorView(not(rule.getActivity().getWindow().getDecorView()))) .check(matches(isDisplayed()));
     }
 

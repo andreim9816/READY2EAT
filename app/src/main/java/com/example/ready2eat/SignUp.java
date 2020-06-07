@@ -122,11 +122,9 @@ public class SignUp extends AppCompatActivity
                                 Toast.makeText(SignUp.this, "Inserati un numar de telefon valabil!", Toast.LENGTH_SHORT).show();
                             }
                         }
-
                     }
                     @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError)
-                    {
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
 
                     }
                 });

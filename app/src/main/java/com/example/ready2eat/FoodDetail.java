@@ -52,14 +52,12 @@ public class FoodDetail extends AppCompatActivity {
 
     Food currentFood;
 
-
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_detail);
-        //justifyListViewHeightBasedOnChildren(food_description);
-        //Firebase
+
         database = FirebaseDatabase.getInstance();
         foods = database.getReference("Foods");
 
@@ -97,8 +95,6 @@ public class FoodDetail extends AppCompatActivity {
         time = findViewById(R.id.time);
         food_description.setScrollContainer(false);
 
-
-        //Get FooD Id from Intent
         if (getIntent() != null) {
             foodId = getIntent().getStringExtra("foodId");
 
@@ -121,15 +117,15 @@ public class FoodDetail extends AppCompatActivity {
                         .into(food_image);
 
 
-                food_price.setText(currentFood.getPrice() + " Lei");        //am afisat in layout cantitate, pret, timp, nume
+                food_price.setText(currentFood.getPrice() + " Lei");
                 food_name.setText(currentFood.getName());
 
                 if(!currentFood.getMenuID().equals("11"))
-                    quantity.setText(currentFood.getQuantity() + " g");    //bauturile au deja ml in cantitate
+                    quantity.setText(currentFood.getQuantity() + " g");
                 else quantity.setText(currentFood.getQuantity());
 
                 time.setText(currentFood.getTime() + " min");
-                String fd = currentFood.getDescription();                   //afisarea ingredientelor tip lista
+                String fd = currentFood.getDescription();
                 ArrayList<String> food_desc_array = new ArrayList<>(Arrays.asList(fd.split("[,|\n]+")));
 
                 for(int i = 0 ; i < food_desc_array.size() ; i++)

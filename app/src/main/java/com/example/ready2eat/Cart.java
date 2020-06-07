@@ -185,3 +185,4 @@ public class Cart extends AppCompatActivity
         txtTotalPrice.setText(fmt.format(total));
     }
 }
+

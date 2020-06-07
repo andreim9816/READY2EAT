@@ -17,8 +17,6 @@ public class OrderDetail extends AppCompatActivity {
     RecyclerView listFoods;
     RecyclerView.LayoutManager layoutManager;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

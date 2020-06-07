@@ -103,16 +103,6 @@ public class AdminHome extends AppCompatActivity implements NavigationView.OnNav
         drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
 
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        /*mAppBarConfiguration = new AppBarConfiguration.Builder(    - am inlocuit cu ce e mai jos ca sa functioneze - Laura
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
-                .setDrawerLayout(drawer)
-                .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);*/
-
         ActionBarDrawerToggle toggle =
                 new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
 
@@ -231,7 +221,6 @@ public class AdminHome extends AppCompatActivity implements NavigationView.OnNav
                     mDialog.setMessage("Se incarca: " + progress + " %");
                 }
             });
-
         }
     }
 
@@ -279,15 +268,12 @@ public class AdminHome extends AppCompatActivity implements NavigationView.OnNav
                         //Because CategoryId is key, we just get key of this item
                         adminfoodList.putExtra("CategoryId", adapter.getRef(position).getKey());
                         startActivity(adminfoodList);
-
-                        //Toast.makeText(Home.this, "" + clickItem.getName(), Toast.LENGTH_SHORT).show();
                     }
                 });
             }
         };
         recyclerMenu.setAdapter(adapter);
     }
-
 
     @Override
     public void onBackPressed() {
@@ -342,8 +328,6 @@ public class AdminHome extends AppCompatActivity implements NavigationView.OnNav
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
-    // Update / Delete option
 
 
     @Override
