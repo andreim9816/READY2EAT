@@ -4,6 +4,7 @@ public class Category
 {
     private String Name;
     private String Image;
+    private String CategoryId;
 
     public Category()
     {
@@ -24,6 +25,20 @@ public class Category
 
     public void setImage(String image) {
         Image = image;
+    }
+
+    public String getCategoryId() {
+        return CategoryId;
+    }
+
+    public void setCategoryId(String categoryId) {
+        CategoryId = categoryId;
+    }
+
+    public Category(String name, String image, String categoryId) {
+        Name = name;
+        Image = image;
+        CategoryId = categoryId;
     }
 
     public Category(String name, String image) {

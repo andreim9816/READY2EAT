@@ -98,13 +98,13 @@ public class SignIn extends AppCompatActivity {
                                     @Override
                                     public void onDataChange(DataSnapshot dataSnapshot)
                                     {
-                                        //Check if user exists in database
+                                        //Check if admin exists in database
                                         if (!TextUtils.isEmpty(edtPhone.getText().toString()) && !TextUtils.isEmpty(edtPassword.getText().toString()))
                                         {
 
                                             if (dataSnapshot.child(edtPhone.getText().toString()).exists())
                                             {
-                                                //Get User Information
+                                                //Get Admin Information
                                                 mDialog.dismiss();
                                                 Person admin = dataSnapshot.child(edtPhone.getText().toString()).getValue(Admin.class);
                                                 admin.setPhone(edtPhone.getText().toString()); // set phone
