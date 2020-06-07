@@ -3,8 +3,13 @@ package com.example.ready2eat;
 import androidx.annotation.NonNull;
 import androidx.test.espresso.Espresso;
 import androidx.test.espresso.action.TypeTextAction;
+import androidx.test.espresso.action.ViewActions;
+import androidx.test.espresso.assertion.ViewAssertions;
 import androidx.test.espresso.intent.Intents;
 
+import androidx.test.espresso.intent.matcher.IntentMatchers;
+import androidx.test.espresso.matcher.RootMatchers;
+import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
 
@@ -15,6 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.hamcrest.Matchers;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -59,16 +65,18 @@ public class SignUpTest {
         String password = "George";
 
         typeFields(userName, password, number); // types in the fields for the Sign Up part
+        onView(ViewMatchers.withId(R.id.btnSignIn)).perform(ViewActions.click());
 
-        onView(withId(R.id.edtPhone)).perform(new TypeTextAction(number));
+
+        onView(ViewMatchers.withId(R.id.edtPhone)).perform(new TypeTextAction(number));
         Espresso.closeSoftKeyboard();
 
-        onView(withId(R.id.edtPassword)).perform(new TypeTextAction(password));
+        onView(ViewMatchers.withId(R.id.edtPassword)).perform(new TypeTextAction(password));
         Espresso.closeSoftKeyboard();
 
-        onView(withId(R.id.btnSignIn)).perform(click());
+        onView(ViewMatchers.withId(R.id.btnSignIn)).perform(ViewActions.click());
 
-        intended(hasComponent(Home.class.getName()));
+        intended(IntentMatchers.hasComponent(Home.class.getName()));
     }
 
     @Test
@@ -79,7 +87,7 @@ public class SignUpTest {
         String number = "067";
 
         typeFields(userName, password, number);
-        onView(withText("Numarul trebuie sa aiba 10 cifre!")).inRoot(withDecorView(not(rule.getActivity().getWindow().getDecorView()))) .check(matches(isDisplayed()));
+        onView(ViewMatchers.withText("Numarul trebuie sa aiba 10 cifre!")).inRoot(RootMatchers.withDecorView(Matchers.not(rule.getActivity().getWindow().getDecorView()))) .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
     }
 
     @Test
@@ -90,7 +98,7 @@ public class SignUpTest {
         String number = "0041130693";
 
         typeFields(userName, password, number);
-        onView(withText("Numarul trebuie sa inceapa cu 07...")).inRoot(withDecorView(not(rule.getActivity().getWindow().getDecorView()))) .check(matches(isDisplayed()));
+        onView(ViewMatchers.withText("Numarul trebuie sa inceapa cu 07...")).inRoot(RootMatchers.withDecorView(Matchers.not(rule.getActivity().getWindow().getDecorView()))) .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
     }
 
     @Test
@@ -101,7 +109,7 @@ public class SignUpTest {
         String number = "07--13./93";
 
         typeFields(userName, password, number);
-        onView(withText("Numarul trebuie sa contina doar cifre!")).inRoot(withDecorView(not(rule.getActivity().getWindow().getDecorView()))) .check(matches(isDisplayed()));
+        onView(ViewMatchers.withText("Numarul trebuie sa contina doar cifre!")).inRoot(RootMatchers.withDecorView(Matchers.not(rule.getActivity().getWindow().getDecorView()))) .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
     }
 
     @Test
@@ -112,7 +120,7 @@ public class SignUpTest {
         String number = "";
 
        typeFields(userName, password, number);
-        onView(withText("Introdu un numar de telefon!")).inRoot(withDecorView(not(rule.getActivity().getWindow().getDecorView()))) .check(matches(isDisplayed()));
+        onView(ViewMatchers.withText("Introdu un numar de telefon!")).inRoot(RootMatchers.withDecorView(Matchers.not(rule.getActivity().getWindow().getDecorView()))) .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
     }
 
     @Test
@@ -123,7 +131,7 @@ public class SignUpTest {
         String number = "0741130202";
 
         typeFields(userName, password, number);
-        onView(withText("Introdu un nume!")).inRoot(withDecorView(not(rule.getActivity().getWindow().getDecorView()))) .check(matches(isDisplayed()));
+        onView(ViewMatchers.withText("Introdu un nume!")).inRoot(RootMatchers.withDecorView(Matchers.not(rule.getActivity().getWindow().getDecorView()))) .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
     }
 
     @Test
@@ -134,7 +142,7 @@ public class SignUpTest {
         String number = "0741130202";
 
         typeFields(userName, password, number);
-        onView(withText("Introdu o parola!")).inRoot(withDecorView(not(rule.getActivity().getWindow().getDecorView()))) .check(matches(isDisplayed()));
+        onView(ViewMatchers.withText("Introdu o parola!")).inRoot(RootMatchers.withDecorView(Matchers.not(rule.getActivity().getWindow().getDecorView()))) .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
     }
 
     @Test
@@ -145,7 +153,7 @@ public class SignUpTest {
         String number = "0741130202";
 
         typeFields(userName, password, number);
-        onView(withText("Introdu o parola de cel putin 6 caractere!")).inRoot(withDecorView(not(rule.getActivity().getWindow().getDecorView()))) .check(matches(isDisplayed()));
+        onView(ViewMatchers.withText("Introdu o parola de cel putin 6 caractere!")).inRoot(RootMatchers.withDecorView(Matchers.not(rule.getActivity().getWindow().getDecorView()))) .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
     }
 
     @Test
@@ -156,7 +164,7 @@ public class SignUpTest {
         String number = "0741130202";
 
         typeFields(userName, password, number);
-        onView(withText("Introdu un nume de cel putin 6 litere!")).inRoot(withDecorView(not(rule.getActivity().getWindow().getDecorView()))) .check(matches(isDisplayed()));
+        onView(ViewMatchers.withText("Introdu un nume de cel putin 6 litere!")).inRoot(RootMatchers.withDecorView(Matchers.not(rule.getActivity().getWindow().getDecorView()))) .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
     }
 
 
@@ -169,18 +177,18 @@ public class SignUpTest {
 
     public void typeFields(String userName, String password, String number)
     {
-        onView(withId(R.id.btnSignUp)).perform(click());
-        onView(withId(R.id.edtName)).perform(new TypeTextAction(userName));
+        onView(ViewMatchers.withId(R.id.btnSignUp)).perform(ViewActions.click());
+        onView(ViewMatchers.withId(R.id.edtName)).perform(new TypeTextAction(userName));
 
         Espresso.closeSoftKeyboard();
 
-        onView(withId(R.id.edtPhone)).perform(new TypeTextAction(number));
+        onView(ViewMatchers.withId(R.id.edtPhone)).perform(new TypeTextAction(number));
         Espresso.closeSoftKeyboard();
 
-        onView(withId(R.id.edtPassword)).perform(new TypeTextAction(password));
+        onView(ViewMatchers.withId(R.id.edtPassword)).perform(new TypeTextAction(password));
         Espresso.closeSoftKeyboard();
 
-        onView(withId(R.id.btnSignUp)).perform(click());
+        onView(ViewMatchers.withId(R.id.btnSignUp)).perform(ViewActions.click());
     }
 
 
