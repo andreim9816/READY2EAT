@@ -1,3 +1,5 @@
+/* Am folosit graddle-ul ca build tool, in care am pus dependintele si librariile folosite */
+
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 android {
